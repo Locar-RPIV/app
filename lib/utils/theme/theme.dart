@@ -3,4 +3,5 @@ import 'package:flutter/material.dart';
 
 final theme = ThemeData(
   backgroundColor: backgroundColor,
+  fontFamily: 'Lato'
 );

@@ -1,4 +1,5 @@
 import 'package:app/app/view/components/default_app_bar.dart';
+import 'package:app/app/view/components/default_button.dart';
 import 'package:app/utils/theme/colors.dart';
 import 'package:flutter/material.dart';
 
@@ -13,6 +14,10 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: backgroundColor,
       appBar: DefaultAppBar(),
+      body: Column(
+        children: [
+        ],
+      ),
     );
   }
 }
