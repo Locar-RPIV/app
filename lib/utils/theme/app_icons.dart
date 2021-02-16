@@ -4,11 +4,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 enum AppIconType { svg, png }
 
 class AppIcons {
-  static const path = "assets/icons";
-  static const car = '$path/car.svg';
-  static const bus = '$path/bus.svg';
-  static const bike = '$path/bike.svg';
-  static const motocicle = '$path/motocicle.svg';
+  static const path = "assets/icon";
+  static const menu = '$path/menu';
 }
 
 extension AppIconsExt on String {
@@ -67,7 +64,7 @@ class AppIcon extends StatelessWidget {
         onTap: onTap,
         child: appIconType == AppIconType.svg
             ? SvgPicture.asset(
-                icon ?? AppIcons.car,
+                icon ?? AppIcons.menu,
                 fit: fit ?? BoxFit.none,
                 color: color,
                 width: width ?? 24.0,
