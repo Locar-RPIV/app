@@ -15,6 +15,7 @@ class DefaultAppBar extends PreferredSize {
       width: double.maxFinite,
       child: Center(
         child: Row(
+          crossAxisAlignment: CrossAxisAlignment.baseline,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Padding(
@@ -27,10 +28,8 @@ class DefaultAppBar extends PreferredSize {
             ),
             Padding(
               padding: EdgeInsets.only(right: 43),
-              child: Text(
-                "LOCAR",
-                style: TextStyle(color: primaryColor, fontSize: 20),
-              ),
+              child: Text("LOCAR",
+                style: TextStyle(color: primaryColor, fontSize: 20),),
             )
           ],
         ),
