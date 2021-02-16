@@ -1,5 +1,5 @@
 import 'package:app/app/view/components/default_app_bar.dart';
-import 'package:app/core/utils/theme/colors.dart';
+import 'package:app/core/theme/colors.dart';
 import 'package:flutter/material.dart';
 
 class DetailsPage extends StatefulWidget {

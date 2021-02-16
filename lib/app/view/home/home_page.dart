@@ -5,7 +5,7 @@ import 'package:app/app/view/home/components/bar_button_component.dart';
 import 'package:app/app/view/home/components/vehicle_button_component.dart';
 import 'package:app/app/view/home/components/vehicle_button_shimmer.dart';
 import 'package:app/core/enum/Vehicle/vehicle_type.dart';
-import 'package:app/core/utils/theme/colors.dart';
+import 'package:app/core/theme/colors.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
