@@ -10,4 +10,4 @@ const grey = Color(0xFF4D4D4D);
 
 const orange = Color(0xFFEB8712);
 
-const backgroundColor = Color(0xFFE5E5E5);
+const backgroundColor = Color(0xFFFFFFFF);
