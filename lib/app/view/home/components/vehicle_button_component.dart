@@ -1,7 +1,7 @@
 import 'package:app/app/model/home/vehicle_summary.dart';
 import 'package:app/core/enum/Vehicle/vehicle_type.dart';
-import 'package:app/core/utils/theme/colors.dart';
-import 'package:app/core/utils/theme/formatter.dart';
+import 'package:app/core/theme/colors.dart';
+import 'package:app/core/utils/formatter.dart';
 import 'package:flutter/material.dart';
 
 class VehicleButtonComponent extends StatelessWidget {
@@ -15,6 +15,9 @@ class VehicleButtonComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
+      onTap: (){
+        Navigator.pushNamed(context, "detailsPage");
+      },
       child: Container(
         height: 233,
         width: 208,
