@@ -1,4 +1,4 @@
-import 'package:app/utils/theme/colors.dart';
+import 'package:app/core/utils/theme/colors.dart';
 import 'package:flutter/material.dart';
 
 class DefaultButton extends StatefulWidget {
