@@ -3,6 +3,7 @@ import 'package:app/app/model/home/vehicle_summary.dart';
 import 'package:app/app/view/components/default_app_bar.dart';
 import 'package:app/app/view/home/components/bar_button_component.dart';
 import 'package:app/app/view/home/components/vehicle_button_component.dart';
+import 'package:app/app/view/home/components/vehicle_button_shimmer.dart';
 import 'package:app/core/enum/Vehicle/vehicle_type.dart';
 import 'package:app/core/utils/theme/colors.dart';
 import 'package:flutter/material.dart';
@@ -53,7 +54,18 @@ class _HomePageState extends State<HomePage> {
                     ),
                   );
                 }
-                return Text("Sem data");
+                return SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: List.generate(
+                      3, (index) => 
+                      Container(
+                        padding: EdgeInsets.only(right: 25),
+                        child: VehicleButtonShimmer()
+                      )
+                    ),
+                  ),
+                );
               },
             ),
             SizedBox(height: 48,),
@@ -85,7 +97,18 @@ class _HomePageState extends State<HomePage> {
                     ),
                   );
                 }
-                return Text("Sem data");
+                return SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: List.generate(
+                      3, (index) => 
+                      Container(
+                        padding: EdgeInsets.only(right: 25),
+                        child: VehicleButtonShimmer()
+                      )
+                    ),
+                  ),
+                );
               },
             ),
           ],

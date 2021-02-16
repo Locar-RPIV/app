@@ -9,7 +9,7 @@ class VehicleRepository implements IVehicleRepository{
   @override
   Future<List<VehicleSummary>> getAvailableVehicles() async {
     await Future.delayed(
-      Duration(seconds: 2)
+      Duration(seconds: 4)
     );
     return [
       VehicleSummary(
