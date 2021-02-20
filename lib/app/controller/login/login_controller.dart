@@ -1,4 +1,4 @@
-abstract class ILoginController{
+abstract class ILoginController {
   bool isEmailValid();
   bool isPasswordValid();
 }

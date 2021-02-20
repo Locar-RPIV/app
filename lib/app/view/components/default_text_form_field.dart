@@ -5,11 +5,9 @@ class DefaultTextFormField extends StatefulWidget {
   final bool isPassword;
   final TextEditingController controller;
 
-  const DefaultTextFormField({
-    Key key, 
-    this.hintText = "",
-    this.controller,
-    this.isPassword = false}) : super(key: key);
+  const DefaultTextFormField(
+      {Key key, this.hintText = "", this.controller, this.isPassword = false})
+      : super(key: key);
 
   @override
   _DefaultTextFormFieldState createState() => _DefaultTextFormFieldState();

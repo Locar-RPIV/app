@@ -8,12 +8,9 @@ class ButtonBarComponent extends StatefulWidget {
   final String title;
   final Function onPressed;
 
-  const ButtonBarComponent({
-    Key key,
-    this.icon,
-    this.title,
-    this.onPressed,
-    this.isSelected = false}) : super(key: key);
+  const ButtonBarComponent(
+      {Key key, this.icon, this.title, this.onPressed, this.isSelected = false})
+      : super(key: key);
   @override
   _ButtonBarComponentState createState() => _ButtonBarComponentState();
 }
@@ -38,11 +35,12 @@ class _ButtonBarComponentState extends State<ButtonBarComponent> {
             style: TextStyle(
               color: widget.isSelected ? Colors.white : primaryColor,
               fontSize: 18,
-            ),),
+            ),
+          ),
         ],
       ),
       shape: new RoundedRectangleBorder(
-        borderRadius: new BorderRadius.circular(50.0)),
+          borderRadius: new BorderRadius.circular(50.0)),
       color: widget.isSelected ? primaryColor : blueLight,
       disabledColor: blueLight,
       onPressed: widget.onPressed,

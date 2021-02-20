@@ -5,9 +5,8 @@ class DefaultButton extends StatefulWidget {
   final String title;
   final Function onTap;
 
-  const DefaultButton({Key key, 
-    @required this.title, 
-    this.onTap}) : super(key: key);
+  const DefaultButton({Key key, @required this.title, this.onTap})
+      : super(key: key);
   @override
   _DefaultButtonState createState() => _DefaultButtonState();
 }
@@ -23,12 +22,12 @@ class _DefaultButtonState extends State<DefaultButton> {
             child: Text(
               widget.title,
               style: TextStyle(
-                color: widget.onTap !=null ? Colors.white : grey600,
-                fontSize: 20,
-                fontWeight: FontWeight.w400
-              ),),
+                  color: widget.onTap != null ? Colors.white : grey600,
+                  fontSize: 20,
+                  fontWeight: FontWeight.w400),
+            ),
             shape: new RoundedRectangleBorder(
-              borderRadius: new BorderRadius.circular(10.0)),
+                borderRadius: new BorderRadius.circular(10.0)),
             color: primaryColor,
             disabledColor: grey900,
             onPressed: widget.onTap,

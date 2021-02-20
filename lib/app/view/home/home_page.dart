@@ -26,15 +26,16 @@ class _HomePageState extends State<HomePage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             BarButtonComponent(),
-            SizedBox(height: 46,),
+            SizedBox(
+              height: 46,
+            ),
             Text(
               "Frota da locadora",
-              style: TextStyle(
-                fontSize: 20,
-                color: primaryColor
-              ),
+              style: TextStyle(fontSize: 20, color: primaryColor),
             ),
-            SizedBox(height: 30,),
+            SizedBox(
+              height: 30,
+            ),
             FutureBuilder<List<VehicleSummary>>(
               future: controller.getVehiclesSummary(),
               builder: (context, snapshot) {
@@ -43,14 +44,16 @@ class _HomePageState extends State<HomePage> {
                     scrollDirection: Axis.horizontal,
                     child: Row(
                       children: List.generate(
-                        snapshot.data.length, (index) => 
-                        snapshot.data[index].type == VehicleType.rental ? Container(
-                          padding: EdgeInsets.only(right: 25),
-                          child: VehicleButtonComponent(
-                            vehicle: snapshot.data[index],
-                          ),
-                        ): Container()
-                      ),
+                          snapshot.data.length,
+                          (index) =>
+                              snapshot.data[index].type == VehicleType.rental
+                                  ? Container(
+                                      padding: EdgeInsets.only(right: 25),
+                                      child: VehicleButtonComponent(
+                                        vehicle: snapshot.data[index],
+                                      ),
+                                    )
+                                  : Container()),
                     ),
                   );
                 }
@@ -58,25 +61,24 @@ class _HomePageState extends State<HomePage> {
                   scrollDirection: Axis.horizontal,
                   child: Row(
                     children: List.generate(
-                      3, (index) => 
-                      Container(
-                        padding: EdgeInsets.only(right: 25),
-                        child: VehicleButtonShimmer()
-                      )
-                    ),
+                        3,
+                        (index) => Container(
+                            padding: EdgeInsets.only(right: 25),
+                            child: VehicleButtonShimmer())),
                   ),
                 );
               },
             ),
-            SizedBox(height: 48,),
+            SizedBox(
+              height: 48,
+            ),
             Text(
               "Veículos particulares",
-              style: TextStyle(
-                fontSize: 20,
-                color: primaryColor
-              ),
+              style: TextStyle(fontSize: 20, color: primaryColor),
             ),
-            SizedBox(height: 30,),
+            SizedBox(
+              height: 30,
+            ),
             FutureBuilder<List<VehicleSummary>>(
               future: controller.getVehiclesSummary(),
               builder: (context, snapshot) {
@@ -85,15 +87,16 @@ class _HomePageState extends State<HomePage> {
                     scrollDirection: Axis.horizontal,
                     child: Row(
                       children: List.generate(
-                        snapshot.data.length, (index) => 
-                        snapshot.data[index].type == VehicleType.particular ? Container(
-                          padding: EdgeInsets.only(right: 25),
-                          child: VehicleButtonComponent(
-                            vehicle: snapshot.data[index],
-                            type: VehicleType.particular
-                          ),
-                        ): Container()
-                      ),
+                          snapshot.data.length,
+                          (index) => snapshot.data[index].type ==
+                                  VehicleType.particular
+                              ? Container(
+                                  padding: EdgeInsets.only(right: 25),
+                                  child: VehicleButtonComponent(
+                                      vehicle: snapshot.data[index],
+                                      type: VehicleType.particular),
+                                )
+                              : Container()),
                     ),
                   );
                 }
@@ -101,12 +104,10 @@ class _HomePageState extends State<HomePage> {
                   scrollDirection: Axis.horizontal,
                   child: Row(
                     children: List.generate(
-                      3, (index) => 
-                      Container(
-                        padding: EdgeInsets.only(right: 25),
-                        child: VehicleButtonShimmer()
-                      )
-                    ),
+                        3,
+                        (index) => Container(
+                            padding: EdgeInsets.only(right: 25),
+                            child: VehicleButtonShimmer())),
                   ),
                 );
               },

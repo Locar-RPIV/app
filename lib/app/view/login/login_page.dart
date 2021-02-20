@@ -23,8 +23,10 @@ class _LoginPageState extends State<LoginPage> {
           Padding(
             padding: EdgeInsets.only(right: 49.0, top: 20),
             child: Center(
-              child: Text("LOCAR",
-                style: TextStyle(color: primaryColor, fontSize: 20),),
+              child: Text(
+                "LOCAR",
+                style: TextStyle(color: primaryColor, fontSize: 20),
+              ),
             ),
           )
         ],
@@ -32,12 +34,12 @@ class _LoginPageState extends State<LoginPage> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(height: 15,),
+            SizedBox(
+              height: 15,
+            ),
             Center(
-              child: AppIcons.login.icon(
-                fit: BoxFit.cover,
-                height: size.height / 2.8
-              ),
+              child: AppIcons.login
+                  .icon(fit: BoxFit.cover, height: size.height / 2.8),
             ),
             Padding(
               padding: EdgeInsets.only(top: 50, right: 50, left: 50),
@@ -51,49 +53,51 @@ class _LoginPageState extends State<LoginPage> {
                       style: TextStyle(fontSize: 15),
                     ),
                   ),
-                  SizedBox(height: 39,),
+                  SizedBox(
+                    height: 39,
+                  ),
                   DefaultTextFormField(
                     hintText: "USUÁRIO",
                     controller: emailTextController,
                   ),
-                  SizedBox(height: 26,),
+                  SizedBox(
+                    height: 26,
+                  ),
                   DefaultTextFormField(
                     hintText: "SENHA",
                     controller: passwordTextController,
                     isPassword: true,
                   ),
-                  SizedBox(height: 53,),
+                  SizedBox(
+                    height: 53,
+                  ),
                   DefaultButton(
                     title: "LOGIN",
                   ),
-                  SizedBox(height: 26,),
+                  SizedBox(
+                    height: 26,
+                  ),
                   Text.rich(
                     TextSpan(
-                      text: "ou ",
-                      style: TextStyle(
-                        color: grey,
-                        fontSize: 18,
-                        fontWeight: FontWeight.w100
-                      ),
-                      children: [
-                        TextSpan(
-                          text: "cadastre-se ",
-                          style: TextStyle(
+                        text: "ou ",
+                        style: TextStyle(
                             color: grey,
                             fontSize: 18,
-                            fontWeight: FontWeight.normal
-                          )
-                        ),
-                        TextSpan(
-                          text: "aqui",
-                          style: TextStyle(
-                            color: grey,
-                            fontSize: 18,
-                            fontWeight: FontWeight.w100
-                          )
-                        )
-                      ]
-                    ),
+                            fontWeight: FontWeight.w100),
+                        children: [
+                          TextSpan(
+                              text: "cadastre-se ",
+                              style: TextStyle(
+                                  color: grey,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.normal)),
+                          TextSpan(
+                              text: "aqui",
+                              style: TextStyle(
+                                  color: grey,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w100))
+                        ]),
                   )
                 ],
               ),

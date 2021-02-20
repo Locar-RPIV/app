@@ -1,1 +1,1 @@
-enum VehicleType{rental, particular}
+enum VehicleType { rental, particular }
