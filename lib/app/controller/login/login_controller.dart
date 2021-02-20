@@ -1,18 +1,23 @@
+import 'package:app/core/utils/validation.dart';
+
 abstract class ILoginController {
-  bool isEmailValid();
-  bool isPasswordValid();
+  bool isEmailValid(String email, {bool byTextField = true});
+  String errorText;
 }
 
 class LoginController implements ILoginController {
   @override
-  bool isEmailValid() {
-    // TODO: implement isEmailValid
-    throw UnimplementedError();
-  }
+  String errorText;
 
   @override
-  bool isPasswordValid() {
-    // TODO: implement isPasswordValid
-    throw UnimplementedError();
+  bool isEmailValid(String email, {bool byTextField = true}) {
+    if (Validation.email(email: email)) {
+      errorText = null;
+      return true;
+    }
+    if (byTextField) {
+      errorText = "Digite um email válido";
+    }
+    return false;
   }
 }

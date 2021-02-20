@@ -1,3 +1,4 @@
+import 'package:app/app/controller/login/login_controller.dart';
 import 'package:app/app/view/components/default_button.dart';
 import 'package:app/app/view/components/default_text_form_field.dart';
 import 'package:app/core/theme/app_icons.dart';
@@ -10,6 +11,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  var controller = LoginController();
   var emailTextController = TextEditingController();
   var passwordTextController = TextEditingController();
   @override
@@ -34,12 +36,9 @@ class _LoginPageState extends State<LoginPage> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(
-              height: 15,
-            ),
             Center(
               child: AppIcons.login
-                  .icon(fit: BoxFit.cover, height: size.height / 2.8),
+                  .icon(fit: BoxFit.cover, height: size.height / 3),
             ),
             Padding(
               padding: EdgeInsets.only(top: 50, right: 50, left: 50),
@@ -59,6 +58,17 @@ class _LoginPageState extends State<LoginPage> {
                   DefaultTextFormField(
                     hintText: "USUÁRIO",
                     controller: emailTextController,
+                    errorText: controller.errorText,
+                    onChanged: (value) {
+                      setState(() {
+                        if (value.length > 5) {
+                          print("ta entrando aqui");
+                          controller.isEmailValid(value);
+                        } else {
+                          controller.errorText = null;
+                        }
+                      });
+                    },
                   ),
                   SizedBox(
                     height: 26,
@@ -66,6 +76,9 @@ class _LoginPageState extends State<LoginPage> {
                   DefaultTextFormField(
                     hintText: "SENHA",
                     controller: passwordTextController,
+                    onChanged: (value) {
+                      setState(() {});
+                    },
                     isPassword: true,
                   ),
                   SizedBox(
@@ -73,6 +86,13 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   DefaultButton(
                     title: "LOGIN",
+                    onTap: controller.isEmailValid(emailTextController.text,
+                                byTextField: false) &&
+                            passwordTextController.text.length > 0
+                        ? () {
+                            Navigator.pushNamed(context, "/");
+                          }
+                        : null,
                   ),
                   SizedBox(
                     height: 26,
@@ -98,7 +118,10 @@ class _LoginPageState extends State<LoginPage> {
                                   fontSize: 18,
                                   fontWeight: FontWeight.w100))
                         ]),
-                  )
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
                 ],
               ),
             )
