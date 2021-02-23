@@ -1,3 +1,4 @@
+import 'package:app/app/view/booking_confirmation/booking_confirmation_page.dart';
 import 'package:app/app/view/components/default_app_bar.dart';
 import 'package:app/core/theme/colors.dart';
 import 'package:flutter/material.dart';
@@ -101,7 +102,13 @@ class _DetailsPageState extends State<DetailsPage> {
                       shape: new RoundedRectangleBorder(
                           borderRadius: new BorderRadius.circular(10.0)),
                       color: primaryColor,
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => BookingConfirmationPage()),
+                        );
+                      },
                     ),
                   ),
                 ],
