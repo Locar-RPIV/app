@@ -158,12 +158,14 @@ class _RegisterVehiclesPageState extends State<RegisterVehiclesPage> {
             //         minWidth: 155,
             //         color: Colors.blue,
             //         onPressed: () {},
+            //         children
             //         child: Icon(
             //           Icons.message,
             //         )),
             //   ],
             // ),
 
+            //ESSE
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
@@ -197,9 +199,32 @@ class _RegisterVehiclesPageState extends State<RegisterVehiclesPage> {
                         ),
                       ],
                     ),
-                    child: Center(
-                      child: Text('Carro',
-                          style: TextStyle(color: primaryColor, fontSize: 20)),
+                    child: Container(
+                      child: Center(
+                        child: RichText(
+                          text: TextSpan(
+                            children: [
+                              WidgetSpan(
+                                child: Icon(
+                                  Icons.directions_car,
+                                  size: 50,
+                                  color: primaryColor,
+                                ),
+                              ),
+                              TextSpan(
+                                text: "\n\n",
+                                style: TextStyle(
+                                    color: primaryColor, fontSize: 20),
+                              ),
+                              TextSpan(
+                                text: "Carro",
+                                style: TextStyle(
+                                    color: primaryColor, fontSize: 20),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
                     ),
                   ),
                 ),
@@ -234,9 +259,37 @@ class _RegisterVehiclesPageState extends State<RegisterVehiclesPage> {
                         ),
                       ],
                     ),
-                    child: Center(
-                      child: Text('Ônibus',
-                          style: TextStyle(color: primaryColor, fontSize: 20)),
+                    child: Container(
+                      child: Center(
+                        child: RichText(
+                          text: TextSpan(
+                            children: [
+                              TextSpan(
+                                text: " ",
+                                style: TextStyle(
+                                    color: primaryColor, fontSize: 20),
+                              ),
+                              WidgetSpan(
+                                child: Icon(
+                                  Icons.directions_bus,
+                                  size: 50,
+                                  color: primaryColor,
+                                ),
+                              ),
+                              TextSpan(
+                                text: "\n\n",
+                                style: TextStyle(
+                                    color: primaryColor, fontSize: 20),
+                              ),
+                              TextSpan(
+                                text: "Ônibus",
+                                style: TextStyle(
+                                    color: primaryColor, fontSize: 20),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
                     ),
                   ),
                 ),
@@ -281,9 +334,36 @@ class _RegisterVehiclesPageState extends State<RegisterVehiclesPage> {
                         ),
                       ],
                     ),
-                    child: Center(
-                      child: Text('Bicicleta',
-                          style: TextStyle(color: primaryColor, fontSize: 20)),
+                    child: Container(
+                      child: Center(
+                          child: RichText(
+                        text: TextSpan(
+                          children: [
+                            TextSpan(
+                              text: "  ",
+                              style:
+                                  TextStyle(color: primaryColor, fontSize: 20),
+                            ),
+                            WidgetSpan(
+                              child: Icon(
+                                Icons.pedal_bike_rounded,
+                                size: 50,
+                                color: primaryColor,
+                              ),
+                            ),
+                            TextSpan(
+                              text: "\n\n",
+                              style:
+                                  TextStyle(color: primaryColor, fontSize: 20),
+                            ),
+                            TextSpan(
+                              text: "Bicicleta",
+                              style:
+                                  TextStyle(color: primaryColor, fontSize: 20),
+                            ),
+                          ],
+                        ),
+                      )),
                     ),
                   ),
                 ),
@@ -318,9 +398,36 @@ class _RegisterVehiclesPageState extends State<RegisterVehiclesPage> {
                         ),
                       ],
                     ),
-                    child: Center(
-                      child: Text('Motocicleta',
-                          style: TextStyle(color: primaryColor, fontSize: 20)),
+                    child: Container(
+                      child: Center(
+                          child: RichText(
+                        text: TextSpan(
+                          children: [
+                            TextSpan(
+                              text: "    ",
+                              style:
+                                  TextStyle(color: primaryColor, fontSize: 20),
+                            ),
+                            WidgetSpan(
+                              child: Icon(
+                                Icons.two_wheeler,
+                                size: 50,
+                                color: primaryColor,
+                              ),
+                            ),
+                            TextSpan(
+                              text: "\n\n",
+                              style:
+                                  TextStyle(color: primaryColor, fontSize: 20),
+                            ),
+                            TextSpan(
+                              text: "Motocicleta",
+                              style:
+                                  TextStyle(color: primaryColor, fontSize: 20),
+                            ),
+                          ],
+                        ),
+                      )),
                     ),
                   ),
                 ),
