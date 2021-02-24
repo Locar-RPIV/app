@@ -34,138 +34,6 @@ class _RegisterVehiclesPageState extends State<RegisterVehiclesPage> {
             SizedBox(
               height: 30,
             ),
-
-            // Row(
-            //   crossAxisAlignment: CrossAxisAlignment.start,
-            //   children: [
-            //     Container(
-            //       color: Colors.blue,
-            //       height: 155,
-            //       width: 155,
-            //     ),
-            //     SizedBox(
-            //       width: 20,
-            //     ),
-            //     Container(
-            //       color: Colors.orange,
-            //       height: 155,
-            //       width: 155,
-            //     ),
-            //   ],
-            // ),
-            // SizedBox(
-            //   height: 20,
-            // ),
-            // Row(
-            //   crossAxisAlignment: CrossAxisAlignment.start,
-            //   children: [
-            //     Container(
-            //       color: Colors.blue,
-            //       height: 155,
-            //       width: 155,
-            //     ),
-            //     SizedBox(
-            //       width: 20,
-            //     ),
-            //     Container(
-            //       color: Colors.orange,
-            //       height: 155,
-            //       width: 155,
-            //     ),
-            //   ],
-            // ),
-
-            // ButtonBar(
-            //   children: <Widget>[
-            //     FlatButton(
-            //       height: 155,
-            //       minWidth: 155,
-            //       child: Text('Ok'),
-            //       color: Colors.blue,
-            //       onPressed: () {/** */},
-            //     ),
-            //     FlatButton(
-            //       height: 155,
-            //       minWidth: 155,
-            //       child: Text('Cancel'),
-            //       color: Colors.blue,
-            //       onPressed: () {/** */},
-            //     ),
-            //   ],
-            // ),
-            // ButtonBar(
-            //   children: <Widget>[
-            //     FlatButton(
-            //       height: 155,
-            //       minWidth: 155,
-            //       child: Text('Ok'),
-            //       color: Colors.blue,
-            //       onPressed: () {/** */},
-            //     ),
-            //     FlatButton(
-            //       height: 155,
-            //       minWidth: 155,
-            //       child: Text('Cancel'),
-            //       color: Colors.blue,
-            //       onPressed: () {/** */},
-            //     ),
-            //   ],
-            // )
-
-            // Row(
-            //   mainAxisAlignment: MainAxisAlignment.spaceAround,
-            //   children: [
-            //     FlatButton(
-            //         height: 155,
-            //         minWidth: 155,
-            //         color: Colors.blue,
-            //         onPressed: () {},
-            //         child: Icon(
-            //           Icons.call,
-            //         )),
-            //     SizedBox(
-            //       width: 20,
-            //     ),
-            //     FlatButton(
-            //         height: 155,
-            //         minWidth: 155,
-            //         color: Colors.blue,
-            //         onPressed: () {},
-            //         child: Icon(
-            //           Icons.message,
-            //         )),
-            //   ],
-            // ),
-            // SizedBox(
-            //   height: 20,
-            // ),
-            // Row(
-            //   mainAxisAlignment: MainAxisAlignment.spaceAround,
-            //   children: [
-            //     FlatButton(
-            //         height: 155,
-            //         minWidth: 155,
-            //         color: Colors.blue,
-            //         onPressed: () {},
-            //         child: Icon(
-            //           Icons.call,
-            //         )),
-            //     SizedBox(
-            //       width: 20,
-            //     ),
-            //     FlatButton(
-            //         height: 155,
-            //         minWidth: 155,
-            //         color: Colors.blue,
-            //         onPressed: () {},
-            //         children
-            //         child: Icon(
-            //           Icons.message,
-            //         )),
-            //   ],
-            // ),
-
-            //ESSE
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
@@ -193,9 +61,9 @@ class _RegisterVehiclesPageState extends State<RegisterVehiclesPage> {
                       ),
                       boxShadow: <BoxShadow>[
                         BoxShadow(
-                          color: Colors.black26,
-                          offset: Offset(0, 0),
-                          blurRadius: 10.0,
+                          color: Colors.black12,
+                          offset: Offset(0, 3),
+                          blurRadius: 3.0,
                         ),
                       ],
                     ),
@@ -253,9 +121,9 @@ class _RegisterVehiclesPageState extends State<RegisterVehiclesPage> {
                       ),
                       boxShadow: <BoxShadow>[
                         BoxShadow(
-                          color: Colors.black26,
-                          offset: Offset(0, 0),
-                          blurRadius: 10.0,
+                          color: Colors.black12,
+                          offset: Offset(0, 3),
+                          blurRadius: 3.0,
                         ),
                       ],
                     ),
@@ -328,9 +196,9 @@ class _RegisterVehiclesPageState extends State<RegisterVehiclesPage> {
                       ),
                       boxShadow: <BoxShadow>[
                         BoxShadow(
-                          color: Colors.black26,
-                          offset: Offset(0, 0),
-                          blurRadius: 10.0,
+                          color: Colors.black12,
+                          offset: Offset(0, 3),
+                          blurRadius: 3.0,
                         ),
                       ],
                     ),
@@ -392,9 +260,9 @@ class _RegisterVehiclesPageState extends State<RegisterVehiclesPage> {
                       ),
                       boxShadow: <BoxShadow>[
                         BoxShadow(
-                          color: Colors.black26,
-                          offset: Offset(0, 0),
-                          blurRadius: 10.0,
+                          color: Colors.black12,
+                          offset: Offset(0, 3),
+                          blurRadius: 3.0,
                         ),
                       ],
                     ),
@@ -436,151 +304,6 @@ class _RegisterVehiclesPageState extends State<RegisterVehiclesPage> {
                 ),
               ],
             ),
-
-            // Row(
-            //   children: [
-            //     Container(
-            //       width: 155,
-            //       height: 155,
-            //       decoration: BoxDecoration(
-            //         gradient: LinearGradient(
-            //           colors: [
-            //             Colors.white,
-            //             Colors.white,
-            //           ],
-            //           begin: Alignment.topLeft,
-            //           end: Alignment.bottomRight,
-            //         ),
-            //         borderRadius: BorderRadius.only(
-            //           topLeft: Radius.circular(8.0),
-            //           bottomLeft: Radius.circular(8.0),
-            //           bottomRight: Radius.circular(8.0),
-            //           topRight: Radius.circular(8.01),
-            //         ),
-            //         boxShadow: <BoxShadow>[
-            //           BoxShadow(
-            //             color: Colors.black26,
-            //             offset: Offset(0, 0),
-            //             blurRadius: 10.0,
-            //           ),
-            //         ],
-            //       ),
-            //       child: Center(
-            //         child: Container(
-            //           child: Text('Carros',
-            //               style: TextStyle(fontSize: 20, color: primaryColor)),
-            //         ),
-            //       ),
-            //     ),
-            //     SizedBox(width: 20),
-            //     Container(
-            //       width: 155,
-            //       height: 155,
-            //       decoration: BoxDecoration(
-            //         gradient: LinearGradient(
-            //           colors: [
-            //             Colors.white,
-            //             Colors.white,
-            //           ],
-            //           begin: Alignment.topLeft,
-            //           end: Alignment.bottomRight,
-            //         ),
-            //         borderRadius: BorderRadius.only(
-            //           topLeft: Radius.circular(8.0),
-            //           bottomLeft: Radius.circular(8.0),
-            //           bottomRight: Radius.circular(8.0),
-            //           topRight: Radius.circular(8.01), // FLUTTER BUG FIX
-            //         ),
-            //         boxShadow: <BoxShadow>[
-            //           BoxShadow(
-            //             color: Colors.black26,
-            //             offset: Offset(0, 0),
-            //             blurRadius: 10.0,
-            //           ),
-            //         ],
-            //       ),
-            //       child: Center(
-            //         child: Container(
-            //           child: Text('Ônibus'),
-            //         ),
-            //       ),
-            //     ),
-            //   ],
-            // ),
-
-            // SizedBox(
-            //   height: 20,
-            // ),
-
-            // Row(
-            //   children: [
-            //     Container(
-            //       width: 155,
-            //       height: 155,
-            //       decoration: BoxDecoration(
-            //         gradient: LinearGradient(
-            //           colors: [
-            //             Colors.white,
-            //             Colors.white,
-            //           ],
-            //           begin: Alignment.topLeft,
-            //           end: Alignment.bottomRight,
-            //         ),
-            //         borderRadius: BorderRadius.only(
-            //           topLeft: Radius.circular(8.0),
-            //           bottomLeft: Radius.circular(8.0),
-            //           bottomRight: Radius.circular(8.0),
-            //           topRight: Radius.circular(8.01), // FLUTTER BUG FIX
-            //         ),
-            //         boxShadow: <BoxShadow>[
-            //           BoxShadow(
-            //             color: Colors.black26,
-            //             offset: Offset(0, 0),
-            //             blurRadius: 10.0,
-            //           ),
-            //         ],
-            //       ),
-            //       child: Center(
-            //         child: Container(
-            //           child: Text('Bicicleta'),
-            //         ),
-            //       ),
-            //     ),
-            //     SizedBox(width: 20),
-            //     Container(
-            //       width: 155,
-            //       height: 155,
-            //       decoration: BoxDecoration(
-            //         gradient: LinearGradient(
-            //           colors: [
-            //             Colors.white,
-            //             Colors.white,
-            //           ],
-            //           begin: Alignment.topLeft,
-            //           end: Alignment.bottomRight,
-            //         ),
-            //         borderRadius: BorderRadius.only(
-            //           topLeft: Radius.circular(8.0),
-            //           bottomLeft: Radius.circular(8.0),
-            //           bottomRight: Radius.circular(8.0),
-            //           topRight: Radius.circular(8.01), // FLUTTER BUG FIX
-            //         ),
-            //         boxShadow: <BoxShadow>[
-            //           BoxShadow(
-            //             color: Colors.black26,
-            //             offset: Offset(0, 0),
-            //             blurRadius: 10.0,
-            //           ),
-            //         ],
-            //       ),
-            //       child: Center(
-            //         child: Container(
-            //           child: Text('Motocicleta'),
-            //         ),
-            //       ),
-            //     ),
-            //   ],
-            // ),
           ],
         ),
       ),
