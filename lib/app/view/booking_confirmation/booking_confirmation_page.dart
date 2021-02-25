@@ -68,27 +68,16 @@ class _BookingConfirmationPageState extends State<BookingConfirmationPage> {
               width: 349,
               height: 152,
               color: grey900,
-              child: Container(
-                width: 174,
-                height: 76,
-                child: Center(
-                  child: RichText(
-                    text: TextSpan(
-                      children: [
-                        TextSpan(text: ' ', style: TextStyle(fontSize: 20)),
-                        TextSpan(
-                            text: "Código da reserva: ",
-                            style:
-                                TextStyle(fontSize: 23, color: Colors.black)),
-                      ],
-                    ),
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: 50,
                   ),
-
-                  // child: Text(
-                  //   'Código da reserva',
-                  //   style: TextStyle(fontSize: 20),
-                  // ),
-                ),
+                  Text("Código da reserva: ",
+                      style: TextStyle(fontSize: 23, color: Colors.black)),
+                  Text("001",
+                      style: TextStyle(fontSize: 23, color: Colors.black)),
+                ],
               ),
             ),
             SizedBox(
@@ -164,20 +153,28 @@ class _BookingConfirmationPageState extends State<BookingConfirmationPage> {
                   SizedBox(
                     height: 10,
                   ),
-                  Container(
-                    width: 299,
-                    height: 60,
-                    child: Align(
-                      alignment: Alignment.centerRight,
-                      heightFactor: 50,
-                      child: Text(
-                        'Travessa maravilha tristeza,número 0, Centenário, Alegrete - BR',
-                        style: TextStyle(fontSize: 14, color: primaryColor),
-                      ),
+                  Padding(
+                    padding: EdgeInsets.only(left: 50, right: 30),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          width: 299,
+                          height: 60,
+                          child: Align(
+                            alignment: Alignment.center,
+                            child: Text(
+                              'Travessa maravilha tristeza,número 0, Centenário, Alegrete - BR',
+                              style:
+                                  TextStyle(fontSize: 14, color: primaryColor),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                      ],
                     ),
-                  ),
-                  SizedBox(
-                    height: 10,
                   ),
                   Center(
                     child: FlatButton(
