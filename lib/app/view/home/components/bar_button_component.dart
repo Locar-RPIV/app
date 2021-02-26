@@ -18,24 +18,32 @@ class _BarButtonComponentState extends State<BarButtonComponent> {
             title: "Carros",
             icon: AppIcons.car,
             isSelected: true,
-            onPressed: (){},
+            onPressed: () {},
           ),
-          SizedBox(width: 10,),
+          SizedBox(
+            width: 10,
+          ),
           ButtonBarComponent(
             title: "Ônibus",
             icon: AppIcons.bus,
           ),
-          SizedBox(width: 10,),
+          SizedBox(
+            width: 10,
+          ),
           ButtonBarComponent(
             title: "Bicicleta",
             icon: AppIcons.bike,
           ),
-          SizedBox(width: 10,),
+          SizedBox(
+            width: 10,
+          ),
           ButtonBarComponent(
             title: "Motocicleta",
             icon: AppIcons.motocicle,
           ),
-          SizedBox(width: 10,),
+          SizedBox(
+            width: 10,
+          ),
         ],
       ),
     );

@@ -3,11 +3,10 @@ import 'package:flutter/material.dart';
 
 class DefaultButton extends StatefulWidget {
   final String title;
-  final bool isValid;
+  final Function onTap;
 
-  const DefaultButton({Key key, 
-    @required this.title, 
-    this.isValid = true}) : super(key: key);
+  const DefaultButton({Key key, @required this.title, this.onTap})
+      : super(key: key);
   @override
   _DefaultButtonState createState() => _DefaultButtonState();
 }
@@ -21,16 +20,17 @@ class _DefaultButtonState extends State<DefaultButton> {
           child: FlatButton(
             height: 58,
             child: Text(
-              "ENTRAR",
+              widget.title,
               style: TextStyle(
-                color: Colors.white,
-                fontSize: 20,
-                fontWeight: FontWeight.w400
-              ),),
+                  color: widget.onTap != null ? Colors.white : grey600,
+                  fontSize: 20,
+                  fontWeight: FontWeight.w400),
+            ),
             shape: new RoundedRectangleBorder(
-              borderRadius: new BorderRadius.circular(10.0)),
+                borderRadius: new BorderRadius.circular(10.0)),
             color: primaryColor,
-            onPressed: (){},
+            disabledColor: grey900,
+            onPressed: widget.onTap,
           ),
         ),
       ],

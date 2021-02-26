@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
 class VehicleButtonShimmer extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return Shimmer.fromColors(
@@ -13,9 +12,7 @@ class VehicleButtonShimmer extends StatelessWidget {
         height: 233,
         width: 208,
         decoration: BoxDecoration(
-          color: blueLight,
-          borderRadius: BorderRadius.circular(10)
-        ),
+            color: blueLight, borderRadius: BorderRadius.circular(10)),
       ),
     );
   }

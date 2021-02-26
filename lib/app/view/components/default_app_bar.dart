@@ -28,8 +28,10 @@ class DefaultAppBar extends PreferredSize {
             ),
             Padding(
               padding: EdgeInsets.only(right: 43),
-              child: Text("LOCAR",
-                style: TextStyle(color: primaryColor, fontSize: 20),),
+              child: Text(
+                "LOCAR",
+                style: TextStyle(color: primaryColor, fontSize: 20),
+              ),
             )
           ],
         ),
