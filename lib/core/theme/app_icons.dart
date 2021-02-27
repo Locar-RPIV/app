@@ -10,6 +10,8 @@ class AppIcons {
   static const bike = '$path/bike.svg';
   static const motocicle = '$path/motocicle.svg';
   static const login = '$path/login.svg';
+  static const cash = '$path/cash.svg';
+  static const information = '$path/information.svg';
 }
 
 extension AppIconsExt on String {
