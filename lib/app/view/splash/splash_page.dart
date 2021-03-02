@@ -2,12 +2,12 @@ import 'package:app/core/theme/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class SplashScreenPage extends StatefulWidget {
+class SplashPage extends StatefulWidget {
   @override
-  _SplashScreenPageState createState() => _SplashScreenPageState();
+  _SplashPageState createState() => _SplashPageState();
 }
 
-class _SplashScreenPageState extends State<SplashScreenPage> {
+class _SplashPageState extends State<SplashPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(

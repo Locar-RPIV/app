@@ -1,6 +1,7 @@
 import 'package:app/app/view/components/default_app_bar.dart';
 import 'package:app/app/view/components/default_button.dart';
 import 'package:app/app/view/components/vehicle_with_background_component.dart';
+import 'package:app/app/view/reservation/reservation_confirmation_page.dart';
 import 'package:app/core/theme/colors.dart';
 import 'package:flutter/material.dart';
 
@@ -83,7 +84,13 @@ class _DetailsPageState extends State<DetailsPage> {
                     height: 15,
                   ),
                   Center(
-                    child: DefaultButton(title: "RESERVAR", onTap: () {}),
+                    child: DefaultButton(title: "RESERVAR", onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ReservationConfirmationPage()),
+                      );
+                    }),
                   ),
                   SizedBox(
                     height: 25,
