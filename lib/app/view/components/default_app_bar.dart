@@ -15,7 +15,6 @@ class DefaultAppBar extends PreferredSize {
       width: double.maxFinite,
       child: Center(
         child: Row(
-          crossAxisAlignment: CrossAxisAlignment.baseline,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Padding(
