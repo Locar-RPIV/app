@@ -59,6 +59,7 @@ class _LoginPageState extends State<LoginPage> {
                     hintText: "USUÁRIO",
                     controller: emailTextController,
                     errorText: controller.errorText,
+                    type: TextInputType.emailAddress,
                     onChanged: (value) {
                       setState(() {
                         if (value.length > 5) {
