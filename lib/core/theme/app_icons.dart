@@ -14,6 +14,8 @@ class AppIcons {
   static const logout = '$path/logout.svg';
   static const reservation = '$path/reservation.svg';
   static const back = '$path/back.svg';
+  static const cash = '$path/cash.svg';
+  static const information = '$path/information.svg';
 }
 
 extension AppIconsExt on String {
