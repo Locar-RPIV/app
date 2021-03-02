@@ -1,15 +1,15 @@
 import 'package:app/app/view/components/default_app_bar.dart';
-import 'package:app/app/view/details/details_page.dart';
+import 'package:app/app/view/reservation/details_page.dart';
 import 'package:app/core/theme/colors.dart';
 import 'package:flutter/material.dart';
 
-class BookingConfirmationPage extends StatefulWidget {
+class ReservationConfirmationPage extends StatefulWidget {
   @override
-  _BookingConfirmationPageState createState() =>
-      _BookingConfirmationPageState();
+  _ReservationConfirmationPageState createState() =>
+      _ReservationConfirmationPageState();
 }
 
-class _BookingConfirmationPageState extends State<BookingConfirmationPage> {
+class _ReservationConfirmationPageState extends State<ReservationConfirmationPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: DefaultAppBar(),
