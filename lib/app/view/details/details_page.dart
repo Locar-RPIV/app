@@ -1,4 +1,5 @@
 import 'package:app/app/view/components/default_app_bar.dart';
+import 'package:app/app/view/components/default_button.dart';
 import 'package:app/app/view/components/vehicle_with_background_component.dart';
 import 'package:app/core/theme/colors.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +19,8 @@ class _DetailsPageState extends State<DetailsPage> {
             VehicleWithBackgroundComponent(
               heightBackground: 233,
               paddingVertical: 45,
-              url: 'https://s3-alpha-sig.figma.com/img/f098/ebbb/d4f6510b0503d83c7f4c18d88153bacd?Expires=1614556800&Signature=Yo9bMA62Ol~5jvcldO-WozAGbVioepLtiqWdfPD7QOkuMNnh2Uz4pGwgj5apyiQccmIpoVla5IvhoeaO30zAqDZy-5pIxfAOg9zRpNW4muoYU9GpMJHZiXJn9fa4E6ZT6BaWBah~xjMggOwnViSKwF38rYtYCPoUf0nMLw~IWoyGvjc8lwHyNNqq7ji2zUKHvPjJeFwXZ~XqPSNQsFQwn1FowaXdLPM-UOxrC4C2OnZalnH-F6mJF1JSRtFEcTo3iZ6VAbQIWme3ssNVlqWWs7l6uj8oRXP~B1bMQQggjSqqJRY1s9MfASjJIOTA7hAUQtVlCVHIRh0hsBxYSXR7zQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA',
+              url:
+                  'https://s3-alpha-sig.figma.com/img/f098/ebbb/d4f6510b0503d83c7f4c18d88153bacd?Expires=1614556800&Signature=Yo9bMA62Ol~5jvcldO-WozAGbVioepLtiqWdfPD7QOkuMNnh2Uz4pGwgj5apyiQccmIpoVla5IvhoeaO30zAqDZy-5pIxfAOg9zRpNW4muoYU9GpMJHZiXJn9fa4E6ZT6BaWBah~xjMggOwnViSKwF38rYtYCPoUf0nMLw~IWoyGvjc8lwHyNNqq7ji2zUKHvPjJeFwXZ~XqPSNQsFQwn1FowaXdLPM-UOxrC4C2OnZalnH-F6mJF1JSRtFEcTo3iZ6VAbQIWme3ssNVlqWWs7l6uj8oRXP~B1bMQQggjSqqJRY1s9MfASjJIOTA7hAUQtVlCVHIRh0hsBxYSXR7zQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA',
             ),
             Padding(
               padding: EdgeInsets.only(left: 30, right: 30, top: 10),
@@ -36,7 +38,7 @@ class _DetailsPageState extends State<DetailsPage> {
                     ),
                   ),
                   SizedBox(
-                    height: 13,
+                    height: 10,
                   ),
                   Text(
                     'Marca: Volkswagen',
@@ -57,12 +59,12 @@ class _DetailsPageState extends State<DetailsPage> {
                     'Ano: 1997',
                     style: TextStyle(fontSize: 20),
                   ),
-                  Container(height: 10),
+                  SizedBox(height: 10),
                   Text(
                     'KM rodados: 854.901',
                     style: TextStyle(fontSize: 20),
                   ),
-                  Container(height: 15),
+                  Container(height: 10),
                   ListTile(
                     contentPadding: EdgeInsets.all(0),
                     title: Text('Valor',
@@ -78,24 +80,13 @@ class _DetailsPageState extends State<DetailsPage> {
                     style: TextStyle(fontSize: 20),
                   ),
                   SizedBox(
-                    height: 25,
+                    height: 15,
                   ),
                   Center(
-                    child: FlatButton(
-                      height: 58,
-                      minWidth: 350,
-                      child: Text(
-                        "RESERVAR",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20,
-                            fontWeight: FontWeight.w400),
-                      ),
-                      shape: new RoundedRectangleBorder(
-                          borderRadius: new BorderRadius.circular(10.0)),
-                      color: primaryColor,
-                      onPressed: () {},
-                    ),
+                    child: DefaultButton(title: "RESERVAR", onTap: () {}),
+                  ),
+                  SizedBox(
+                    height: 25,
                   ),
                 ],
               ),
