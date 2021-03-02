@@ -21,7 +21,6 @@ class _DetailsPageState extends State<DetailsPage> {
               child: Container(
                 width: 207,
                 height: 190,
-                // alignment: Alignment.Center,
                 child: Image.network(
                     'https://s3-alpha-sig.figma.com/img/f098/ebbb/d4f6510b0503d83c7f4c18d88153bacd?Expires=1614556800&Signature=Yo9bMA62Ol~5jvcldO-WozAGbVioepLtiqWdfPD7QOkuMNnh2Uz4pGwgj5apyiQccmIpoVla5IvhoeaO30zAqDZy-5pIxfAOg9zRpNW4muoYU9GpMJHZiXJn9fa4E6ZT6BaWBah~xjMggOwnViSKwF38rYtYCPoUf0nMLw~IWoyGvjc8lwHyNNqq7ji2zUKHvPjJeFwXZ~XqPSNQsFQwn1FowaXdLPM-UOxrC4C2OnZalnH-F6mJF1JSRtFEcTo3iZ6VAbQIWme3ssNVlqWWs7l6uj8oRXP~B1bMQQggjSqqJRY1s9MfASjJIOTA7hAUQtVlCVHIRh0hsBxYSXR7zQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA'),
               ),
