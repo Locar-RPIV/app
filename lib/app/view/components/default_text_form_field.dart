@@ -6,7 +6,9 @@ class DefaultTextFormField extends StatefulWidget {
   final Function(String value) onChanged;
   final String hintText;
   final String errorText;
+  final String labelText;
   final bool isPassword;
+  final TextInputType type;
 
   const DefaultTextFormField(
       {Key key,
@@ -14,6 +16,8 @@ class DefaultTextFormField extends StatefulWidget {
       this.errorText,
       this.onChanged,
       this.controller,
+      this.labelText,
+      this.type = TextInputType.text,
       this.isPassword = false})
       : super(key: key);
 
@@ -24,26 +28,41 @@ class DefaultTextFormField extends StatefulWidget {
 class _DefaultTextFormFieldState extends State<DefaultTextFormField> {
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      obscureText: widget.isPassword,
-      controller: widget.controller,
-      onChanged: widget.onChanged,
-      keyboardType: TextInputType.emailAddress,
-      decoration: InputDecoration(
-        contentPadding: EdgeInsets.all(17),
-        hintText: widget.hintText,
-        errorText: widget.errorText,
-        errorStyle: TextStyle(color: errorColor, fontSize: 12),
-        focusedErrorBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
-            borderSide: BorderSide(color: errorColor)),
-        errorBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
-            borderSide: BorderSide(color: errorColor)),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        if (widget.labelText != null)
+        Text(
+          widget.labelText,
+          style: TextStyle(
+            fontSize: 13,
+            color: grey
+          ),
         ),
-      ),
+        if (widget.labelText != null)
+        SizedBox(height: 12,),
+        TextFormField(
+          obscureText: widget.isPassword,
+          controller: widget.controller,
+          onChanged: widget.onChanged,
+          keyboardType: widget.type,
+          decoration: InputDecoration(
+            contentPadding: EdgeInsets.all(17),
+            hintText: widget.hintText,
+            errorText: widget.errorText,
+            errorStyle: TextStyle(color: errorColor, fontSize: 12),
+            focusedErrorBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+                borderSide: BorderSide(color: errorColor)),
+            errorBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+                borderSide: BorderSide(color: errorColor)),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
