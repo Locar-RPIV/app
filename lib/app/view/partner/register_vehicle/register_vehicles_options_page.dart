@@ -2,12 +2,12 @@ import 'package:app/app/view/components/default_app_bar.dart';
 import 'package:app/core/theme/colors.dart';
 import 'package:flutter/material.dart';
 
-class RegisterVehiclesPage extends StatefulWidget {
+class RegisterVehiclesOptionsPage extends StatefulWidget {
   @override
-  _RegisterVehiclesPageState createState() => _RegisterVehiclesPageState();
+  _RegisterVehiclesOptionsPageState createState() => _RegisterVehiclesOptionsPageState();
 }
 
-class _RegisterVehiclesPageState extends State<RegisterVehiclesPage> {
+class _RegisterVehiclesOptionsPageState extends State<RegisterVehiclesOptionsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: backgroundColor,
