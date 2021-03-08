@@ -1,4 +1,5 @@
 import 'package:app/app/controller/login/login_controller.dart';
+import 'package:app/app/view/home/home_page.dart';
 import 'package:app/core/theme/app_icons.dart';
 import 'package:app/core/theme/colors.dart';
 import 'package:flutter/material.dart';
@@ -48,6 +49,10 @@ class DefaultTopSheetWidget extends StatelessWidget {
                   icon: AppIcons.home,
                   title: "Home",
                   isBlue: true,
+                  onTap: (){
+                    Navigator.pushAndRemoveUntil(context, 
+                      MaterialPageRoute(builder: (context) => HomePage(),), (route) => false);
+                  },
                 ),
                 ItemTopSheet(
                   icon: AppIcons.reservation,
