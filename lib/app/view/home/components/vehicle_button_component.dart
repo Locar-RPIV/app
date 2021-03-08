@@ -1,4 +1,5 @@
 import 'package:app/app/model/home/vehicle_summary.dart';
+import 'package:app/app/view/reservation/details_page.dart';
 import 'package:app/core/enum/Vehicle/vehicle_type.dart';
 import 'package:app/core/theme/colors.dart';
 import 'package:app/core/utils/formatter.dart';
@@ -14,7 +15,8 @@ class VehicleButtonComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.pushNamed(context, "details");
+        Navigator.push(context, 
+          MaterialPageRoute(builder: (context) => DetailsPage(vehicleSummary: vehicle,),));
       },
       child: Container(
         height: 233,
