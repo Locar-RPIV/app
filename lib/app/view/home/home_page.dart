@@ -15,6 +15,15 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final HomeController controller = HomeController();
+  List<VehicleSummary> listVehicles = [];
+  bool isLoading = false;
+
+  @override
+  void initState() {
+    getVehicles();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,39 +45,38 @@ class _HomePageState extends State<HomePage> {
             SizedBox(
               height: 30,
             ),
-            FutureBuilder<List<VehicleSummary>>(
-              future: controller.getVehiclesSummary(),
-              builder: (context, snapshot) {
-                if (snapshot.hasData && !snapshot.hasError) {
-                  return SingleChildScrollView(
+            isLoading
+                ? SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
                       children: List.generate(
-                          snapshot.data.length,
-                          (index) =>
-                              snapshot.data[index].type == VehicleType.rental
-                                  ? Container(
-                                      padding: EdgeInsets.only(right: 25),
-                                      child: VehicleButtonComponent(
-                                        vehicle: snapshot.data[index],
-                                      ),
-                                    )
-                                  : Container()),
+                          3,
+                          (index) => Container(
+                              padding: EdgeInsets.only(right: 25),
+                              child: VehicleButtonShimmer())),
                     ),
-                  );
-                }
-                return SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: List.generate(
-                        3,
-                        (index) => Container(
-                            padding: EdgeInsets.only(right: 25),
-                            child: VehicleButtonShimmer())),
-                  ),
-                );
-              },
-            ),
+                  )
+                : listVehicles
+                        .where((element) => element.type == VehicleType.rental)
+                        .isNotEmpty
+                    ? SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          children: List.generate(
+                              listVehicles.length,
+                              (index) =>
+                                  listVehicles[index].type == VehicleType.rental
+                                      ? Container(
+                                          padding: EdgeInsets.only(right: 25),
+                                          child: VehicleButtonComponent(
+                                            vehicle: listVehicles[index],
+                                          ),
+                                        )
+                                      : Container()),
+                        ),
+                      )
+                    : Text(
+                        "Infelizmente não temos carros frota da locadora disponíveis!"),
             SizedBox(
               height: 48,
             ),
@@ -79,42 +87,52 @@ class _HomePageState extends State<HomePage> {
             SizedBox(
               height: 30,
             ),
-            FutureBuilder<List<VehicleSummary>>(
-              future: controller.getVehiclesSummary(),
-              builder: (context, snapshot) {
-                if (snapshot.hasData && !snapshot.hasError) {
-                  return SingleChildScrollView(
+            isLoading
+                ? SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
                       children: List.generate(
-                          snapshot.data.length,
-                          (index) => snapshot.data[index].type ==
-                                  VehicleType.particular
-                              ? Container(
-                                  padding: EdgeInsets.only(right: 25),
-                                  child: VehicleButtonComponent(
-                                      vehicle: snapshot.data[index],
-                                      type: VehicleType.particular),
-                                )
-                              : Container()),
+                          3,
+                          (index) => Container(
+                              padding: EdgeInsets.only(right: 25),
+                              child: VehicleButtonShimmer())),
                     ),
-                  );
-                }
-                return SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: List.generate(
-                        3,
-                        (index) => Container(
-                            padding: EdgeInsets.only(right: 25),
-                            child: VehicleButtonShimmer())),
-                  ),
-                );
-              },
-            ),
+                  )
+                : listVehicles
+                        .where(
+                            (element) => element.type == VehicleType.particular)
+                        .isNotEmpty
+                    ? SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          children: List.generate(
+                              listVehicles.length,
+                              (index) => listVehicles[index].type ==
+                                      VehicleType.particular
+                                  ? Container(
+                                      padding: EdgeInsets.only(right: 25),
+                                      child: VehicleButtonComponent(
+                                        vehicle: listVehicles[index],
+                                      ),
+                                    )
+                                  : Container()),
+                        ),
+                      )
+                    : Text(
+                        "Infelizmente não temos carros do tipo particulares disponíveis!"),
           ],
         ),
       ),
     );
+  }
+
+  getVehicles() async {
+    setState(() {
+      isLoading = true;
+    });
+    listVehicles = await controller.getVehiclesSummary();
+    setState(() {
+      isLoading = false;
+    });
   }
 }

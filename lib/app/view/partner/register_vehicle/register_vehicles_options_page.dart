@@ -4,10 +4,12 @@ import 'package:flutter/material.dart';
 
 class RegisterVehiclesOptionsPage extends StatefulWidget {
   @override
-  _RegisterVehiclesOptionsPageState createState() => _RegisterVehiclesOptionsPageState();
+  _RegisterVehiclesOptionsPageState createState() =>
+      _RegisterVehiclesOptionsPageState();
 }
 
-class _RegisterVehiclesOptionsPageState extends State<RegisterVehiclesOptionsPage> {
+class _RegisterVehiclesOptionsPageState
+    extends State<RegisterVehiclesOptionsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: backgroundColor,

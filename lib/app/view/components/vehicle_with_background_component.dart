@@ -6,11 +6,12 @@ class VehicleWithBackgroundComponent extends StatelessWidget {
   final double paddingVertical;
   final String url;
 
-  const VehicleWithBackgroundComponent({
-    Key key, 
-    this.paddingVertical = 25,
-    @required this.url,
-    this.heightBackground = 155}) : super(key: key);
+  const VehicleWithBackgroundComponent(
+      {Key key,
+      this.paddingVertical = 25,
+      @required this.url,
+      this.heightBackground = 155})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(

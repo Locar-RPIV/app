@@ -9,7 +9,8 @@ class ReservationConfirmationPage extends StatefulWidget {
       _ReservationConfirmationPageState();
 }
 
-class _ReservationConfirmationPageState extends State<ReservationConfirmationPage> {
+class _ReservationConfirmationPageState
+    extends State<ReservationConfirmationPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: DefaultAppBar(),

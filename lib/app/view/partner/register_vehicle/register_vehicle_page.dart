@@ -26,9 +26,12 @@ class _RegisterVehiclePageState extends State<RegisterVehiclePage> {
         child: Column(
           children: [
             VehicleWithBackgroundComponent(
-              url: "https://s3-alpha-sig.figma.com/img/401f/cb42/86b7085d065f05353c5a628c4be37ad8?Expires=1615161600&Signature=NXvAaLac5Vkq~vqxPXI7xSrP2gtNGPbyVVRFDT0s8O4WGQ~oitw7SHENFdmRGU9DXSkNoHgTXzLKT6sx4SaremLLqTy1F0hjUq~APaYH2pS0kfZU6Q1qUySB~hneRfPFbpf2wyvvQP2qCC8ucvd6WN~N-QivTKctJK~oLlMEo-jLy4PiKhgiUJI~fji64oTQEWVCUM8RiRk4p6Q1Lx0PH8mNWHIpHxFEDmabfkhNiuCFE1jV1kUmZ5lLZdS4rosfthtCnRp3ab~q8sSBGi3mmELIo~SyjKtr66kx2l0uDJPqi7Lx37pHOSxdXNuSQCf8jx5hJTq~7x5dAY7QSrz-eA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+              url:
+                  "https://s3-alpha-sig.figma.com/img/401f/cb42/86b7085d065f05353c5a628c4be37ad8?Expires=1615161600&Signature=NXvAaLac5Vkq~vqxPXI7xSrP2gtNGPbyVVRFDT0s8O4WGQ~oitw7SHENFdmRGU9DXSkNoHgTXzLKT6sx4SaremLLqTy1F0hjUq~APaYH2pS0kfZU6Q1qUySB~hneRfPFbpf2wyvvQP2qCC8ucvd6WN~N-QivTKctJK~oLlMEo-jLy4PiKhgiUJI~fji64oTQEWVCUM8RiRk4p6Q1Lx0PH8mNWHIpHxFEDmabfkhNiuCFE1jV1kUmZ5lLZdS4rosfthtCnRp3ab~q8sSBGi3mmELIo~SyjKtr66kx2l0uDJPqi7Lx37pHOSxdXNuSQCf8jx5hJTq~7x5dAY7QSrz-eA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
             ),
-            SizedBox(height: 36,),
+            SizedBox(
+              height: 36,
+            ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 29),
               child: Row(
@@ -39,7 +42,9 @@ class _RegisterVehiclePageState extends State<RegisterVehiclePage> {
                       labelText: "MARCA",
                     ),
                   ),
-                  SizedBox(width: 36,),
+                  SizedBox(
+                    width: 36,
+                  ),
                   Expanded(
                     child: DefaultTextFormField(
                       controller: modelTextController,
@@ -49,7 +54,9 @@ class _RegisterVehiclePageState extends State<RegisterVehiclePage> {
                 ],
               ),
             ),
-            SizedBox(height: 22,),
+            SizedBox(
+              height: 22,
+            ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 29),
               child: Row(
@@ -61,7 +68,9 @@ class _RegisterVehiclePageState extends State<RegisterVehiclePage> {
                       type: TextInputType.number,
                     ),
                   ),
-                  SizedBox(width: 36,),
+                  SizedBox(
+                    width: 36,
+                  ),
                   Expanded(
                     child: DefaultTextFormField(
                       controller: kmTextController,
@@ -72,22 +81,20 @@ class _RegisterVehiclePageState extends State<RegisterVehiclePage> {
                 ],
               ),
             ),
-            SizedBox(height: 45,),
+            SizedBox(
+              height: 45,
+            ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 29),
               child: Row(
                 children: [
-                  AppIcons.cash.icon(
-                    color: primaryColor,
-                    height: 18
+                  AppIcons.cash.icon(color: primaryColor, height: 18),
+                  SizedBox(
+                    width: 18,
                   ),
-                  SizedBox(width: 18,),
                   Text(
                     "Valor",
-                    style: TextStyle(
-                      color: primaryColor,
-                      fontSize: 20
-                    ),
+                    style: TextStyle(color: primaryColor, fontSize: 20),
                   )
                 ],
               ),
@@ -104,7 +111,7 @@ class _RegisterVehiclePageState extends State<RegisterVehiclePage> {
               padding: EdgeInsets.symmetric(horizontal: 29, vertical: 33),
               child: DefaultButton(
                 title: "CADASTRAR",
-                onTap: (){},
+                onTap: () {},
               ),
             )
           ],

@@ -4,15 +4,18 @@ import 'package:app/app/model/remote/base_response.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 
-class CoreAPI{
+class CoreAPI {
   Client client = Client();
 
-  Future<BaseResponseAPI> get({@required dynamic baseUrl, String endpoint, Map<String, dynamic> headers}) async {
+  Future<BaseResponseAPI> get(
+      {@required dynamic baseUrl,
+      String endpoint,
+      Map<String, dynamic> headers}) async {
     final response = await client.get(
         endpoint != null ? baseUrl + endpoint : baseUrl,
         headers: headers ?? {});
     var json = jsonDecode(utf8.decode(response.bodyBytes));
-
+    print(json);
     if (response.statusCode >= 200 && response.statusCode <= 299) {
       return BaseResponseAPI(
           statusCode: response.statusCode,
