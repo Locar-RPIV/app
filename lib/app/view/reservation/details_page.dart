@@ -24,7 +24,7 @@ class _DetailsPageState extends State<DetailsPage> {
             VehicleWithBackgroundComponent(
               heightBackground: 233,
               paddingVertical: 45,
-              url:  widget.vehicleSummary.imageUrl,
+              url: widget.vehicleSummary.imageUrl,
             ),
             Padding(
               padding: EdgeInsets.only(left: 30, right: 30, top: 10),
@@ -87,13 +87,16 @@ class _DetailsPageState extends State<DetailsPage> {
                     height: 15,
                   ),
                   Center(
-                    child: DefaultButton(title: "RESERVAR", onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => ReservationConfirmationPage()),
-                      );
-                    }),
+                    child: DefaultButton(
+                        title: "RESERVAR",
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    ReservationConfirmationPage()),
+                          );
+                        }),
                   ),
                   SizedBox(
                     height: 25,

@@ -7,7 +7,11 @@ abstract class IHomeController {
 
 class HomeController extends VehicleRepository implements IHomeController {
   @override
-  Future<List<VehicleSummary>> getVehiclesSummary() {
-    return getAvailableVehicles();
+  Future<List<VehicleSummary>> getVehiclesSummary() async {
+    var response = await getAvailableVehicles();
+    if (response is List<VehicleSummary>) {
+      return response;
+    }
+    return [];
   }
 }

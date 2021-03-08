@@ -49,9 +49,13 @@ class DefaultTopSheetWidget extends StatelessWidget {
                   icon: AppIcons.home,
                   title: "Home",
                   isBlue: true,
-                  onTap: (){
-                    Navigator.pushAndRemoveUntil(context, 
-                      MaterialPageRoute(builder: (context) => HomePage(),), (route) => false);
+                  onTap: () {
+                    Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => HomePage(),
+                        ),
+                        (route) => false);
                   },
                 ),
                 ItemTopSheet(

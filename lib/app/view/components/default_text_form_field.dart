@@ -32,15 +32,14 @@ class _DefaultTextFormFieldState extends State<DefaultTextFormField> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         if (widget.labelText != null)
-        Text(
-          widget.labelText,
-          style: TextStyle(
-            fontSize: 13,
-            color: grey
+          Text(
+            widget.labelText,
+            style: TextStyle(fontSize: 13, color: grey),
           ),
-        ),
         if (widget.labelText != null)
-        SizedBox(height: 12,),
+          SizedBox(
+            height: 12,
+          ),
         TextFormField(
           obscureText: widget.isPassword,
           controller: widget.controller,

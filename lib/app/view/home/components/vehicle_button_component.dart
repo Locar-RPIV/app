@@ -15,8 +15,13 @@ class VehicleButtonComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.push(context, 
-          MaterialPageRoute(builder: (context) => DetailsPage(vehicleSummary: vehicle,),));
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => DetailsPage(
+                vehicleSummary: vehicle,
+              ),
+            ));
       },
       child: Container(
         height: 233,

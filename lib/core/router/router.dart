@@ -12,7 +12,9 @@ final Map<String, WidgetBuilder> routes = {
   "splash": (BuildContext context) => SplashPage(),
   "login": (BuildContext context) => LoginPage(),
   "partner/registerVehicle": (BuildContext context) => RegisterVehiclePage(),
-  "partner/registerVehicleOptions": (BuildContext context) => RegisterVehiclesOptionsPage(),
+  "partner/registerVehicleOptions": (BuildContext context) =>
+      RegisterVehiclesOptionsPage(),
   "reservation/details": (BuildContext context) => DetailsPage(),
-  "reservation/confirmation": (BuildContext context) => ReservationConfirmationPage(),
+  "reservation/confirmation": (BuildContext context) =>
+      ReservationConfirmationPage(),
 };
