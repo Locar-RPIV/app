@@ -7,28 +7,59 @@ abstract class ILoginController {
   bool isEmailValid(String email, {bool byTextField = true});
   Future<void> logout({BuildContext context});
   Future<dynamic> login({String email, String password});
-  Future<List<Auth>> geAuth();
+  Future<List<Auth>> getAuth();
   String errorText;
 }
 
 class LoginController extends LoginRepository implements ILoginController {
   @override
   String errorText;
+  Future<List<Auth>> getAuth() async {
+    var response = await login();
+    if (response is List<Auth>) {
+      @override
+      bool isEmailValid(String email, {bool byTextField = true}) {
+        if (Validation.email(email: email)) {
+          errorText = null;
+          return true;
+        }
+        if (byTextField) {
+          errorText = "Digite um email válido";
+        }
+        return false;
+      }
 
-  @override
-  bool isEmailValid(String email, {bool byTextField = true}) {
-    if (Validation.email(email: email)) {
-      errorText = null;
-      return true;
+      @override
+      Future<void> logout({BuildContext context}) async {
+        Navigator.pushNamedAndRemoveUntil(context, "login", (route) => false);
+      }
+
+      @override
+      Future<List<Auth>> getAuth() {
+        // TODO: implement geAuth
+        throw UnimplementedError();
+      }
+
+      return response;
     }
-    if (byTextField) {
-      errorText = "Digite um email válido";
-    }
-    return false;
+    return [];
   }
 
   @override
-  Future<void> logout({BuildContext context}) async {
-    Navigator.pushNamedAndRemoveUntil(context, "login", (route) => false);
+  Future<List<Auth>> geAuth() {
+    // TODO: implement geAuth
+    throw UnimplementedError();
+  }
+
+  @override
+  bool isEmailValid(String email, {bool byTextField = true}) {
+    // TODO: implement isEmailValid
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<void> logout({BuildContext context}) {
+    // TODO: implement logout
+    throw UnimplementedError();
   }
 }
