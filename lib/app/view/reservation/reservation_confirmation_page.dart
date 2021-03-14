@@ -1,5 +1,5 @@
 import 'package:app/app/view/components/default_app_bar.dart';
-import 'package:app/app/view/reservation/details_page.dart';
+import 'package:app/app/view/components/default_button.dart';
 import 'package:app/core/theme/colors.dart';
 import 'package:flutter/material.dart';
 
@@ -178,25 +178,10 @@ class _ReservationConfirmationPageState
                     ),
                   ),
                   Center(
-                    child: FlatButton(
-                      height: 58,
-                      minWidth: 350,
-                      child: Text(
-                        "VOLTAR",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20,
-                            fontWeight: FontWeight.w400),
-                      ),
-                      shape: new RoundedRectangleBorder(
-                          borderRadius: new BorderRadius.circular(10.0)),
-                      color: primaryColor,
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => DetailsPage()),
-                        );
+                    child: DefaultButton(
+                      title: "VOLTAR",
+                      onTap: () {
+                        Navigator.pushNamed(context, '/');
                       },
                     ),
                   ),

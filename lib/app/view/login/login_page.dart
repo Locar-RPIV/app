@@ -1,4 +1,5 @@
 import 'package:app/app/controller/login/login_controller.dart';
+import 'package:app/app/model/login/auth.dart';
 import 'package:app/app/view/components/default_button.dart';
 import 'package:app/app/view/components/default_text_form_field.dart';
 import 'package:app/core/theme/app_icons.dart';
@@ -14,6 +15,9 @@ class _LoginPageState extends State<LoginPage> {
   var controller = LoginController();
   var emailTextController = TextEditingController();
   var passwordTextController = TextEditingController();
+  List<Auth> listAuth = [];
+  bool isLoading = false;
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -91,7 +95,9 @@ class _LoginPageState extends State<LoginPage> {
                                 byTextField: false) &&
                             passwordTextController.text.length > 0
                         ? () {
-                            Navigator.pushNamed(context, "/");
+                            controller.auth(context,
+                                email: emailTextController.text,
+                                password: passwordTextController.text);
                           }
                         : null,
                   ),

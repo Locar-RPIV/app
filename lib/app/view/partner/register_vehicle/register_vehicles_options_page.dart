@@ -39,10 +39,8 @@ class _RegisterVehiclesOptionsPageState
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
-                RaisedButton(
+                TextButton(
                   onPressed: () {},
-                  textColor: Colors.white,
-                  padding: const EdgeInsets.all(0.0),
                   child: Container(
                     height: 155,
                     width: 155,
@@ -99,10 +97,8 @@ class _RegisterVehiclesOptionsPageState
                   ),
                 ),
                 SizedBox(width: 20),
-                RaisedButton(
+                TextButton(
                   onPressed: () {},
-                  textColor: Colors.white,
-                  padding: const EdgeInsets.all(0.0),
                   child: Container(
                     height: 155,
                     width: 155,
@@ -174,10 +170,8 @@ class _RegisterVehiclesOptionsPageState
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
-                RaisedButton(
+                TextButton(
                   onPressed: () {},
-                  textColor: Colors.white,
-                  padding: const EdgeInsets.all(0.0),
                   child: Container(
                     height: 155,
                     width: 155,
@@ -238,10 +232,8 @@ class _RegisterVehiclesOptionsPageState
                   ),
                 ),
                 SizedBox(width: 20),
-                RaisedButton(
+                TextButton(
                   onPressed: () {},
-                  textColor: Colors.white,
-                  padding: const EdgeInsets.all(0.0),
                   child: Container(
                     height: 155,
                     width: 155,

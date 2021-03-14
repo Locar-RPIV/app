@@ -21,7 +21,6 @@ class DefaultTopSheetWidget extends StatelessWidget {
                   height: 46,
                 ),
                 Row(
-                  crossAxisAlignment: CrossAxisAlignment.baseline,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Padding(
