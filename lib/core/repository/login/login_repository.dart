@@ -4,21 +4,21 @@ import 'package:app/core/remote/core_api.dart';
 import 'package:app/core/remote/endpoints.dart';
 
 abstract class ILoginRepository {
-  Future<dynamic> login();
+  Future<dynamic> login({String email, String password});
 }
 
 class LoginRepository implements ILoginRepository {
   CoreAPI coreAPI = CoreAPI();
 
   @override
-  Future<dynamic> login() async {
+  Future<dynamic> login({String email, String password}) async {
     try {
-      BaseResponseAPI response = await coreAPI.get(
-        baseUrl: Endpoints.baseURL,
-        endpoint: Endpoints.login,
-      );
+      var body = {"email": "matheus@gmail.com", "password": "1234"};
+      BaseResponseAPI response = await coreAPI.post(
+          body: body, baseUrl: Endpoints.baseURL, endpoint: Endpoints.login);
+
       if (response.statusCode == 200) {
-        return Auth.fromArray(response.response);
+        return Auth.fromJson(response.response);
       }
 
       return response;

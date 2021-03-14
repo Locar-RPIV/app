@@ -35,13 +35,19 @@ class CoreAPI {
       dynamic body,
       String endpoint,
       Map<String, dynamic> headers}) async {
+    print("----------ENDPOINT---------");
     print(endpoint != null ? baseUrl + endpoint : baseUrl);
     var jsonBody = jsonEncode(body);
+    print("----------BODY-------------");
+    print(jsonBody);
+    print("----------RESPONSE---------");
     final response = await client.post(
         endpoint != null ? baseUrl + endpoint : baseUrl,
         body: jsonBody,
-        headers: headers ?? {});
+        headers: headers ?? {"Content-Type": "application/json"});
     var json;
+    print(response.body);
+    print("---------------------------");
     if (response.body != null && response.body.isNotEmpty) {
       json = jsonDecode(utf8.decode(response.bodyBytes));
     }

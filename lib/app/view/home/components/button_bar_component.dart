@@ -39,8 +39,7 @@ class _ButtonBarComponentState extends State<ButtonBarComponent> {
           ),
         ],
       ),
-      shape: new RoundedRectangleBorder(
-          borderRadius: new BorderRadius.circular(50.0)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50.0)),
       color: widget.isSelected ? primaryColor : blueLight,
       disabledColor: blueLight,
       onPressed: widget.onPressed,

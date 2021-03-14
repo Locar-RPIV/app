@@ -19,12 +19,6 @@ class _LoginPageState extends State<LoginPage> {
   bool isLoading = false;
 
   @override
-  void initState() {
-    getLogins();
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
@@ -101,7 +95,9 @@ class _LoginPageState extends State<LoginPage> {
                                 byTextField: false) &&
                             passwordTextController.text.length > 0
                         ? () {
-                            Navigator.pushNamed(context, "/");
+                            controller.auth(context,
+                                email: emailTextController.text,
+                                password: passwordTextController.text);
                           }
                         : null,
                   ),
@@ -140,15 +136,5 @@ class _LoginPageState extends State<LoginPage> {
         ),
       ),
     );
-  }
-
-  getLogins() async {
-    setState(() {
-      isLoading = true;
-    });
-    listAuth = await controller.getAuth();
-    setState(() {
-      isLoading = false;
-    });
   }
 }

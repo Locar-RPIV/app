@@ -17,19 +17,31 @@ class _DefaultButtonState extends State<DefaultButton> {
     return Row(
       children: [
         Expanded(
-          child: FlatButton(
-            height: 58,
-            child: Text(
-              widget.title,
-              style: TextStyle(
-                  color: widget.onTap != null ? Colors.white : grey600,
-                  fontSize: 20,
-                  fontWeight: FontWeight.w400),
+          child: TextButton(
+            style: ButtonStyle(
+                backgroundColor: MaterialStateColor.resolveWith((states) {
+                  if (states.contains(MaterialState.disabled)) {
+                    return grey900;
+                  }
+                  return primaryColor;
+                }),
+                shape: MaterialStateProperty.resolveWith(
+                  (states) => RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0)),
+                )),
+            child: Container(
+              width: double.maxFinite,
+              height: 40,
+              child: Center(
+                child: Text(
+                  widget.title,
+                  style: TextStyle(
+                      color: widget.onTap != null ? Colors.white : grey600,
+                      fontSize: 20,
+                      fontWeight: FontWeight.w400),
+                ),
+              ),
             ),
-            shape: new RoundedRectangleBorder(
-                borderRadius: new BorderRadius.circular(10.0)),
-            color: primaryColor,
-            disabledColor: grey900,
             onPressed: widget.onTap,
           ),
         ),

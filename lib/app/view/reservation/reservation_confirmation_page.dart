@@ -1,5 +1,4 @@
 import 'package:app/app/view/components/default_app_bar.dart';
-import 'package:app/app/view/reservation/details_page.dart';
 import 'package:app/core/theme/colors.dart';
 import 'package:flutter/material.dart';
 
@@ -192,11 +191,7 @@ class _ReservationConfirmationPageState
                           borderRadius: new BorderRadius.circular(10.0)),
                       color: primaryColor,
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => DetailsPage()),
-                        );
+                        Navigator.pushNamed(context, '/');
                       },
                     ),
                   ),
