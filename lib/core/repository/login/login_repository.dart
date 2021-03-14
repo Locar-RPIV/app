@@ -13,7 +13,7 @@ class LoginRepository implements ILoginRepository {
   @override
   Future<dynamic> login({String email, String password}) async {
     try {
-      var body = {"email": "matheus@gmail.com", "password": "1234"};
+      var body = {"email": email, "password": password};
       BaseResponseAPI response = await coreAPI.post(
           body: body, baseUrl: Endpoints.baseURL, endpoint: Endpoints.login);
 
