@@ -1,4 +1,5 @@
-import 'package:app/core/utils/theme/colors.dart';
+import 'package:app/app/view/components/default_top_sheet.dart';
+import 'package:app/core/theme/colors.dart';
 import 'package:flutter/material.dart';
 
 class DefaultAppBar extends PreferredSize {
@@ -19,10 +20,15 @@ class DefaultAppBar extends PreferredSize {
           children: [
             Padding(
               padding: EdgeInsets.only(left: 33),
-              child: Icon(
-                Icons.menu,
-                color: primaryColor,
-                size: 26,
+              child: InkWell(
+                child: Icon(
+                  Icons.menu,
+                  color: primaryColor,
+                  size: 26,
+                ),
+                onTap: () {
+                  DefaultTopSheet.show(context);
+                },
               ),
             ),
             Padding(

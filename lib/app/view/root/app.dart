@@ -1,5 +1,5 @@
-import 'package:app/core/utils/router/router.dart';
-import 'package:app/core/utils/theme/theme.dart';
+import 'package:app/core/router/router.dart';
+import 'package:app/core/theme/theme.dart';
 import 'package:flutter/material.dart';
 
 class App extends StatelessWidget {
@@ -7,7 +7,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: theme,
-      initialRoute: "/",
+      initialRoute: "splash",
       routes: routes,
       debugShowCheckedModeBanner: false,
     );

@@ -9,6 +9,13 @@ class AppIcons {
   static const bus = '$path/bus.svg';
   static const bike = '$path/bike.svg';
   static const motocicle = '$path/motocicle.svg';
+  static const login = '$path/login.svg';
+  static const home = '$path/home.svg';
+  static const logout = '$path/logout.svg';
+  static const reservation = '$path/reservation.svg';
+  static const back = '$path/back.svg';
+  static const cash = '$path/cash.svg';
+  static const information = '$path/information.svg';
 }
 
 extension AppIconsExt on String {

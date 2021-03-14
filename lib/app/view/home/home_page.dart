@@ -5,7 +5,7 @@ import 'package:app/app/view/home/components/bar_button_component.dart';
 import 'package:app/app/view/home/components/vehicle_button_component.dart';
 import 'package:app/app/view/home/components/vehicle_button_shimmer.dart';
 import 'package:app/core/enum/Vehicle/vehicle_type.dart';
-import 'package:app/core/utils/theme/colors.dart';
+import 'package:app/core/theme/colors.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -15,6 +15,15 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final HomeController controller = HomeController();
+  List<VehicleSummary> listVehicles = [];
+  bool isLoading = false;
+
+  @override
+  void initState() {
+    getVehicles();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,94 +35,104 @@ class _HomePageState extends State<HomePage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             BarButtonComponent(),
-            SizedBox(height: 46,),
+            SizedBox(
+              height: 46,
+            ),
             Text(
               "Frota da locadora",
-              style: TextStyle(
-                fontSize: 20,
-                color: primaryColor
-              ),
+              style: TextStyle(fontSize: 20, color: primaryColor),
             ),
-            SizedBox(height: 30,),
-            FutureBuilder<List<VehicleSummary>>(
-              future: controller.getVehiclesSummary(),
-              builder: (context, snapshot) {
-                if (snapshot.hasData && !snapshot.hasError) {
-                  return SingleChildScrollView(
+            SizedBox(
+              height: 30,
+            ),
+            isLoading
+                ? SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
                       children: List.generate(
-                        snapshot.data.length, (index) => 
-                        snapshot.data[index].type == VehicleType.rental ? Container(
-                          padding: EdgeInsets.only(right: 25),
-                          child: VehicleButtonComponent(
-                            vehicle: snapshot.data[index],
-                          ),
-                        ): Container()
-                      ),
+                          3,
+                          (index) => Container(
+                              padding: EdgeInsets.only(right: 25),
+                              child: VehicleButtonShimmer())),
                     ),
-                  );
-                }
-                return SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: List.generate(
-                      3, (index) => 
-                      Container(
-                        padding: EdgeInsets.only(right: 25),
-                        child: VehicleButtonShimmer()
+                  )
+                : listVehicles
+                        .where((element) => element.type == VehicleType.rental)
+                        .isNotEmpty
+                    ? SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          children: List.generate(
+                              listVehicles.length,
+                              (index) =>
+                                  listVehicles[index].type == VehicleType.rental
+                                      ? Container(
+                                          padding: EdgeInsets.only(right: 25),
+                                          child: VehicleButtonComponent(
+                                            vehicle: listVehicles[index],
+                                          ),
+                                        )
+                                      : Container()),
+                        ),
                       )
-                    ),
-                  ),
-                );
-              },
+                    : Text(
+                        "Infelizmente não temos carros frota da locadora disponíveis!"),
+            SizedBox(
+              height: 48,
             ),
-            SizedBox(height: 48,),
             Text(
               "Veículos particulares",
-              style: TextStyle(
-                fontSize: 20,
-                color: primaryColor
-              ),
+              style: TextStyle(fontSize: 20, color: primaryColor),
             ),
-            SizedBox(height: 30,),
-            FutureBuilder<List<VehicleSummary>>(
-              future: controller.getVehiclesSummary(),
-              builder: (context, snapshot) {
-                if (snapshot.hasData && !snapshot.hasError) {
-                  return SingleChildScrollView(
+            SizedBox(
+              height: 30,
+            ),
+            isLoading
+                ? SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
                       children: List.generate(
-                        snapshot.data.length, (index) => 
-                        snapshot.data[index].type == VehicleType.particular ? Container(
-                          padding: EdgeInsets.only(right: 25),
-                          child: VehicleButtonComponent(
-                            vehicle: snapshot.data[index],
-                            type: VehicleType.particular
-                          ),
-                        ): Container()
-                      ),
+                          3,
+                          (index) => Container(
+                              padding: EdgeInsets.only(right: 25),
+                              child: VehicleButtonShimmer())),
                     ),
-                  );
-                }
-                return SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: List.generate(
-                      3, (index) => 
-                      Container(
-                        padding: EdgeInsets.only(right: 25),
-                        child: VehicleButtonShimmer()
+                  )
+                : listVehicles
+                        .where(
+                            (element) => element.type == VehicleType.particular)
+                        .isNotEmpty
+                    ? SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          children: List.generate(
+                              listVehicles.length,
+                              (index) => listVehicles[index].type ==
+                                      VehicleType.particular
+                                  ? Container(
+                                      padding: EdgeInsets.only(right: 25),
+                                      child: VehicleButtonComponent(
+                                        vehicle: listVehicles[index],
+                                      ),
+                                    )
+                                  : Container()),
+                        ),
                       )
-                    ),
-                  ),
-                );
-              },
-            ),
+                    : Text(
+                        "Infelizmente não temos carros do tipo particulares disponíveis!"),
           ],
         ),
       ),
     );
+  }
+
+  getVehicles() async {
+    setState(() {
+      isLoading = true;
+    });
+    listVehicles = await controller.getVehiclesSummary();
+    setState(() {
+      isLoading = false;
+    });
   }
 }
