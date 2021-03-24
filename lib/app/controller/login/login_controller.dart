@@ -3,6 +3,7 @@ import 'package:app/app/model/remote/base_response.dart';
 import 'package:app/core/repository/login/login_repository.dart';
 import 'package:app/core/utils/validation.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_bcrypt/flutter_bcrypt.dart';
 
 abstract class ILoginController {
   bool isEmailValid(String email, {bool byTextField = true});
@@ -36,7 +37,8 @@ class LoginController implements ILoginController {
   Future<void> auth(BuildContext context,
       {String email, String password}) async {
     var response =
-        await LoginRepository().login(email: email, password: password);
+        await LoginRepository().login(email: email, password: await FlutterBcrypt.hashPw(
+          password: password, salt: r'$2b$06$C6UzMDN.H6dfI/f/IKxGhu'));
     if (response is Auth) {
       Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
     }
