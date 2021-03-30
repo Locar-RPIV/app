@@ -2,7 +2,7 @@ import 'package:app/app/model/home/vehicle_summary.dart';
 import 'package:app/app/view/components/default_app_bar.dart';
 import 'package:app/app/view/components/default_button.dart';
 import 'package:app/app/view/components/vehicle_with_background_component.dart';
-import 'package:app/app/view/reservation/reservation_confirmation_page.dart';
+import 'package:app/app/view/reservation/prereservation_confirmation_page.dart';
 import 'package:app/core/theme/colors.dart';
 import 'package:flutter/material.dart';
 
@@ -17,7 +17,9 @@ class DetailsPage extends StatefulWidget {
 class _DetailsPageState extends State<DetailsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: DefaultAppBar(),
+      appBar: DefaultAppBar(
+        iconBack: true,
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -45,27 +47,27 @@ class _DetailsPageState extends State<DetailsPage> {
                     height: 10,
                   ),
                   Text(
-                    'Marca: Volkswagen',
+                    'Marca: ${widget.vehicleSummary.marca}',
                     style: TextStyle(fontSize: 20),
                   ),
                   Container(height: 10),
                   Text(
-                    'Modelo: Fusca',
+                    'Modelo: ${widget.vehicleSummary.modelo}',
                     style: TextStyle(fontSize: 20),
                   ),
                   Container(height: 10),
                   Text(
-                    'Potência: 10.0 V6',
+                    'Potência: ${widget.vehicleSummary.potencia}',
                     style: TextStyle(fontSize: 20),
                   ),
                   Container(height: 10),
                   Text(
-                    'Ano: 1997',
+                    'Ano: ${widget.vehicleSummary.ano}',
                     style: TextStyle(fontSize: 20),
                   ),
                   SizedBox(height: 10),
                   Text(
-                    'KM rodados: 854.901',
+                    'KM rodados: ${widget.vehicleSummary.quilometragem}',
                     style: TextStyle(fontSize: 20),
                   ),
                   Container(height: 10),
@@ -80,7 +82,7 @@ class _DetailsPageState extends State<DetailsPage> {
                     ),
                   ),
                   Text(
-                    'R\u0024 500,00',
+                    'R\$ ${widget.vehicleSummary.valorLocacao}',
                     style: TextStyle(fontSize: 20),
                   ),
                   SizedBox(
@@ -94,7 +96,7 @@ class _DetailsPageState extends State<DetailsPage> {
                             context,
                             MaterialPageRoute(
                                 builder: (context) =>
-                                    ReservationConfirmationPage()),
+                                    PreReservationConfirmationPage()),
                           );
                         }),
                   ),

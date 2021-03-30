@@ -3,6 +3,8 @@ import 'package:app/app/view/components/default_button.dart';
 import 'package:app/core/theme/colors.dart';
 import 'package:flutter/material.dart';
 
+import '../home/home_page.dart';
+
 class ReservationConfirmationPage extends StatefulWidget {
   @override
   _ReservationConfirmationPageState createState() =>
@@ -13,7 +15,9 @@ class _ReservationConfirmationPageState
     extends State<ReservationConfirmationPage> {
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: DefaultAppBar(),
+      appBar: DefaultAppBar(
+        iconBack: true,
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -21,8 +25,6 @@ class _ReservationConfirmationPageState
               height: 30,
             ),
             Container(
-              width: 299,
-              height: 60,
               child: Center(
                 child: RichText(
                   text: TextSpan(
@@ -75,9 +77,9 @@ class _ReservationConfirmationPageState
                     height: 50,
                   ),
                   Text("Código da reserva: ",
-                      style: TextStyle(fontSize: 23, color: Colors.black)),
+                      style: TextStyle(fontSize: 20, color: Colors.black)),
                   Text("001",
-                      style: TextStyle(fontSize: 23, color: Colors.black)),
+                      style: TextStyle(fontSize: 20, color: Colors.black)),
                 ],
               ),
             ),
@@ -104,16 +106,19 @@ class _ReservationConfirmationPageState
                           TextSpan(
                               text: ' ',
                               style:
-                                  TextStyle(fontSize: 23, color: primaryColor)),
+                                  TextStyle(fontSize: 20, color: primaryColor)),
                           TextSpan(
                               text: "Modelo: ",
                               style: TextStyle(
-                                  fontSize: 23,
-                                  color: primaryColor,
-                                  fontWeight: FontWeight.bold)),
+                                  fontSize: 20,
+                                  color: Colors.black87,
+                                  fontWeight: FontWeight.w500)),
                           TextSpan(
                             text: 'Fusca 1997 1.0 V6',
-                            style: TextStyle(fontSize: 23, color: primaryColor),
+                            style: TextStyle(
+                              fontSize: 20,
+                              color: Colors.black87,
+                            ),
                           ),
                         ],
                       ),
@@ -128,7 +133,7 @@ class _ReservationConfirmationPageState
                         children: [
                           WidgetSpan(
                             child: Icon(
-                              Icons.directions_car,
+                              Icons.pin_drop,
                               size: 30,
                               color: primaryColor,
                             ),
@@ -138,14 +143,17 @@ class _ReservationConfirmationPageState
                               style:
                                   TextStyle(fontSize: 23, color: primaryColor)),
                           TextSpan(
-                              text: "Retirar na: ",
+                              text: "Retirar na ",
                               style: TextStyle(
-                                  fontSize: 23,
-                                  color: primaryColor,
-                                  fontWeight: FontWeight.bold)),
+                                  fontSize: 20,
+                                  color: Colors.black87,
+                                  fontWeight: FontWeight.w500)),
                           TextSpan(
                             text: 'Unidade Alegrete',
-                            style: TextStyle(fontSize: 23, color: primaryColor),
+                            style: TextStyle(
+                              fontSize: 20,
+                              color: Colors.black87,
+                            ),
                           ),
                         ],
                       ),
@@ -181,7 +189,10 @@ class _ReservationConfirmationPageState
                     child: DefaultButton(
                       title: "VOLTAR",
                       onTap: () {
-                        Navigator.pushNamed(context, '/');
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => HomePage()),
+                        );
                       },
                     ),
                   ),
