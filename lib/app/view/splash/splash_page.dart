@@ -1,6 +1,7 @@
 import 'package:app/core/theme/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class SplashPage extends StatefulWidget {
   @override
@@ -10,8 +11,12 @@ class SplashPage extends StatefulWidget {
 class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
-    Future.delayed(Duration(seconds: 4)).then((_) {
-      Navigator.pushNamedAndRemoveUntil(context, 'login', (context) => true);
+    Future.delayed(Duration(seconds: 4)).then((_) async {
+      if(await FlutterSecureStorage().read(key: "logged") != null){
+        Navigator.pushNamedAndRemoveUntil(context, '/', (context) => true);
+      }else{
+        Navigator.pushNamedAndRemoveUntil(context, 'login', (context) => true);
+      }
     });
     super.initState();
   }

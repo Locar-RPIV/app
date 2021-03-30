@@ -4,6 +4,7 @@ import 'package:app/core/repository/login/login_repository.dart';
 import 'package:app/core/utils/validation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bcrypt/flutter_bcrypt.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 abstract class ILoginController {
   bool isEmailValid(String email, {bool byTextField = true});
@@ -30,6 +31,7 @@ class LoginController implements ILoginController {
 
   @override
   Future<void> logout({BuildContext context}) async {
+    await FlutterSecureStorage().delete(key: "logged");
     Navigator.pushNamedAndRemoveUntil(context, "login", (route) => false);
   }
 
@@ -40,6 +42,7 @@ class LoginController implements ILoginController {
         await LoginRepository().login(email: email, password: await FlutterBcrypt.hashPw(
           password: password, salt: r'$2b$06$C6UzMDN.H6dfI/f/IKxGhu'));
     if (response is Auth) {
+      await FlutterSecureStorage().write(key: "logged", value: email);
       Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
     }
     if (response is BaseResponseAPI) {
