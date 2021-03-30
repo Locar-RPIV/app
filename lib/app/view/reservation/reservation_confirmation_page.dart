@@ -3,6 +3,8 @@ import 'package:app/app/view/components/default_button.dart';
 import 'package:app/core/theme/colors.dart';
 import 'package:flutter/material.dart';
 
+import '../home/home_page.dart';
+
 class ReservationConfirmationPage extends StatefulWidget {
   @override
   _ReservationConfirmationPageState createState() =>
@@ -13,7 +15,9 @@ class _ReservationConfirmationPageState
     extends State<ReservationConfirmationPage> {
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: DefaultAppBar(),
+      appBar: DefaultAppBar(
+        iconBack: true,
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -181,7 +185,10 @@ class _ReservationConfirmationPageState
                     child: DefaultButton(
                       title: "VOLTAR",
                       onTap: () {
-                        Navigator.pushNamed(context, '/');
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => HomePage()),
+                        );
                       },
                     ),
                   ),
