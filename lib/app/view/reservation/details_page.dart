@@ -33,64 +33,117 @@ class _DetailsPageState extends State<DetailsPage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  ListTile(
-                    contentPadding: EdgeInsets.all(0),
-                    title: Text('Detalhes',
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.info_outline,
+                        size: 25,
+                        color: primaryColor,
+                      ),
+                      SizedBox(width: 7,),
+                      Text('Detalhes',
                         style: TextStyle(fontSize: 20, color: primaryColor)),
-                    leading: Icon(
-                      Icons.info_outline,
-                      size: 25,
-                      color: primaryColor,
-                    ),
+                    ],
                   ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    'Marca: ${widget.vehicleSummary.marca}',
-                    style: TextStyle(fontSize: 20),
-                  ),
-                  Container(height: 10),
-                  Text(
-                    'Modelo: ${widget.vehicleSummary.modelo}',
-                    style: TextStyle(fontSize: 20),
-                  ),
-                  Container(height: 10),
-                  Text(
-                    'Potência: ${widget.vehicleSummary.potencia}',
-                    style: TextStyle(fontSize: 20),
+                  SizedBox(height: 20),
+                  Text.rich(
+                    TextSpan(
+                      text: 'Marca: ',
+                      style: TextStyle(fontSize: 20),
+                      children: [
+                        TextSpan(
+                          text: "${widget.vehicleSummary.marca}",
+                          style: TextStyle(
+                            fontWeight: FontWeight.w100,
+                            fontSize: 20),
+                        )
+                      ]
+                    )
                   ),
                   Container(height: 10),
-                  Text(
-                    'Ano: ${widget.vehicleSummary.ano}',
-                    style: TextStyle(fontSize: 20),
+                  Text.rich(
+                    TextSpan(
+                      text: 'Modelo: ',
+                      style: TextStyle(fontSize: 20),
+                      children: [
+                        TextSpan(
+                          text: "${widget.vehicleSummary.modelo}",
+                          style: TextStyle(
+                            fontWeight: FontWeight.w100,
+                            fontSize: 20),
+                        )
+                      ]
+                    )
+                  ),
+                  Container(height: 10),
+                  Text.rich(
+                    TextSpan(
+                      text: 'Potência: ',
+                      style: TextStyle(fontSize: 20),
+                      children: [
+                        TextSpan(
+                          text: "${widget.vehicleSummary.potencia}",
+                          style: TextStyle(
+                            fontWeight: FontWeight.w100,
+                            fontSize: 20),
+                        )
+                      ]
+                    )
+                  ),
+                  Container(height: 10),
+                  Text.rich(
+                    TextSpan(
+                      text: 'Ano: ',
+                      style: TextStyle(fontSize: 20),
+                      children: [
+                        TextSpan(
+                          text: "${widget.vehicleSummary.ano}",
+                          style: TextStyle(
+                            fontWeight: FontWeight.w100,
+                            fontSize: 20),
+                        )
+                      ]
+                    )
                   ),
                   SizedBox(height: 10),
-                  Text(
-                    'KM rodados: ${widget.vehicleSummary.quilometragem}',
-                    style: TextStyle(fontSize: 20),
+                  Text.rich(
+                    TextSpan(
+                      text: 'KM rodados: ',
+                      style: TextStyle(fontSize: 20),
+                      children: [
+                        TextSpan(
+                          text: "${widget.vehicleSummary.quilometragem}",
+                          style: TextStyle(
+                            fontWeight: FontWeight.w100,
+                            fontSize: 20),
+                        )
+                      ]
+                    )
                   ),
-                  Container(height: 10),
-                  ListTile(
-                    contentPadding: EdgeInsets.all(0),
-                    title: Text('Valor',
+                  Container(height: 20),
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.attach_money_rounded,
+                        size: 25,
+                        color: primaryColor,
+                      ),
+                      SizedBox(width: 7,),
+                      Text('Valor',
                         style: TextStyle(fontSize: 20, color: primaryColor)),
-                    leading: Icon(
-                      Icons.attach_money_rounded,
-                      size: 25,
-                      color: primaryColor,
-                    ),
+                    ],
                   ),
+                  SizedBox(height: 15),
                   Text(
                     'R\$ ${widget.vehicleSummary.valorLocacao}',
                     style: TextStyle(fontSize: 20),
                   ),
                   SizedBox(
-                    height: 15,
+                    height: 30,
                   ),
                   Center(
                     child: DefaultButton(
-                        title: "RESERVAR",
+                        title: "CONTINUAR",
                         onTap: () {
                           Navigator.push(
                             context,
