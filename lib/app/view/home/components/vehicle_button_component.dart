@@ -39,7 +39,7 @@ class VehicleButtonComponent extends StatelessWidget {
                 vehicle.imageUrl ?? "https://img.icons8.com/plasticine/2x/car--v2.png",
                 height: 100,
                 width: 185,
-                fit: BoxFit.fitHeight,
+                fit: BoxFit.contain,
               ),
               SizedBox(
                 height: 26,

@@ -16,6 +16,7 @@ class _PreReservationConfirmationPageState
     extends State<PreReservationConfirmationPage> {
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: DefaultAppBar(
         iconBack: true,
       ),

@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:app/core/enum/Vehicle/vehicle_type.dart';
 
 import '../../../core/enum/Vehicle/vehicle_type.dart';
@@ -22,6 +24,26 @@ class VehicleSummary {
   String imageUrl;
 
   VehicleType type;
+  VehicleSummary({
+    this.id,
+    this.marca,
+    this.modelo,
+    this.potencia,
+    this.placa,
+    this.cor,
+    this.ano,
+    this.tipoCombustivel,
+    this.numeroPortas,
+    this.quilometragem,
+    this.renavan,
+    this.chassi,
+    this.valorLocacao,
+    this.carroParceiro,
+    this.cpfParceiro,
+    this.filial,
+    this.imageUrl,
+    this.type,
+  });
 
   static List<VehicleSummary> fromArray(List<dynamic> list) =>
       list.map((json) => VehicleSummary.fromJson(json)).toList();
@@ -47,4 +69,28 @@ class VehicleSummary {
 
     type = json['carroParceiro'] ? VehicleType.particular : VehicleType.rental;
   }
+
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'marca': marca,
+      'modelo': modelo,
+      'potencia': potencia,
+      'placa': placa,
+      'cor': cor,
+      'ano': ano,
+      'tipoCombustivel': tipoCombustivel,
+      'numeroPortas': numeroPortas,
+      'quilometragem': quilometragem,
+      'renavan': renavan,
+      'chassi': chassi,
+      'valorLocacao': valorLocacao,
+      'carroParceiro': carroParceiro,
+      'cpfParceiro': cpfParceiro,
+      'filial': filial,
+      'imageUrl': imageUrl,
+    };
+  }
+
+  String toJson() => json.encode(toMap());
 }

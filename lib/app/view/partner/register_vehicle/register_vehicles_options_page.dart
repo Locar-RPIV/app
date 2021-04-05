@@ -1,4 +1,5 @@
 import 'package:app/app/view/components/default_app_bar.dart';
+import 'package:app/app/view/partner/register_vehicle/register_vehicle_page.dart';
 import 'package:app/core/theme/colors.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +14,9 @@ class _RegisterVehiclesOptionsPageState
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: backgroundColor,
-      appBar: DefaultAppBar(),
+      appBar: DefaultAppBar(
+        iconBack: true,
+      ),
       body: SingleChildScrollView(
         padding: EdgeInsets.only(left: 30.0, bottom: 30, right: 30),
         child: Column(
@@ -37,13 +40,22 @@ class _RegisterVehiclesOptionsPageState
               height: 30,
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              RegisterVehiclePage(
+                                type: 0,
+                              )),
+                    );
+                  },
                   child: Container(
-                    height: 155,
-                    width: 155,
+                    height: MediaQuery.of(context).size.width / 2.8,
+                    width: MediaQuery.of(context).size.width / 2.8,
                     decoration: const BoxDecoration(
                       gradient: LinearGradient(
                         colors: [
@@ -98,10 +110,19 @@ class _RegisterVehiclesOptionsPageState
                 ),
                 SizedBox(width: 20),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              RegisterVehiclePage(
+                                type: 1,
+                              )),
+                    );
+                  },
                   child: Container(
-                    height: 155,
-                    width: 155,
+                    height: MediaQuery.of(context).size.width / 2.8,
+                    width: MediaQuery.of(context).size.width / 2.8,
                     decoration: const BoxDecoration(
                       gradient: LinearGradient(
                         colors: [
@@ -168,13 +189,22 @@ class _RegisterVehiclesOptionsPageState
               height: 20,
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              RegisterVehiclePage(
+                                type: 2,
+                              )),
+                    );
+                  },
                   child: Container(
-                    height: 155,
-                    width: 155,
+                    height: MediaQuery.of(context).size.width / 2.8,
+                    width: MediaQuery.of(context).size.width / 2.8,
                     decoration: const BoxDecoration(
                       gradient: LinearGradient(
                         colors: [
@@ -233,10 +263,19 @@ class _RegisterVehiclesOptionsPageState
                 ),
                 SizedBox(width: 20),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              RegisterVehiclePage(
+                                type: 3,
+                              )),
+                    );
+                  },
                   child: Container(
-                    height: 155,
-                    width: 155,
+                    height: MediaQuery.of(context).size.width / 2.8,
+                    width: MediaQuery.of(context).size.width / 2.8,
                     decoration: const BoxDecoration(
                       gradient: LinearGradient(
                         colors: [

@@ -7,6 +7,7 @@ class Auth {
   String email;
   String password;
   bool admin;
+  bool partner;
 
   Auth(
       {this.id,
@@ -16,6 +17,7 @@ class Auth {
       this.dataNascimento,
       this.email,
       this.password,
+      this.partner,
       this.admin});
 
   static List<Auth> fromArray(List<dynamic> list) =>
@@ -30,6 +32,7 @@ class Auth {
     email = map['email'];
     password = map['password'];
     admin = map['admin'];
+    partner = map['partner'];
   }
 
   Map<String, dynamic> toJson() {
@@ -42,6 +45,7 @@ class Auth {
     data['email'] = this.email;
     data['password'] = this.password;
     data['admin'] = this.admin;
+    data['partner'] = this.partner;
     return data;
   }
 }

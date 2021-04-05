@@ -1,3 +1,4 @@
+import 'package:app/app/model/login/auth.dart';
 import 'package:app/app/view/components/default_top_sheet.dart';
 import 'package:app/core/theme/colors.dart';
 import 'package:flutter/material.dart';
@@ -5,8 +6,9 @@ import 'package:flutter/material.dart';
 class DefaultAppBar extends PreferredSize {
   final double size;
   final bool iconBack;
+  final Auth user;
 
-  DefaultAppBar({this.size, this.iconBack = false});
+  DefaultAppBar({this.user, this.size, this.iconBack = false});
 
   @override
   Size get preferredSize => size ?? Size.fromHeight(115);
@@ -29,7 +31,7 @@ class DefaultAppBar extends PreferredSize {
                 ),
                 onTap: () {
                   !iconBack
-                      ? DefaultTopSheet.show(context)
+                      ? DefaultTopSheet.show(context, user: user)
                       : Navigator.pop(context);
                 },
               ),

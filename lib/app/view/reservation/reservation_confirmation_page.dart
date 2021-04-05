@@ -15,6 +15,7 @@ class _ReservationConfirmationPageState
     extends State<ReservationConfirmationPage> {
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: DefaultAppBar(
         iconBack: true,
       ),
@@ -70,7 +71,10 @@ class _ReservationConfirmationPageState
             Container(
               width: 349,
               height: 152,
-              color: grey900,
+              decoration: BoxDecoration(
+                color: grey900,
+                borderRadius: BorderRadius.circular(10)
+              ),
               child: Column(
                 children: [
                   SizedBox(
@@ -111,13 +115,13 @@ class _ReservationConfirmationPageState
                               text: "Modelo: ",
                               style: TextStyle(
                                   fontSize: 20,
-                                  color: Colors.black87,
-                                  fontWeight: FontWeight.w500)),
+                                  color: Colors.black87)),
                           TextSpan(
                             text: 'Fusca 1997 1.0 V6',
                             style: TextStyle(
                               fontSize: 20,
                               color: Colors.black87,
+                              fontWeight: FontWeight.w100
                             ),
                           ),
                         ],
@@ -146,13 +150,13 @@ class _ReservationConfirmationPageState
                               text: "Retirar na ",
                               style: TextStyle(
                                   fontSize: 20,
-                                  color: Colors.black87,
-                                  fontWeight: FontWeight.w500)),
+                                  color: Colors.black87)),
                           TextSpan(
                             text: 'Unidade Alegrete',
                             style: TextStyle(
                               fontSize: 20,
                               color: Colors.black87,
+                              fontWeight: FontWeight.w100
                             ),
                           ),
                         ],
@@ -163,26 +167,11 @@ class _ReservationConfirmationPageState
                     height: 10,
                   ),
                   Padding(
-                    padding: EdgeInsets.only(left: 50, right: 30),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          width: 299,
-                          height: 60,
-                          child: Align(
-                            alignment: Alignment.center,
-                            child: Text(
-                              'Travessa maravilha tristeza,número 0, Centenário, Alegrete - BR',
-                              style:
-                                  TextStyle(fontSize: 14, color: primaryColor),
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                      ],
+                    padding: EdgeInsets.only(left: 35, right: 30, bottom: 50),
+                    child: Text(
+                      'Travessa maravilha tristeza,número 0, Centenário, Alegrete - BR',
+                      style:
+                          TextStyle(fontSize: 14, color: Colors.black),
                     ),
                   ),
                   Center(
