@@ -68,12 +68,11 @@ class DefaultTopSheetWidget extends StatelessWidget {
                   title: "Cadastrar Veículo",
                   isBlue: false,
                   onTap: () {
-                    Navigator.pushAndRemoveUntil(
+                    Navigator.push(
                         context,
                         MaterialPageRoute(
                           builder: (context) => RegisterVehiclesOptionsPage(),
-                        ),
-                        (route) => false);
+                        ));
                   },
                 ),
                 ItemTopSheet(

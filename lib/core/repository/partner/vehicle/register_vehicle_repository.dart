@@ -1,24 +1,27 @@
+import 'dart:convert';
+
 import 'package:app/app/model/home/vehicle_summary.dart';
 import 'package:app/app/model/remote/base_response.dart';
 import 'package:app/core/remote/core_api.dart';
 import 'package:app/core/remote/endpoints.dart';
 
-abstract class IVehicleRepository {
-  Future<dynamic> getAvailableVehicles();
+abstract class IRegisterVehicleRepository {
+  Future<dynamic> registerVehicle({VehicleSummary vehicle});
 }
 
-class VehicleRepository implements IVehicleRepository {
+class RegisterVehicleRepository implements IRegisterVehicleRepository {
   CoreAPI coreAPI = CoreAPI();
 
   @override
-  Future<dynamic> getAvailableVehicles() async {
+  Future<dynamic> registerVehicle({VehicleSummary vehicle}) async {
     try {
-      BaseResponseAPI response = await coreAPI.get(
+      BaseResponseAPI response = await coreAPI.post(
         baseUrl: Endpoints.baseURL,
         endpoint: Endpoints.automobile,
+        body: vehicle.toMap()
       );
       if (response.statusCode == 200) {
-        return VehicleSummary.fromArray(response.response);
+        return VehicleSummary.fromJson(response.response);
       }
 
       return response;
