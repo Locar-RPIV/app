@@ -22,6 +22,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     getVehicles();
+    controller.getUser();
     super.initState();
   }
 
@@ -29,7 +30,9 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: backgroundColor,
-      appBar: DefaultAppBar(),
+      appBar: DefaultAppBar(
+        user: controller.authUser,
+      ),
       body: SingleChildScrollView(
         padding: EdgeInsets.only(left: 30.0, bottom: 30),
         child: Column(

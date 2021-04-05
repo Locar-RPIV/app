@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:app/app/model/login/auth.dart';
 import 'package:app/app/model/remote/base_response.dart';
 import 'package:app/core/repository/login/login_repository.dart';
@@ -42,7 +44,7 @@ class LoginController implements ILoginController {
         await LoginRepository().login(email: email, password: await FlutterBcrypt.hashPw(
           password: password, salt: r'$2b$06$C6UzMDN.H6dfI/f/IKxGhu'));
     if (response is Auth) {
-      await FlutterSecureStorage().write(key: "logged", value: email);
+      await FlutterSecureStorage().write(key: "logged", value: jsonEncode(response));
       Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
     }
     if (response is BaseResponseAPI) {
