@@ -29,10 +29,38 @@ class VehicleRepository implements IVehicleRepository {
     }
   }
 
-  Future<dynamic> postVehicles(String marca, String modelo, int ano,
-      int quilometragem, double valorLocacao) async {
+  Future<dynamic> postVehicles(
+      int id,
+      String marca,
+      String modelo,
+      int potencia,
+      String placa,
+      String cor,
+      int ano,
+      int tipoCombustivel,
+      int numeroPortas,
+      int quilometragem,
+      int renavan,
+      String chassis,
+      double valorLocacao,
+      bool eDeParceiro) async {
     try {
-      var body = {marca, modelo, ano, quilometragem, valorLocacao};
+      var body = {
+        id,
+        marca,
+        modelo,
+        potencia,
+        placa,
+        cor,
+        ano,
+        tipoCombustivel,
+        numeroPortas,
+        quilometragem,
+        renavan,
+        chassis,
+        valorLocacao,
+        eDeParceiro
+      };
       BaseResponseAPI response = await coreAPI.post(
           body: body,
           baseUrl: Endpoints.baseURL,
