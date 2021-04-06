@@ -1,3 +1,4 @@
+import 'package:app/app/view/partner/register_vehicle/register_vehicles_details_page.dart';
 import 'package:app/app/view/partner/register_vehicle/register_vehicles_options_page.dart';
 import 'package:app/app/view/register/register_page.dart';
 import 'package:app/app/view/reservation/details_page.dart';
@@ -15,6 +16,8 @@ final Map<String, WidgetBuilder> routes = {
   "partner/registerVehicle": (BuildContext context) => RegisterVehiclePage(),
   "partner/registerVehicleOptions": (BuildContext context) =>
       RegisterVehiclesOptionsPage(),
+  "partner/registerVehicleDetails": (BuildContext context) =>
+      RegisterVehiclesDetailsPage(),
   "reservation/details": (BuildContext context) => DetailsPage(),
   "reservation/confirmation": (BuildContext context) =>
       ReservationConfirmationPage(),
