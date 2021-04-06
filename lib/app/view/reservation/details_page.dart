@@ -40,86 +40,68 @@ class _DetailsPageState extends State<DetailsPage> {
                         size: 25,
                         color: primaryColor,
                       ),
-                      SizedBox(width: 7,),
+                      SizedBox(
+                        width: 7,
+                      ),
                       Text('Detalhes',
-                        style: TextStyle(fontSize: 20, color: primaryColor)),
+                          style: TextStyle(fontSize: 20, color: primaryColor)),
                     ],
                   ),
                   SizedBox(height: 20),
-                  Text.rich(
-                    TextSpan(
+                  Text.rich(TextSpan(
                       text: 'Marca: ',
                       style: TextStyle(fontSize: 20),
                       children: [
                         TextSpan(
                           text: "${widget.vehicleSummary.marca}",
                           style: TextStyle(
-                            fontWeight: FontWeight.w100,
-                            fontSize: 20),
+                              fontWeight: FontWeight.w100, fontSize: 20),
                         )
-                      ]
-                    )
-                  ),
+                      ])),
                   Container(height: 10),
-                  Text.rich(
-                    TextSpan(
+                  Text.rich(TextSpan(
                       text: 'Modelo: ',
                       style: TextStyle(fontSize: 20),
                       children: [
                         TextSpan(
                           text: "${widget.vehicleSummary.modelo}",
                           style: TextStyle(
-                            fontWeight: FontWeight.w100,
-                            fontSize: 20),
+                              fontWeight: FontWeight.w100, fontSize: 20),
                         )
-                      ]
-                    )
-                  ),
+                      ])),
                   Container(height: 10),
-                  Text.rich(
-                    TextSpan(
+                  Text.rich(TextSpan(
                       text: 'Potência: ',
                       style: TextStyle(fontSize: 20),
                       children: [
                         TextSpan(
                           text: "${widget.vehicleSummary.potencia}",
                           style: TextStyle(
-                            fontWeight: FontWeight.w100,
-                            fontSize: 20),
+                              fontWeight: FontWeight.w100, fontSize: 20),
                         )
-                      ]
-                    )
-                  ),
+                      ])),
                   Container(height: 10),
-                  Text.rich(
-                    TextSpan(
+                  Text.rich(TextSpan(
                       text: 'Ano: ',
                       style: TextStyle(fontSize: 20),
                       children: [
                         TextSpan(
                           text: "${widget.vehicleSummary.ano}",
                           style: TextStyle(
-                            fontWeight: FontWeight.w100,
-                            fontSize: 20),
+                              fontWeight: FontWeight.w100, fontSize: 20),
                         )
-                      ]
-                    )
-                  ),
+                      ])),
                   SizedBox(height: 10),
-                  Text.rich(
-                    TextSpan(
+                  Text.rich(TextSpan(
                       text: 'KM rodados: ',
                       style: TextStyle(fontSize: 20),
                       children: [
                         TextSpan(
                           text: "${widget.vehicleSummary.quilometragem}",
                           style: TextStyle(
-                            fontWeight: FontWeight.w100,
-                            fontSize: 20),
+                              fontWeight: FontWeight.w100, fontSize: 20),
                         )
-                      ]
-                    )
-                  ),
+                      ])),
                   Container(height: 20),
                   Row(
                     children: [
@@ -128,9 +110,11 @@ class _DetailsPageState extends State<DetailsPage> {
                         size: 25,
                         color: primaryColor,
                       ),
-                      SizedBox(width: 7,),
+                      SizedBox(
+                        width: 7,
+                      ),
                       Text('Valor',
-                        style: TextStyle(fontSize: 20, color: primaryColor)),
+                          style: TextStyle(fontSize: 20, color: primaryColor)),
                     ],
                   ),
                   SizedBox(height: 15),
@@ -149,7 +133,8 @@ class _DetailsPageState extends State<DetailsPage> {
                             context,
                             MaterialPageRoute(
                                 builder: (context) =>
-                                    PreReservationConfirmationPage()),
+                                    PreReservationConfirmationPage(
+                                        vehicleSummary: widget.vehicleSummary)),
                           );
                         }),
                   ),
