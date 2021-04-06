@@ -7,8 +7,9 @@ class DefaultAppBar extends PreferredSize {
   final double size;
   final bool iconBack;
   final Auth user;
+  final Function onBack;
 
-  DefaultAppBar({this.user, this.size, this.iconBack = false});
+  DefaultAppBar({this.user, this.size, this.iconBack = false, this.onBack});
 
   @override
   Size get preferredSize => size ?? Size.fromHeight(115);
@@ -32,7 +33,7 @@ class DefaultAppBar extends PreferredSize {
                 onTap: () {
                   !iconBack
                       ? DefaultTopSheet.show(context, user: user)
-                      : Navigator.pop(context);
+                      : onBack ?? Navigator.pop(context);
                 },
               ),
             ),

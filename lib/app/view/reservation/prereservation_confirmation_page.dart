@@ -1,12 +1,22 @@
+import 'package:app/app/controller/home/home_controller.dart';
+import 'package:app/app/controller/reservation/reservation_controller.dart';
+import 'package:app/app/model/home/vehicle_summary.dart';
+import 'package:app/app/model/login/auth.dart';
+import 'package:app/app/model/reservation/reservation.dart';
 import 'package:app/app/view/components/default_app_bar.dart';
 import 'package:app/app/view/components/default_button.dart';
 import 'package:app/core/theme/colors.dart';
+import 'package:app/core/utils/date_parser.dart';
 import 'package:flutter/material.dart';
 
 import '../../../core/theme/app_icons.dart';
-import 'reservation_confirmation_page.dart';
 
 class PreReservationConfirmationPage extends StatefulWidget {
+  final VehicleSummary vehicleSummary;
+
+  const PreReservationConfirmationPage({Key key, this.vehicleSummary})
+      : super(key: key);
+
   @override
   _PreReservationConfirmationPageState createState() =>
       _PreReservationConfirmationPageState();
@@ -14,6 +24,24 @@ class PreReservationConfirmationPage extends StatefulWidget {
 
 class _PreReservationConfirmationPageState
     extends State<PreReservationConfirmationPage> {
+  DateTime selectedDate = DateTime.now();
+
+  Future<Null> _selectDate(BuildContext context) async {
+    final DateTime picked = await showDatePicker(
+        context: context,
+        initialDate: selectedDate,
+        firstDate: DateTime.now(),
+        lastDate: DateTime(2101));
+    if (picked != null && picked != selectedDate)
+      setState(() {
+        selectedDate = picked;
+        dateIsSelected = true;
+      });
+  }
+
+  bool dateIsSelected = false;
+  String _selectedLocation = '';
+
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
@@ -71,9 +99,23 @@ class _PreReservationConfirmationPageState
                           icon: AppIcons.calendar,
                           color: primaryColor,
                         ),
-                        Text('Escolha a data',
-                            style:
-                                TextStyle(fontSize: 20, color: Colors.black87)),
+                        SizedBox(
+                          height: 20.0,
+                        ),
+                        GestureDetector(
+                          child: dateIsSelected
+                              ? Text(
+                                  "${DateParser.getDateString(selectedDate)}",
+                                  style: TextStyle(
+                                      fontSize: 20, color: Colors.black87))
+                              : Text('Escolha a data',
+                                  style: TextStyle(
+                                      fontSize: 20, color: Colors.black87)),
+                          onTap: () {
+                            _selectDate(context);
+                          },
+                        ),
+                        Container(),
                         Container()
                       ],
                     ),
@@ -120,9 +162,32 @@ class _PreReservationConfirmationPageState
                           icon: AppIcons.mappin,
                           color: primaryColor,
                         ),
-                        Text('Escolha a unidade',
-                            style:
-                                TextStyle(fontSize: 20, color: Colors.black87)),
+                        DropdownButton<String>(
+                          hint: _selectedLocation == ''
+                              ? Text('Escolha a unidade',
+                                  style: TextStyle(
+                                      fontSize: 20, color: Colors.black87))
+                              : Text(_selectedLocation,
+                                  style: TextStyle(
+                                      fontSize: 20, color: Colors.black87)),
+                          items: <String>[
+                            'Unidade Alegrete',
+                            'Unidade Porto Alegre',
+                            'Unidade São Borja',
+                            'Unidade Uruguaiana'
+                          ].map((String value) {
+                            return new DropdownMenuItem<String>(
+                              value: value,
+                              child: new Text(value),
+                            );
+                          }).toList(),
+                          onChanged: (newValue) {
+                            setState(() {
+                              _selectedLocation = newValue;
+                              print(_selectedLocation);
+                            });
+                          },
+                        ),
                         Container()
                       ],
                     ),
@@ -133,13 +198,16 @@ class _PreReservationConfirmationPageState
                   Center(
                     child: DefaultButton(
                       title: "RESERVAR",
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  ReservationConfirmationPage()),
-                        );
+                      onTap: () async {
+                        Auth auth = await HomeController().getUser();
+                        await ReservationController().createReservation(context,
+                            reservation: Reservation(
+                              dataRetirada: selectedDate,
+                              placa: widget.vehicleSummary.placa,
+                              user: auth,
+                            ),
+                            vehicleSummary: widget.vehicleSummary,
+                            location: _selectedLocation);
                       },
                     ),
                   ),
