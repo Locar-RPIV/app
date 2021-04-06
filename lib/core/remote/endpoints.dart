@@ -4,4 +4,5 @@ class Endpoints {
   static var automobile = "/api/automobile";
   static var login = "/api/auth";
   static var client = "/api/client";
+  static var reservation = "/api/reservation";
 }
