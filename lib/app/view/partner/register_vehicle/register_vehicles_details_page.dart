@@ -60,7 +60,7 @@ class _RegisterVehiclesDetailsPageState
               ),
             ),
             SizedBox(
-              height: 50,
+              height: 30,
             ),
             Container(
               width: 349,
@@ -78,7 +78,7 @@ class _RegisterVehiclesDetailsPageState
               ),
             ),
             SizedBox(
-              height: 50,
+              height: 30,
             ),
             Container(),
             Padding(

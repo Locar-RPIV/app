@@ -18,7 +18,9 @@ class RegisterVehicleController implements IRegisterVehicleController {
     if (response is VehicleSummary) {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => RegisterVehiclesDetailsPage()),
+        MaterialPageRoute(
+            builder: (context) =>
+                RegisterVehiclesDetailsPage(vehicleSummary: response)),
       );
     }
     if (response is BaseResponseAPI) {
