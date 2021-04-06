@@ -14,6 +14,24 @@ class PreReservationConfirmationPage extends StatefulWidget {
 
 class _PreReservationConfirmationPageState
     extends State<PreReservationConfirmationPage> {
+  DateTime selectedDate = DateTime.now();
+
+  Future<Null> _selectDate(BuildContext context) async {
+    final DateTime picked = await showDatePicker(
+        context: context,
+        initialDate: selectedDate,
+        firstDate: DateTime.now(),
+        lastDate: DateTime(2101));
+    if (picked != null && picked != selectedDate)
+      setState(() {
+        selectedDate = picked;
+        dateIsSelected = true;
+      });
+  }
+
+  bool dateIsSelected = false;
+  String _selectedLocation = '';
+
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
@@ -71,9 +89,22 @@ class _PreReservationConfirmationPageState
                           icon: AppIcons.calendar,
                           color: primaryColor,
                         ),
-                        Text('Escolha a data',
-                            style:
-                                TextStyle(fontSize: 20, color: Colors.black87)),
+                        SizedBox(
+                          height: 20.0,
+                        ),
+                        GestureDetector(
+                          child: dateIsSelected
+                              ? Text("${selectedDate.toLocal()}".split(' ')[0],
+                                  style: TextStyle(
+                                      fontSize: 20, color: Colors.black87))
+                              : Text('Escolha a data',
+                                  style: TextStyle(
+                                      fontSize: 20, color: Colors.black87)),
+                          onTap: () {
+                            _selectDate(context);
+                          },
+                        ),
+                        Container(),
                         Container()
                       ],
                     ),
@@ -120,9 +151,32 @@ class _PreReservationConfirmationPageState
                           icon: AppIcons.mappin,
                           color: primaryColor,
                         ),
-                        Text('Escolha a unidade',
-                            style:
-                                TextStyle(fontSize: 20, color: Colors.black87)),
+                        DropdownButton<String>(
+                          hint: _selectedLocation == ''
+                              ? Text('Escolha a unidade',
+                                  style: TextStyle(
+                                      fontSize: 20, color: Colors.black87))
+                              : Text(_selectedLocation,
+                                  style: TextStyle(
+                                      fontSize: 20, color: Colors.black87)),
+                          items: <String>[
+                            'Unidade Alegrete',
+                            'Unidade Porto Alegre',
+                            'Unidade São Borja',
+                            'Unidade Uruguaiana'
+                          ].map((String value) {
+                            return new DropdownMenuItem<String>(
+                              value: value,
+                              child: new Text(value),
+                            );
+                          }).toList(),
+                          onChanged: (newValue) {
+                            setState(() {
+                              _selectedLocation = newValue;
+                              print(_selectedLocation);
+                            });
+                          },
+                        ),
                         Container()
                       ],
                     ),
