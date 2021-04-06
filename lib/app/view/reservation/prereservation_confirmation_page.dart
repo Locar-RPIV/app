@@ -1,12 +1,22 @@
+import 'package:app/app/controller/home/home_controller.dart';
+import 'package:app/app/controller/reservation/reservation_controller.dart';
+import 'package:app/app/model/home/vehicle_summary.dart';
+import 'package:app/app/model/login/auth.dart';
+import 'package:app/app/model/reservation/reservation.dart';
 import 'package:app/app/view/components/default_app_bar.dart';
 import 'package:app/app/view/components/default_button.dart';
 import 'package:app/core/theme/colors.dart';
+import 'package:app/core/utils/date_parser.dart';
 import 'package:flutter/material.dart';
 
 import '../../../core/theme/app_icons.dart';
-import 'reservation_confirmation_page.dart';
 
 class PreReservationConfirmationPage extends StatefulWidget {
+  final VehicleSummary vehicleSummary;
+
+  const PreReservationConfirmationPage({Key key, this.vehicleSummary})
+      : super(key: key);
+
   @override
   _PreReservationConfirmationPageState createState() =>
       _PreReservationConfirmationPageState();
@@ -94,7 +104,8 @@ class _PreReservationConfirmationPageState
                         ),
                         GestureDetector(
                           child: dateIsSelected
-                              ? Text("${selectedDate.toLocal()}".split(' ')[0],
+                              ? Text(
+                                  "${DateParser.getDateString(selectedDate)}",
                                   style: TextStyle(
                                       fontSize: 20, color: Colors.black87))
                               : Text('Escolha a data',
@@ -187,13 +198,16 @@ class _PreReservationConfirmationPageState
                   Center(
                     child: DefaultButton(
                       title: "RESERVAR",
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  ReservationConfirmationPage()),
-                        );
+                      onTap: () async {
+                        Auth auth = await HomeController().getUser();
+                        await ReservationController().createReservation(context,
+                            reservation: Reservation(
+                              dataRetirada: selectedDate,
+                              placa: widget.vehicleSummary.placa,
+                              user: auth,
+                            ),
+                            vehicleSummary: widget.vehicleSummary,
+                            location: _selectedLocation);
                       },
                     ),
                   ),
