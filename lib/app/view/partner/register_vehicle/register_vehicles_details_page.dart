@@ -2,32 +2,85 @@ import 'package:app/app/model/home/vehicle_summary.dart';
 import 'package:app/app/view/components/default_app_bar.dart';
 import 'package:app/app/view/components/default_button.dart';
 import 'package:app/app/view/components/vehicle_with_background_component.dart';
-import 'package:app/app/view/reservation/prereservation_confirmation_page.dart';
 import 'package:app/core/theme/colors.dart';
 import 'package:flutter/material.dart';
 
-class DetailsPage extends StatefulWidget {
+import '../../home/home_page.dart';
+
+class RegisterVehiclesDetailsPage extends StatefulWidget {
   final VehicleSummary vehicleSummary;
 
-  const DetailsPage({Key key, this.vehicleSummary}) : super(key: key);
+  const RegisterVehiclesDetailsPage({Key key, this.vehicleSummary})
+      : super(key: key);
   @override
-  _DetailsPageState createState() => _DetailsPageState();
+  _RegisterVehiclesDetailsPageState createState() =>
+      _RegisterVehiclesDetailsPageState();
 }
 
-class _DetailsPageState extends State<DetailsPage> {
+class _RegisterVehiclesDetailsPageState
+    extends State<RegisterVehiclesDetailsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: DefaultAppBar(
         iconBack: true,
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            VehicleWithBackgroundComponent(
-              heightBackground: 233,
-              paddingVertical: 45,
-              url: widget.vehicleSummary.imageUrl,
+            SizedBox(
+              height: 30,
             ),
+            Container(
+              child: Center(
+                child: RichText(
+                  text: TextSpan(
+                    text: "Cadastro de veículo ",
+                    style: TextStyle(fontSize: 20, color: primaryColor),
+                  ),
+                ),
+              ),
+            ),
+            Container(
+              child: Center(
+                child: RichText(
+                  text: TextSpan(
+                    text: ' ',
+                    style: TextStyle(fontSize: 20, color: primaryColor),
+                    children: <TextSpan>[
+                      TextSpan(
+                          text: "efetuado com sucesso :)",
+                          style: TextStyle(
+                              fontSize: 20,
+                              color: primaryColor,
+                              fontWeight: FontWeight.bold)),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            Container(
+              width: 349,
+              height: 152,
+              decoration: BoxDecoration(
+                  color: grey900, borderRadius: BorderRadius.circular(10)),
+              child: Column(
+                children: [
+                  VehicleWithBackgroundComponent(
+                    heightBackground: 152,
+                    paddingVertical: 25,
+                    url: "https://img.icons8.com/plasticine/2x/car--v2.png",
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            Container(),
             Padding(
               padding: EdgeInsets.only(left: 30, right: 30, top: 10),
               child: Column(
@@ -102,41 +155,19 @@ class _DetailsPageState extends State<DetailsPage> {
                               fontWeight: FontWeight.w100, fontSize: 20),
                         )
                       ])),
-                  Container(height: 20),
-                  Row(
-                    children: [
-                      Icon(
-                        Icons.attach_money_rounded,
-                        size: 25,
-                        color: primaryColor,
-                      ),
-                      SizedBox(
-                        width: 7,
-                      ),
-                      Text('Valor',
-                          style: TextStyle(fontSize: 20, color: primaryColor)),
-                    ],
-                  ),
-                  SizedBox(height: 15),
-                  Text(
-                    'R\$ ${widget.vehicleSummary.valorLocacao}',
-                    style: TextStyle(fontSize: 20),
-                  ),
                   SizedBox(
-                    height: 30,
+                    height: 72,
                   ),
                   Center(
                     child: DefaultButton(
-                        title: "CONTINUAR",
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    PreReservationConfirmationPage(
-                                        vehicleSummary: widget.vehicleSummary)),
-                          );
-                        }),
+                      title: "VOLTAR",
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => HomePage()),
+                        );
+                      },
+                    ),
                   ),
                   SizedBox(
                     height: 25,

@@ -1,3 +1,7 @@
+import 'package:app/app/controller/home/home_controller.dart';
+import 'package:app/app/controller/partner/vehicle/register_vehicle_controller.dart';
+import 'package:app/app/model/home/vehicle_summary.dart';
+import 'package:app/app/model/login/auth.dart';
 import 'package:app/app/view/components/default_app_bar.dart';
 import 'package:app/app/view/components/default_button.dart';
 import 'package:app/app/view/components/default_text_form_field.dart';
@@ -7,6 +11,9 @@ import 'package:app/core/theme/colors.dart';
 import 'package:flutter/material.dart';
 
 class RegisterVehiclePage extends StatefulWidget {
+  final int type;
+
+  const RegisterVehiclePage({Key key, this.type}) : super(key: key);
   @override
   _RegisterVehiclePageState createState() => _RegisterVehiclePageState();
 }
@@ -17,17 +24,19 @@ class _RegisterVehiclePageState extends State<RegisterVehiclePage> {
   var yearTextController = TextEditingController();
   var kmTextController = TextEditingController();
   var valueTextController = TextEditingController();
+  var placaTextController = TextEditingController();
+  var corTextController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: DefaultAppBar(),
+      appBar: DefaultAppBar(
+        iconBack: true,),
       body: SingleChildScrollView(
         child: Column(
           children: [
             VehicleWithBackgroundComponent(
-              url:
-                  "https://s3-alpha-sig.figma.com/img/401f/cb42/86b7085d065f05353c5a628c4be37ad8?Expires=1615161600&Signature=NXvAaLac5Vkq~vqxPXI7xSrP2gtNGPbyVVRFDT0s8O4WGQ~oitw7SHENFdmRGU9DXSkNoHgTXzLKT6sx4SaremLLqTy1F0hjUq~APaYH2pS0kfZU6Q1qUySB~hneRfPFbpf2wyvvQP2qCC8ucvd6WN~N-QivTKctJK~oLlMEo-jLy4PiKhgiUJI~fji64oTQEWVCUM8RiRk4p6Q1Lx0PH8mNWHIpHxFEDmabfkhNiuCFE1jV1kUmZ5lLZdS4rosfthtCnRp3ab~q8sSBGi3mmELIo~SyjKtr66kx2l0uDJPqi7Lx37pHOSxdXNuSQCf8jx5hJTq~7x5dAY7QSrz-eA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+              url: "https://img.icons8.com/plasticine/2x/car--v2.png",
             ),
             SizedBox(
               height: 36,
@@ -40,6 +49,7 @@ class _RegisterVehiclePageState extends State<RegisterVehiclePage> {
                     child: DefaultTextFormField(
                       controller: brandTextController,
                       labelText: "MARCA",
+                      onChanged: (value) => setState(() {}),
                     ),
                   ),
                   SizedBox(
@@ -49,6 +59,7 @@ class _RegisterVehiclePageState extends State<RegisterVehiclePage> {
                     child: DefaultTextFormField(
                       controller: modelTextController,
                       labelText: "MODELO",
+                      onChanged: (value) => setState(() {}),
                     ),
                   ),
                 ],
@@ -66,6 +77,7 @@ class _RegisterVehiclePageState extends State<RegisterVehiclePage> {
                       controller: yearTextController,
                       labelText: "ANO",
                       type: TextInputType.number,
+                      onChanged: (value) => setState(() {}),
                     ),
                   ),
                   SizedBox(
@@ -76,6 +88,36 @@ class _RegisterVehiclePageState extends State<RegisterVehiclePage> {
                       controller: kmTextController,
                       labelText: "KM RODADOS",
                       type: TextInputType.number,
+                    onChanged: (value) => setState(() {}),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 22,
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 29),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: DefaultTextFormField(
+                      controller: placaTextController,
+                      labelText: "PLACA",
+                      type: TextInputType.text,
+                      onChanged: (value) => setState(() {}),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 36,
+                  ),
+                  Expanded(
+                    child: DefaultTextFormField(
+                      controller: corTextController,
+                      labelText: "COR",
+                      type: TextInputType.text,
+                    onChanged: (value) => setState(() {}),
                     ),
                   ),
                 ],
@@ -105,18 +147,50 @@ class _RegisterVehiclePageState extends State<RegisterVehiclePage> {
                 controller: valueTextController,
                 labelText: "VALOR DA DIÁRIA",
                 type: TextInputType.number,
+                onChanged: (value) => setState(() {}),
               ),
             ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 29, vertical: 33),
               child: DefaultButton(
                 title: "CADASTRAR",
-                onTap: () {},
+                onTap: isFormValid() ? () async {
+                  Auth user = await HomeController().getUser();
+                  RegisterVehicleController().registerVehicle(context,
+                    vehicle: VehicleSummary (
+                      ano: int.parse(yearTextController.text),
+                      carroParceiro: true,
+                      chassi: "N/A",
+                      cor: corTextController.text,
+                      cpfParceiro: user.cpf,
+                      filial: 0,
+                      marca: brandTextController.text,
+                      modelo: modelTextController.text,
+                      numeroPortas: 0,
+                      placa: placaTextController.text,
+                      potencia: 0,
+                      quilometragem: int.parse(kmTextController.text),
+                      renavan: 0,
+                      tipoCombustivel: widget.type,
+                      valorLocacao: double.parse(valueTextController.text)
+                    )
+                  );
+                } : null,
               ),
             )
           ],
         ),
       ),
     );
+  }
+
+  bool isFormValid(){
+    return brandTextController.text.isNotEmpty &&
+      modelTextController.text.isNotEmpty &&
+        yearTextController.text.isNotEmpty &&
+          kmTextController.text.isNotEmpty &&
+            corTextController.text.isNotEmpty &&
+            placaTextController.text.isNotEmpty &&
+            valueTextController.text.isNotEmpty;
   }
 }

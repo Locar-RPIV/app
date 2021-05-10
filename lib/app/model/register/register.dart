@@ -1,4 +1,4 @@
-class Auth {
+class Register {
   int id;
   int cpf;
   String nome;
@@ -7,9 +7,11 @@ class Auth {
   String email;
   String password;
   bool admin;
+  int pontosFidelidade;
+  int cnh;
   bool partner;
 
-  Auth(
+  Register(
       {this.id,
       this.cpf,
       this.nome,
@@ -17,22 +19,23 @@ class Auth {
       this.dataNascimento,
       this.email,
       this.password,
-      this.partner,
-      this.admin});
+      this.admin,
+      this.pontosFidelidade,
+      this.cnh,
+      this.partner});
 
-  static List<Auth> fromArray(List<dynamic> list) =>
-      list.map((json) => Auth.fromJson(json)).toList();
-
-  Auth.fromJson(Map<String, dynamic> map) {
-    id = map['id'];
-    cpf = map['cpf'];
-    nome = map['nome'];
-    telefone = map['telefone'];
-    dataNascimento = map['dataNascimento'];
-    email = map['email'];
-    password = map['password'];
-    admin = map['admin'];
-    partner = map['partner'];
+  Register.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    cpf = json['cpf'];
+    nome = json['nome'];
+    telefone = json['telefone'];
+    dataNascimento = json['dataNascimento'];
+    email = json['email'];
+    password = json['password'];
+    admin = json['admin'];
+    pontosFidelidade = json['pontosFidelidade'];
+    cnh = json['cnh'];
+    partner = json['partner'];
   }
 
   Map<String, dynamic> toJson() {
@@ -45,6 +48,8 @@ class Auth {
     data['email'] = this.email;
     data['password'] = this.password;
     data['admin'] = this.admin;
+    data['pontosFidelidade'] = this.pontosFidelidade;
+    data['cnh'] = this.cnh;
     data['partner'] = this.partner;
     return data;
   }

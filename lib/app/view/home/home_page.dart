@@ -17,10 +17,12 @@ class _HomePageState extends State<HomePage> {
   final HomeController controller = HomeController();
   List<VehicleSummary> listVehicles = [];
   bool isLoading = false;
+  int vehicleType = 0;
 
   @override
   void initState() {
     getVehicles();
+    controller.getUser();
     super.initState();
   }
 
@@ -28,13 +30,38 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: backgroundColor,
-      appBar: DefaultAppBar(),
+      appBar: DefaultAppBar(
+        user: controller.authUser,
+      ),
       body: SingleChildScrollView(
         padding: EdgeInsets.only(left: 30.0, bottom: 30),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            BarButtonComponent(),
+            BarButtonComponent(
+              onChange: (value) {
+                if (value == 0) {
+                  setState(() {
+                    vehicleType = 0;
+                  });
+                }
+                if (value == 1) {
+                  setState(() {
+                    vehicleType = 1;
+                  });
+                }
+                if (value == 2) {
+                  setState(() {
+                    vehicleType = 2;
+                  });
+                }
+                if (value == 3) {
+                  setState(() {
+                    vehicleType = 3;
+                  });
+                }
+              },
+            ),
             SizedBox(
               height: 46,
             ),
@@ -57,7 +84,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                   )
                 : listVehicles
-                        .where((element) => element.type == VehicleType.rental)
+                        .where((element) => element.type == VehicleType.rental && element.tipoCombustivel == vehicleType)
                         .isNotEmpty
                     ? SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
@@ -65,7 +92,7 @@ class _HomePageState extends State<HomePage> {
                           children: List.generate(
                               listVehicles.length,
                               (index) =>
-                                  listVehicles[index].type == VehicleType.rental
+                                  listVehicles[index].type == VehicleType.rental && listVehicles[index].tipoCombustivel == vehicleType
                                       ? Container(
                                           padding: EdgeInsets.only(right: 25),
                                           child: VehicleButtonComponent(
@@ -100,7 +127,7 @@ class _HomePageState extends State<HomePage> {
                   )
                 : listVehicles
                         .where(
-                            (element) => element.type == VehicleType.particular)
+                            (element) => element.type == VehicleType.particular && element.tipoCombustivel == vehicleType)
                         .isNotEmpty
                     ? SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
@@ -108,7 +135,7 @@ class _HomePageState extends State<HomePage> {
                           children: List.generate(
                               listVehicles.length,
                               (index) => listVehicles[index].type ==
-                                      VehicleType.particular
+                                      VehicleType.particular && listVehicles[index].tipoCombustivel == vehicleType
                                   ? Container(
                                       padding: EdgeInsets.only(right: 25),
                                       child: VehicleButtonComponent(

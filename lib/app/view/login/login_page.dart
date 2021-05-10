@@ -104,27 +104,32 @@ class _LoginPageState extends State<LoginPage> {
                   SizedBox(
                     height: 26,
                   ),
-                  Text.rich(
-                    TextSpan(
-                        text: "ou ",
-                        style: TextStyle(
-                            color: grey,
-                            fontSize: 18,
-                            fontWeight: FontWeight.w100),
-                        children: [
-                          TextSpan(
-                              text: "cadastre-se ",
-                              style: TextStyle(
-                                  color: grey,
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.normal)),
-                          TextSpan(
-                              text: "aqui",
-                              style: TextStyle(
-                                  color: grey,
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w100))
-                        ]),
+                  InkWell(
+                    onTap: (){
+                      Navigator.pushNamed(context, "register");
+                    },
+                    child: Text.rich(
+                      TextSpan(
+                          text: "ou ",
+                          style: TextStyle(
+                              color: grey,
+                              fontSize: 18,
+                              fontWeight: FontWeight.w100),
+                          children: [
+                            TextSpan(
+                                text: "cadastre-se ",
+                                style: TextStyle(
+                                    color: grey,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.normal)),
+                            TextSpan(
+                                text: "aqui",
+                                style: TextStyle(
+                                    color: grey,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w100))
+                          ]),
+                    ),
                   ),
                   SizedBox(
                     height: 10,

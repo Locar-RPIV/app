@@ -16,7 +16,7 @@ class VehicleRepository implements IVehicleRepository {
     try {
       BaseResponseAPI response = await coreAPI.get(
         baseUrl: Endpoints.baseURL,
-        endpoint: Endpoints.getAutomobile,
+        endpoint: Endpoints.automobile,
       );
       if (response.statusCode == 200) {
         return VehicleSummary.fromArray(response.response);

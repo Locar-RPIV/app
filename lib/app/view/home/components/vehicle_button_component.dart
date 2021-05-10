@@ -36,10 +36,10 @@ class VehicleButtonComponent extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Image.network(
-                vehicle.imageUrl,
+                vehicle.imageUrl ?? "https://img.icons8.com/plasticine/2x/car--v2.png",
                 height: 100,
                 width: 185,
-                fit: BoxFit.fitHeight,
+                fit: BoxFit.contain,
               ),
               SizedBox(
                 height: 26,
@@ -48,14 +48,14 @@ class VehicleButtonComponent extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    vehicle.name,
+                    '${vehicle.modelo} ${vehicle.cor}',
                     style: TextStyle(color: grey, fontSize: 20),
                   ),
                   SizedBox(
                     height: 7,
                   ),
                   Text(
-                    Formatter.moneySettings(vehicle.value.toString()),
+                    Formatter.moneySettings(vehicle.valorLocacao.toString()),
                     style: TextStyle(color: grey, fontSize: 20),
                   )
                 ],

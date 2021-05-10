@@ -5,6 +5,8 @@ enum AppIconType { svg, png }
 
 class AppIcons {
   static const path = "assets/icons";
+  static const calendar = '$path/calendar.svg';
+  static const mappin = '$path/map-pin.svg';
   static const car = '$path/car.svg';
   static const bus = '$path/bus.svg';
   static const bike = '$path/bike.svg';
