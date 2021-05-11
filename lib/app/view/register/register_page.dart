@@ -26,17 +26,17 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: DefaultAppBar(iconBack: true,),
+      appBar: DefaultAppBar(
+        iconBack: true,
+      ),
       body: SingleChildScrollView(
         padding: EdgeInsets.symmetric(horizontal: 49, vertical: 20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text("DADOS PESSOAIS",
-              style: TextStyle(
-                color: primaryColor,
-                fontSize: 15
-              ),
+            Text(
+              "DADOS PESSOAIS",
+              style: TextStyle(color: primaryColor, fontSize: 15),
             ),
             Padding(
               padding: EdgeInsets.only(top: 39),
@@ -54,12 +54,12 @@ class _RegisterPageState extends State<RegisterPage> {
                       hintText: "CPF",
                       controller: cpfTextController,
                       type: TextInputType.number,
-                      onChanged: (value){
-                        
-                      },
+                      onChanged: (value) {},
                     ),
                   ),
-                  SizedBox(width: 19,),
+                  SizedBox(
+                    width: 19,
+                  ),
                   Expanded(
                     child: DefaultTextFormField(
                       hintText: "Nascimento",
@@ -80,7 +80,9 @@ class _RegisterPageState extends State<RegisterPage> {
                       controller: telefoneTextController,
                     ),
                   ),
-                  SizedBox(width: 19,),
+                  SizedBox(
+                    width: 19,
+                  ),
                   Expanded(
                     child: DefaultTextFormField(
                       hintText: "CNH",
@@ -93,11 +95,9 @@ class _RegisterPageState extends State<RegisterPage> {
             ),
             Padding(
               padding: EdgeInsets.only(top: 50),
-              child: Text("DADOS DE ACESSO",
-                style: TextStyle(
-                  color: primaryColor,
-                  fontSize: 15
-                ),
+              child: Text(
+                "DADOS DE ACESSO",
+                style: TextStyle(color: primaryColor, fontSize: 15),
               ),
             ),
             Padding(
@@ -119,21 +119,20 @@ class _RegisterPageState extends State<RegisterPage> {
               padding: EdgeInsets.only(top: 30),
               child: DefaultButton(
                 title: "CADASTRAR",
-                onTap: (){
+                onTap: () {
                   controller.registerClient(
-                    context: context,
-                    registerData: Register(
-                      admin: false,
-                      partner: false,
-                      cnh: int.parse(cnhTextController.text.trim()),
-                      cpf: int.parse(cpfTextController.text.trim()),
-                      dataNascimento: dataNascimentoTextController.text,
-                      email: emailTextController.text,
-                      password: passwordTextController.text,
-                      nome: nomeTextController.text,
-                      telefone: telefoneTextController.text,
-                    )
-                  );
+                      context: context,
+                      registerData: Register(
+                        admin: false,
+                        partner: false,
+                        cnh: int.parse(cnhTextController.text.trim()),
+                        cpf: int.parse(cpfTextController.text.trim()),
+                        dataNascimento: dataNascimentoTextController.text,
+                        email: emailTextController.text,
+                        password: passwordTextController.text,
+                        nome: nomeTextController.text,
+                        telefone: telefoneTextController.text,
+                      ));
                 },
               ),
             ),
@@ -141,7 +140,7 @@ class _RegisterPageState extends State<RegisterPage> {
               padding: EdgeInsets.only(top: 10),
               child: Center(
                 child: InkWell(
-                  onTap: (){
+                  onTap: () {
                     Navigator.pop(context);
                   },
                   child: Text.rich(

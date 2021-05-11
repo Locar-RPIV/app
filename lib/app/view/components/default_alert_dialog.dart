@@ -5,7 +5,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class DefaultAlertDialog {
-
   static Future show(
           {@required BuildContext context,
           @required List<DefaultButton> listButtons,
@@ -50,8 +49,9 @@ class DefaultAlertDialog {
                           mainAxisAlignment: listButtons.length > 1
                               ? MainAxisAlignment.spaceBetween
                               : MainAxisAlignment.center,
-                          children:
-                              listButtons.map((button) => Flexible(child: button)).toList())
+                          children: listButtons
+                              .map((button) => Flexible(child: button))
+                              .toList())
                     ],
                   ),
                 ),
@@ -82,8 +82,7 @@ class DefaultAlertDialog {
                         Flexible(
                           child: Text(
                             title,
-                            style:TextStyle(
-                                color: primaryColor),
+                            style: TextStyle(color: primaryColor),
                           ),
                         )
                       ],

@@ -36,7 +36,8 @@ class VehicleButtonComponent extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Image.network(
-                vehicle.imageUrl ?? "https://img.icons8.com/plasticine/2x/car--v2.png",
+                vehicle.imageUrl ??
+                    "https://img.icons8.com/plasticine/2x/car--v2.png",
                 height: 100,
                 width: 185,
                 fit: BoxFit.contain,

@@ -42,26 +42,32 @@ class LoginController implements ILoginController {
   @override
   Future<void> auth(BuildContext context,
       {String email, String password}) async {
-    DefaultAlertDialog.showLoading(context: context, title: "Estamos validadando suas credenciais!");
+    DefaultAlertDialog.showLoading(
+        context: context, title: "Estamos validadando suas credenciais!");
     var response = await LoginRepository().login(
         email: email,
         password: await FlutterBcrypt.hashPw(
             password: password, salt: r'$2b$06$C6UzMDN.H6dfI/f/IKxGhu'));
     Navigator.pop(context);
     if (response is Auth) {
-      await FlutterSecureStorage().write(key: "logged", value: jsonEncode(response));
+      await FlutterSecureStorage()
+          .write(key: "logged", value: jsonEncode(response));
       Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
     }
     if (response is BaseResponseAPI) {
-      
       DefaultAlertDialog.show(
-        context: context, 
-        listButtons: [
-          DefaultButton(title: "Voltar", onTap: (){
-            Navigator.pop(context);
-          },)
-        ], 
-        title: "Poxa...", description: "Ocorreu um erro ao realizar seu login, verifique seu usuário e senha!");
+          context: context,
+          listButtons: [
+            DefaultButton(
+              title: "Voltar",
+              onTap: () {
+                Navigator.pop(context);
+              },
+            )
+          ],
+          title: "Poxa...",
+          description:
+              "Ocorreu um erro ao realizar seu login, verifique seu usuário e senha!");
     }
   }
 }

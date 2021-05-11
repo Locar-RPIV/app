@@ -63,18 +63,18 @@ class DefaultTopSheetWidget extends StatelessWidget {
                   },
                 ),
                 if (user.partner)
-                ItemTopSheet(
-                  icon: AppIcons.car,
-                  title: "Cadastrar Veículo",
-                  isBlue: false,
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => RegisterVehiclesOptionsPage(),
-                        ));
-                  },
-                ),
+                  ItemTopSheet(
+                    icon: AppIcons.car,
+                    title: "Cadastrar Veículo",
+                    isBlue: false,
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => RegisterVehiclesOptionsPage(),
+                          ));
+                    },
+                  ),
                 ItemTopSheet(
                   icon: AppIcons.reservation,
                   title: "Reservas",

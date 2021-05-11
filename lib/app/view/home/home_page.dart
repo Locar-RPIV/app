@@ -84,22 +84,26 @@ class _HomePageState extends State<HomePage> {
                     ),
                   )
                 : listVehicles
-                        .where((element) => element.type == VehicleType.rental && element.tipoCombustivel == vehicleType)
+                        .where((element) =>
+                            element.type == VehicleType.rental &&
+                            element.tipoCombustivel == vehicleType)
                         .isNotEmpty
                     ? SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
                         child: Row(
                           children: List.generate(
                               listVehicles.length,
-                              (index) =>
-                                  listVehicles[index].type == VehicleType.rental && listVehicles[index].tipoCombustivel == vehicleType
-                                      ? Container(
-                                          padding: EdgeInsets.only(right: 25),
-                                          child: VehicleButtonComponent(
-                                            vehicle: listVehicles[index],
-                                          ),
-                                        )
-                                      : Container()),
+                              (index) => listVehicles[index].type ==
+                                          VehicleType.rental &&
+                                      listVehicles[index].tipoCombustivel ==
+                                          vehicleType
+                                  ? Container(
+                                      padding: EdgeInsets.only(right: 25),
+                                      child: VehicleButtonComponent(
+                                        vehicle: listVehicles[index],
+                                      ),
+                                    )
+                                  : Container()),
                         ),
                       )
                     : Text(
@@ -126,8 +130,9 @@ class _HomePageState extends State<HomePage> {
                     ),
                   )
                 : listVehicles
-                        .where(
-                            (element) => element.type == VehicleType.particular && element.tipoCombustivel == vehicleType)
+                        .where((element) =>
+                            element.type == VehicleType.particular &&
+                            element.tipoCombustivel == vehicleType)
                         .isNotEmpty
                     ? SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
@@ -135,7 +140,9 @@ class _HomePageState extends State<HomePage> {
                           children: List.generate(
                               listVehicles.length,
                               (index) => listVehicles[index].type ==
-                                      VehicleType.particular && listVehicles[index].tipoCombustivel == vehicleType
+                                          VehicleType.particular &&
+                                      listVehicles[index].tipoCombustivel ==
+                                          vehicleType
                                   ? Container(
                                       padding: EdgeInsets.only(right: 25),
                                       child: VehicleButtonComponent(

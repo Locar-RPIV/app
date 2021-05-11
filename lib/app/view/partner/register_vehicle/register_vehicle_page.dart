@@ -31,7 +31,8 @@ class _RegisterVehiclePageState extends State<RegisterVehiclePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: DefaultAppBar(
-        iconBack: true,),
+        iconBack: true,
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -88,7 +89,7 @@ class _RegisterVehiclePageState extends State<RegisterVehiclePage> {
                       controller: kmTextController,
                       labelText: "KM RODADOS",
                       type: TextInputType.number,
-                    onChanged: (value) => setState(() {}),
+                      onChanged: (value) => setState(() {}),
                     ),
                   ),
                 ],
@@ -117,7 +118,7 @@ class _RegisterVehiclePageState extends State<RegisterVehiclePage> {
                       controller: corTextController,
                       labelText: "COR",
                       type: TextInputType.text,
-                    onChanged: (value) => setState(() {}),
+                      onChanged: (value) => setState(() {}),
                     ),
                   ),
                 ],
@@ -154,28 +155,29 @@ class _RegisterVehiclePageState extends State<RegisterVehiclePage> {
               padding: EdgeInsets.symmetric(horizontal: 29, vertical: 33),
               child: DefaultButton(
                 title: "CADASTRAR",
-                onTap: isFormValid() ? () async {
-                  Auth user = await HomeController().getUser();
-                  RegisterVehicleController().registerVehicle(context,
-                    vehicle: VehicleSummary (
-                      ano: int.parse(yearTextController.text),
-                      carroParceiro: true,
-                      chassi: "N/A",
-                      cor: corTextController.text,
-                      cpfParceiro: user.cpf,
-                      filial: 0,
-                      marca: brandTextController.text,
-                      modelo: modelTextController.text,
-                      numeroPortas: 0,
-                      placa: placaTextController.text,
-                      potencia: 0,
-                      quilometragem: int.parse(kmTextController.text),
-                      renavan: 0,
-                      tipoCombustivel: widget.type,
-                      valorLocacao: double.parse(valueTextController.text)
-                    )
-                  );
-                } : null,
+                onTap: isFormValid()
+                    ? () async {
+                        Auth user = await HomeController().getUser();
+                        RegisterVehicleController().registerVehicle(context,
+                            vehicle: VehicleSummary(
+                                ano: int.parse(yearTextController.text),
+                                carroParceiro: true,
+                                chassi: "N/A",
+                                cor: corTextController.text,
+                                cpfParceiro: user.cpf,
+                                filial: 0,
+                                marca: brandTextController.text,
+                                modelo: modelTextController.text,
+                                numeroPortas: 0,
+                                placa: placaTextController.text,
+                                potencia: 0,
+                                quilometragem: int.parse(kmTextController.text),
+                                renavan: 0,
+                                tipoCombustivel: widget.type,
+                                valorLocacao:
+                                    double.parse(valueTextController.text)));
+                      }
+                    : null,
               ),
             )
           ],
@@ -184,13 +186,13 @@ class _RegisterVehiclePageState extends State<RegisterVehiclePage> {
     );
   }
 
-  bool isFormValid(){
+  bool isFormValid() {
     return brandTextController.text.isNotEmpty &&
-      modelTextController.text.isNotEmpty &&
+        modelTextController.text.isNotEmpty &&
         yearTextController.text.isNotEmpty &&
-          kmTextController.text.isNotEmpty &&
-            corTextController.text.isNotEmpty &&
-            placaTextController.text.isNotEmpty &&
-            valueTextController.text.isNotEmpty;
+        kmTextController.text.isNotEmpty &&
+        corTextController.text.isNotEmpty &&
+        placaTextController.text.isNotEmpty &&
+        valueTextController.text.isNotEmpty;
   }
 }

@@ -14,10 +14,9 @@ class RegisterVehicleRepository implements IRegisterVehicleRepository {
   Future<dynamic> registerVehicle({VehicleSummary vehicle}) async {
     try {
       BaseResponseAPI response = await coreAPI.post(
-        baseUrl: Endpoints.baseURL,
-        endpoint: Endpoints.automobile,
-        body: vehicle.toMap()
-      );
+          baseUrl: Endpoints.baseURL,
+          endpoint: Endpoints.automobile,
+          body: vehicle.toMap());
       if (response.statusCode == 200) {
         return VehicleSummary.fromJson(response.response);
       }

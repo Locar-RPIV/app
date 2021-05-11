@@ -13,7 +13,7 @@ abstract class IHomeController {
 
 class HomeController extends VehicleRepository implements IHomeController {
   Auth authUser;
- 
+
   @override
   Future<List<VehicleSummary>> getVehiclesSummary() async {
     var response = await getAvailableVehicles();

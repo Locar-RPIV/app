@@ -19,7 +19,7 @@ class VehicleSummary {
   String chassi;
   double valorLocacao;
   bool carroParceiro;
-  int cpfParceiro;
+  String cpfParceiro;
   int filial;
   String imageUrl;
 

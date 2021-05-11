@@ -47,8 +47,7 @@ class _RegisterVehiclesOptionsPageState
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) =>
-                              RegisterVehiclePage(
+                          builder: (context) => RegisterVehiclePage(
                                 type: 0,
                               )),
                     );
@@ -114,8 +113,7 @@ class _RegisterVehiclesOptionsPageState
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) =>
-                              RegisterVehiclePage(
+                          builder: (context) => RegisterVehiclePage(
                                 type: 1,
                               )),
                     );
@@ -196,8 +194,7 @@ class _RegisterVehiclesOptionsPageState
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) =>
-                              RegisterVehiclePage(
+                          builder: (context) => RegisterVehiclePage(
                                 type: 2,
                               )),
                     );
@@ -267,8 +264,7 @@ class _RegisterVehiclesOptionsPageState
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) =>
-                              RegisterVehiclePage(
+                          builder: (context) => RegisterVehiclePage(
                                 type: 3,
                               )),
                     );

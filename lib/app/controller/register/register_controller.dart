@@ -12,24 +12,31 @@ abstract class IRegisterController {
 
 class RegisterController implements IRegisterController {
   @override
-  Future<void> registerClient({Register registerData, BuildContext context}) async {
-    DefaultAlertDialog.showLoading(context: context, title: "Estamos cadastrando você na plataforma!");
+  Future<void> registerClient(
+      {Register registerData, BuildContext context}) async {
+    DefaultAlertDialog.showLoading(
+        context: context, title: "Estamos cadastrando você na plataforma!");
     var response =
-      await RegisterRepository().registerClient(register: registerData);
+        await RegisterRepository().registerClient(register: registerData);
     Navigator.pop(context);
     if (response is Register) {
-      await FlutterSecureStorage().write(key: "logged", value: registerData.email);
+      await FlutterSecureStorage()
+          .write(key: "logged", value: registerData.email);
       Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
     }
     if (response is BaseResponseAPI) {
       DefaultAlertDialog.show(
-        context: context, 
-        listButtons: [
-          DefaultButton(title: "Voltar", onTap: (){
-            Navigator.pop(context);
-          },)
-        ], 
-        title: "Poxa...", description: "Ocorreu um erro ao realizar o seu cadastro!");
+          context: context,
+          listButtons: [
+            DefaultButton(
+              title: "Voltar",
+              onTap: () {
+                Navigator.pop(context);
+              },
+            )
+          ],
+          title: "Poxa...",
+          description: "Ocorreu um erro ao realizar o seu cadastro!");
     }
   }
 }

@@ -12,9 +12,9 @@ class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     Future.delayed(Duration(seconds: 4)).then((_) async {
-      if(await FlutterSecureStorage().read(key: "logged") != null){
+      if (await FlutterSecureStorage().read(key: "logged") != null) {
         Navigator.pushNamedAndRemoveUntil(context, '/', (context) => true);
-      }else{
+      } else {
         Navigator.pushNamedAndRemoveUntil(context, 'login', (context) => true);
       }
     });

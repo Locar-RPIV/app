@@ -1,6 +1,6 @@
 class Auth {
   int id;
-  int cpf;
+  String cpf;
   String nome;
   String telefone;
   String dataNascimento;

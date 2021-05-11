@@ -105,7 +105,7 @@ class _LoginPageState extends State<LoginPage> {
                     height: 26,
                   ),
                   InkWell(
-                    onTap: (){
+                    onTap: () {
                       Navigator.pushNamed(context, "register");
                     },
                     child: Text.rich(
