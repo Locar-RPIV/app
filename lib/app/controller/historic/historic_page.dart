@@ -2,7 +2,6 @@ import 'package:app/app/model/remote/base_response.dart';
 import 'package:app/app/model/reservation/reservation.dart';
 import 'package:app/app/view/components/default_alert_dialog.dart';
 import 'package:app/app/view/components/default_button.dart';
-import 'package:app/core/repository/branch/branch_repository.dart';
 import 'package:app/core/repository/reservation/reservation_repository.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

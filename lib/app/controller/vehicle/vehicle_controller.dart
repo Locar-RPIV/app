@@ -1,4 +1,3 @@
-import 'package:app/app/model/remote/base_response.dart';
 import 'package:app/app/model/vehicle/partner_vehicle.dart';
 import 'package:app/core/repository/vehicle/vehicle_repository.dart';
 import 'package:flutter/cupertino.dart';
