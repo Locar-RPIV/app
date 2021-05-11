@@ -1,5 +1,5 @@
 <h1 align="center">
-    <img alt="LOCAR" title="Caru Covid19" src=".github/assets/icons/login.svg.png" width="220px" />
+    <img alt="LOCAR" title="Caru Covid19" src="https://github.com/Locar-RPIV/app/blob/master/assets/icons/login.svg" width="220px" />
 </h1>
 
 <p align="center">
@@ -20,10 +20,6 @@
 </p>
 
 <br>
-
-<p align="center">
-  <img alt="Caru Covid19 - Screenshots" src=".github/app_covid.png" width="80%">
-</p>
 
 ## 🚀 Tecnologia
 
