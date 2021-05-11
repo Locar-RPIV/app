@@ -1,5 +1,7 @@
+import 'package:app/app/controller/branch/branch_controller.dart';
 import 'package:app/app/controller/home/home_controller.dart';
 import 'package:app/app/controller/partner/vehicle/register_vehicle_controller.dart';
+import 'package:app/app/model/branch/branch.dart';
 import 'package:app/app/model/home/vehicle_summary.dart';
 import 'package:app/app/model/login/auth.dart';
 import 'package:app/app/view/components/default_app_bar.dart';
@@ -26,6 +28,8 @@ class _RegisterVehiclePageState extends State<RegisterVehiclePage> {
   var valueTextController = TextEditingController();
   var placaTextController = TextEditingController();
   var corTextController = TextEditingController();
+  int _selectedBranch = 0;
+  int _selectedBranchID = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -152,6 +156,60 @@ class _RegisterVehiclePageState extends State<RegisterVehiclePage> {
               ),
             ),
             Padding(
+              padding: EdgeInsets.symmetric(horizontal: 29),
+              child: Row(
+                children: [
+                  AppIcons.cash.icon(color: primaryColor, height: 18),
+                  SizedBox(
+                    width: 18,
+                  ),
+                  Text(
+                    "Filial",
+                    style: TextStyle(color: primaryColor, fontSize: 20),
+                  )
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 29,
+            ),
+            FutureBuilder<List<Branch>>(
+              future: BranchController().getBranchs(context),
+              builder: (context, snapshot) {
+                if (snapshot.hasData && !snapshot.hasError) {
+                  return Container(
+                    margin: EdgeInsets.symmetric(horizontal: 29),
+                    padding: EdgeInsets.symmetric(horizontal: 10),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(color: grey600, width: 1)),
+                    child: DropdownButton(
+                      underline: Container(),
+                      hint: Text("Escolha a filial"),
+                      value: _selectedBranch,
+                      onChanged: (value) {
+                        setState(() {
+                          _selectedBranch = value;
+                          _selectedBranchID = snapshot.data[value].id;
+                        });
+                      },
+                      isExpanded: true,
+                      items: List.generate(
+                          snapshot.data.length,
+                          (index) => DropdownMenuItem(
+                                value: index,
+                                child: Text("${snapshot.data[index].nome}"),
+                              )),
+                    ),
+                  );
+                } else {
+                  return CircularProgressIndicator(
+                    backgroundColor: primaryColor,
+                  );
+                }
+              },
+            ),
+            Padding(
               padding: EdgeInsets.symmetric(horizontal: 29, vertical: 33),
               child: DefaultButton(
                 title: "CADASTRAR",
@@ -165,12 +223,13 @@ class _RegisterVehiclePageState extends State<RegisterVehiclePage> {
                                 chassi: "N/A",
                                 cor: corTextController.text,
                                 cpfParceiro: user.cpf,
-                                filial: 0,
+                                filial: _selectedBranchID,
                                 marca: brandTextController.text,
                                 modelo: modelTextController.text,
                                 numeroPortas: 0,
+                                status: "Disponível",
                                 placa: placaTextController.text,
-                                potencia: 0,
+                                potencia: "0",
                                 quilometragem: int.parse(kmTextController.text),
                                 renavan: 0,
                                 tipoCombustivel: widget.type,

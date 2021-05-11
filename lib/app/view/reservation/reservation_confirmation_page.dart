@@ -1,3 +1,4 @@
+import 'package:app/app/model/branch/branch.dart';
 import 'package:app/app/model/home/vehicle_summary.dart';
 import 'package:app/app/model/reservation/reservation.dart';
 import 'package:app/app/view/components/default_app_bar.dart';
@@ -11,9 +12,14 @@ class ReservationConfirmationPage extends StatefulWidget {
   final VehicleSummary vehicleSummary;
   final String location;
   final Reservation reservation;
+  final Branch branch;
 
   const ReservationConfirmationPage(
-      {Key key, this.vehicleSummary, this.location, this.reservation})
+      {Key key,
+      this.vehicleSummary,
+      this.branch,
+      this.location,
+      this.reservation})
       : super(key: key);
 
   @override
@@ -169,7 +175,7 @@ class _ReservationConfirmationPageState
                                 style: TextStyle(
                                     fontSize: 23, color: primaryColor)),
                             TextSpan(
-                                text: "Retirar na ",
+                                text: "Retirar na filial em: ",
                                 style: TextStyle(
                                     fontSize: 20, color: Colors.black87)),
                             TextSpan(
@@ -189,7 +195,7 @@ class _ReservationConfirmationPageState
                     Padding(
                       padding: EdgeInsets.only(left: 35, right: 30, bottom: 50),
                       child: Text(
-                        'Travessa maravilha tristeza,número 0, Centenário, Alegrete - BR',
+                        widget.branch.nome,
                         style: TextStyle(fontSize: 14, color: Colors.black),
                       ),
                     ),

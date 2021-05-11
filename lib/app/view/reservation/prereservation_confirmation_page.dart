@@ -1,5 +1,7 @@
+import 'package:app/app/controller/branch/branch_controller.dart';
 import 'package:app/app/controller/home/home_controller.dart';
 import 'package:app/app/controller/reservation/reservation_controller.dart';
+import 'package:app/app/model/branch/branch.dart';
 import 'package:app/app/model/home/vehicle_summary.dart';
 import 'package:app/app/model/login/auth.dart';
 import 'package:app/app/model/reservation/reservation.dart';
@@ -41,6 +43,8 @@ class _PreReservationConfirmationPageState
 
   bool dateIsSelected = false;
   String _selectedLocation = '';
+  int _selectedBranch = 0;
+  Branch _selectedBranchData;
 
   Widget build(BuildContext context) {
     return Scaffold(
@@ -123,34 +127,41 @@ class _PreReservationConfirmationPageState
                   SizedBox(
                     height: 100,
                   ),
-                  Container(
-                    child: Center(
-                      child: RichText(
-                        text: TextSpan(
-                          text: "Onde ",
+                  !widget.vehicleSummary.carroParceiro
+                      ? Container(
+                          child: Center(
+                            child: RichText(
+                              text: TextSpan(
+                                text: "Onde ",
+                                style: TextStyle(
+                                    fontSize: 20,
+                                    color: primaryColor,
+                                    fontWeight: FontWeight.w500),
+                                children: <TextSpan>[
+                                  TextSpan(
+                                      text: 'deseja',
+                                      style: TextStyle(
+                                          fontSize: 20,
+                                          color: primaryColor,
+                                          fontWeight: FontWeight.w300)),
+                                  TextSpan(text: ' retirar'),
+                                  TextSpan(
+                                      text: ' o véiculo ?',
+                                      style: TextStyle(
+                                          fontSize: 20,
+                                          color: primaryColor,
+                                          fontWeight: FontWeight.w300)),
+                                ],
+                              ),
+                            ),
+                          ),
+                        )
+                      : Text(
+                          "Este caro está disponível apenas na seguinte filial:",
                           style: TextStyle(
                               fontSize: 20,
                               color: primaryColor,
-                              fontWeight: FontWeight.w500),
-                          children: <TextSpan>[
-                            TextSpan(
-                                text: 'deseja',
-                                style: TextStyle(
-                                    fontSize: 20,
-                                    color: primaryColor,
-                                    fontWeight: FontWeight.w300)),
-                            TextSpan(text: ' retirar'),
-                            TextSpan(
-                                text: ' o véiculo ?',
-                                style: TextStyle(
-                                    fontSize: 20,
-                                    color: primaryColor,
-                                    fontWeight: FontWeight.w300)),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
+                              fontWeight: FontWeight.w500)),
                   SizedBox(
                     height: 50,
                   ),
@@ -162,30 +173,60 @@ class _PreReservationConfirmationPageState
                           icon: AppIcons.mappin,
                           color: primaryColor,
                         ),
-                        DropdownButton<String>(
-                          hint: _selectedLocation == ''
-                              ? Text('Escolha a unidade',
-                                  style: TextStyle(
-                                      fontSize: 20, color: Colors.black87))
-                              : Text(_selectedLocation,
-                                  style: TextStyle(
-                                      fontSize: 20, color: Colors.black87)),
-                          items: <String>[
-                            'Unidade Alegrete',
-                            'Unidade Porto Alegre',
-                            'Unidade São Borja',
-                            'Unidade Uruguaiana'
-                          ].map((String value) {
-                            return new DropdownMenuItem<String>(
-                              value: value,
-                              child: new Text(value),
-                            );
-                          }).toList(),
-                          onChanged: (newValue) {
-                            setState(() {
-                              _selectedLocation = newValue;
-                              print(_selectedLocation);
-                            });
+                        FutureBuilder<List<Branch>>(
+                          future: BranchController().getBranchs(context),
+                          builder: (context, snapshot) {
+                            if (snapshot.hasData && !snapshot.hasError) {
+                              if (_selectedBranchData == null) {
+                                _selectedBranchData = snapshot.data.first;
+                              }
+                              return Container(
+                                margin: EdgeInsets.symmetric(horizontal: 29),
+                                padding: EdgeInsets.symmetric(horizontal: 10),
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    border:
+                                        Border.all(color: grey600, width: 1)),
+                                child: DropdownButton(
+                                  underline: Container(),
+                                  hint: Text("Escolha a filial"),
+                                  value: _selectedBranch,
+                                  onChanged: (value) {
+                                    setState(() {
+                                      _selectedBranch = value;
+                                      _selectedBranchData =
+                                          snapshot.data[value];
+                                    });
+                                  },
+                                  items: List.generate(snapshot.data.length,
+                                      (index) {
+                                    if (!widget.vehicleSummary.carroParceiro) {
+                                      return DropdownMenuItem(
+                                        value: index,
+                                        child: Text(
+                                            "${snapshot.data[index].nome}"),
+                                      );
+                                    } else {
+                                      String nome = '';
+                                      for (var item in snapshot.data) {
+                                        if (item.id ==
+                                            widget.vehicleSummary.filial) {
+                                          nome = item.nome;
+                                        }
+                                      }
+                                      return DropdownMenuItem(
+                                        value: index,
+                                        child: Text(nome),
+                                      );
+                                    }
+                                  }),
+                                ),
+                              );
+                            } else {
+                              return CircularProgressIndicator(
+                                backgroundColor: primaryColor,
+                              );
+                            }
                           },
                         ),
                         Container()
@@ -203,9 +244,10 @@ class _PreReservationConfirmationPageState
                         await ReservationController().createReservation(context,
                             reservation: Reservation(
                               dataRetirada: selectedDate,
-                              placa: widget.vehicleSummary.placa,
+                              vehicle: widget.vehicleSummary,
                               user: auth,
                             ),
+                            branch: _selectedBranchData,
                             vehicleSummary: widget.vehicleSummary,
                             location: _selectedLocation);
                       },

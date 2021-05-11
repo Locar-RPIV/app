@@ -67,7 +67,6 @@ class _LoginPageState extends State<LoginPage> {
                     onChanged: (value) {
                       setState(() {
                         if (value.length > 5) {
-                          print("ta entrando aqui");
                           controller.isEmailValid(value);
                         } else {
                           controller.errorText = null;

@@ -15,14 +15,12 @@ class CoreAPI {
         endpoint != null ? baseUrl + endpoint : baseUrl,
         headers: headers ?? {});
     var json = jsonDecode(utf8.decode(response.bodyBytes));
-    print(json);
     if (response.statusCode >= 200 && response.statusCode <= 299) {
       return BaseResponseAPI(
           statusCode: response.statusCode,
           statusMessage: json.toString(),
           response: json);
     } else {
-      print("${response.statusCode}, ${json['message']}");
       return BaseResponseAPI(
           statusCode: response.statusCode,
           response: json.toString(),
@@ -35,19 +33,12 @@ class CoreAPI {
       dynamic body,
       String endpoint,
       Map<String, dynamic> headers}) async {
-    print("----------ENDPOINT---------");
-    print(endpoint != null ? baseUrl + endpoint : baseUrl);
     var jsonBody = jsonEncode(body);
-    print("----------BODY-------------");
-    print(jsonBody);
-    print("----------RESPONSE---------");
     final response = await client.post(
         endpoint != null ? baseUrl + endpoint : baseUrl,
         body: jsonBody,
         headers: headers ?? {"Content-Type": "application/json"});
     var json;
-    print(response.body);
-    print("---------------------------");
     if (response.body != null && response.body.isNotEmpty) {
       json = jsonDecode(utf8.decode(response.bodyBytes));
     }
@@ -83,7 +74,6 @@ class CoreAPI {
           statusMessage: json.toString(),
           response: json);
     } else {
-      print("${response.statusCode}, ${json['message']}");
       return BaseResponseAPI(
           statusCode: response.statusCode,
           response: json.toString(),

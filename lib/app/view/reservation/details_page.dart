@@ -26,7 +26,10 @@ class _DetailsPageState extends State<DetailsPage> {
             VehicleWithBackgroundComponent(
               heightBackground: 233,
               paddingVertical: 45,
-              url: widget.vehicleSummary.imageUrl,
+              url: widget.vehicleSummary.imageUrl != null &&
+                      widget.vehicleSummary.imageUrl.isNotEmpty
+                  ? widget.vehicleSummary.imageUrl
+                  : "https://img.icons8.com/plasticine/2x/car--v2.png",
             ),
             Padding(
               padding: EdgeInsets.only(left: 30, right: 30, top: 10),

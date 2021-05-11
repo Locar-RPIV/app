@@ -1,5 +1,6 @@
 import 'package:app/app/controller/login/login_controller.dart';
 import 'package:app/app/model/login/auth.dart';
+import 'package:app/app/view/historic/historic_page.dart';
 import 'package:app/app/view/home/home_page.dart';
 import 'package:app/app/view/partner/register_vehicle/register_vehicles_options_page.dart';
 import 'package:app/core/theme/app_icons.dart';
@@ -79,6 +80,13 @@ class DefaultTopSheetWidget extends StatelessWidget {
                   icon: AppIcons.reservation,
                   title: "Reservas",
                   isBlue: user.partner,
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => HistoricPage(),
+                        ));
+                  },
                 ),
                 ItemTopSheet(
                   icon: AppIcons.logout,

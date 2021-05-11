@@ -5,6 +5,7 @@ import 'package:app/core/remote/endpoints.dart';
 
 abstract class IReservationRepository {
   Future<dynamic> createReservation(Reservation reservation);
+  Future<dynamic> getReservationsByCPF(String cpf);
 }
 
 class ReservationRepository implements IReservationRepository {
@@ -20,6 +21,24 @@ class ReservationRepository implements IReservationRepository {
       );
       if (response.statusCode == 200) {
         return Reservation.fromJson(response.response);
+      }
+
+      return response;
+    } catch (e) {
+      return BaseResponseAPI(
+          response: null, statusCode: 500, statusMessage: "error");
+    }
+  }
+
+  @override
+  Future<dynamic> getReservationsByCPF(String cpf) async {
+    try {
+      BaseResponseAPI response = await coreAPI.get(
+        baseUrl: Endpoints.baseURL,
+        endpoint: Endpoints.reservation + "/$cpf",
+      );
+      if (response.statusCode == 200) {
+        return Reservation.fromArray(response.response);
       }
 
       return response;

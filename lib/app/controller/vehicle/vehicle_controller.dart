@@ -28,9 +28,6 @@ class VehicleController implements IVehicleController {
     if (response is PartnerVehicle) {
       Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
     }
-    if (response is BaseResponseAPI) {
-      print("Erro: ${response.statusCode}");
-    }
   }
 
   Future<void> postPartnerVehicle(BuildContext context,
@@ -65,9 +62,6 @@ class VehicleController implements IVehicleController {
         eDeParceiro);
     if (response is PartnerVehicle) {
       Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
-    }
-    if (response is BaseResponseAPI) {
-      print("Erro ${response.response}");
     }
   }
 
