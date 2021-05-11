@@ -66,7 +66,7 @@ class VehicleRepository implements IVehicleRepository {
           baseUrl: Endpoints.baseURL,
           endpoint: Endpoints.getAutomobile);
       if (response.statusCode == 200) {
-        return partnerVehicle.fromJson(response.response);
+        return PartnerVehicle.fromJson(response.response);
       }
       return response;
     } catch (e) {

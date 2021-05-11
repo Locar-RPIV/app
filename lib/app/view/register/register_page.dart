@@ -53,6 +53,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     child: DefaultTextFormField(
                       hintText: "CPF",
                       controller: cpfTextController,
+                      type: TextInputType.number,
                       onChanged: (value){
                         
                       },
@@ -75,6 +76,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   Expanded(
                     child: DefaultTextFormField(
                       hintText: "Telefone",
+                      type: TextInputType.number,
                       controller: telefoneTextController,
                     ),
                   ),
@@ -82,6 +84,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   Expanded(
                     child: DefaultTextFormField(
                       hintText: "CNH",
+                      type: TextInputType.number,
                       controller: cnhTextController,
                     ),
                   ),
@@ -108,6 +111,7 @@ class _RegisterPageState extends State<RegisterPage> {
               padding: EdgeInsets.only(top: 26),
               child: DefaultTextFormField(
                 hintText: "SENHA",
+                isPassword: true,
                 controller: passwordTextController,
               ),
             ),

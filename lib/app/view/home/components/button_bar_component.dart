@@ -42,17 +42,16 @@ class _ButtonBarComponentState extends State<ButtonBarComponent> {
         ),
       ),
       style: ButtonStyle(
-        backgroundColor: MaterialStateColor.resolveWith((states) {
-          if (states.contains(MaterialState.disabled)) {
-            return blueLight;
-          }
-          return widget.isSelected ? primaryColor : blueLight;
-        }),
-        shape: MaterialStateProperty.resolveWith(
-          (states) => RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(50.0)),
-        )
-      ),
+          backgroundColor: MaterialStateColor.resolveWith((states) {
+            if (states.contains(MaterialState.disabled)) {
+              return blueLight;
+            }
+            return widget.isSelected ? primaryColor : blueLight;
+          }),
+          shape: MaterialStateProperty.resolveWith(
+            (states) => RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(50.0)),
+          )),
       onPressed: widget.onPressed,
     );
   }

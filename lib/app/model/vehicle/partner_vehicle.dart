@@ -1,5 +1,4 @@
-// ignore: camel_case_types
-class partnerVehicle {
+class PartnerVehicle {
   int id;
   String marca;
   String modelo;
@@ -15,7 +14,7 @@ class partnerVehicle {
   double valorLocacao;
   bool eDeParceiro;
 
-  partnerVehicle(
+  PartnerVehicle(
       this.id,
       this.marca,
       this.modelo,
@@ -31,10 +30,10 @@ class partnerVehicle {
       this.valorLocacao,
       this.eDeParceiro);
 
-  static List<partnerVehicle> fromArray(List<dynamic> list) =>
-      list.map((json) => partnerVehicle.fromJson(json)).toList();
+  static List<PartnerVehicle> fromArray(List<dynamic> list) =>
+      list.map((json) => PartnerVehicle.fromJson(json)).toList();
 
-  partnerVehicle.fromJson(Map<String, dynamic> map) {
+  PartnerVehicle.fromJson(Map<String, dynamic> map) {
     id = map['id'];
     marca = map['marca'];
     modelo = map['modelo'];

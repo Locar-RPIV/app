@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:app/app/model/home/vehicle_summary.dart';
 import 'package:app/app/model/remote/base_response.dart';
 import 'package:app/core/remote/core_api.dart';

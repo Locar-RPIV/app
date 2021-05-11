@@ -2,6 +2,8 @@ import 'dart:convert';
 
 import 'package:app/app/model/login/auth.dart';
 import 'package:app/app/model/remote/base_response.dart';
+import 'package:app/app/view/components/default_alert_dialog.dart';
+import 'package:app/app/view/components/default_button.dart';
 import 'package:app/core/repository/login/login_repository.dart';
 import 'package:app/core/utils/validation.dart';
 import 'package:flutter/cupertino.dart';
@@ -40,15 +42,26 @@ class LoginController implements ILoginController {
   @override
   Future<void> auth(BuildContext context,
       {String email, String password}) async {
-    var response =
-        await LoginRepository().login(email: email, password: await FlutterBcrypt.hashPw(
-          password: password, salt: r'$2b$06$C6UzMDN.H6dfI/f/IKxGhu'));
+    DefaultAlertDialog.showLoading(context: context, title: "Estamos validadando suas credenciais!");
+    var response = await LoginRepository().login(
+        email: email,
+        password: await FlutterBcrypt.hashPw(
+            password: password, salt: r'$2b$06$C6UzMDN.H6dfI/f/IKxGhu'));
+    Navigator.pop(context);
     if (response is Auth) {
       await FlutterSecureStorage().write(key: "logged", value: jsonEncode(response));
       Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
     }
     if (response is BaseResponseAPI) {
-      print("ERRO: ${response.statusCode}");
+      
+      DefaultAlertDialog.show(
+        context: context, 
+        listButtons: [
+          DefaultButton(title: "Voltar", onTap: (){
+            Navigator.pop(context);
+          },)
+        ], 
+        title: "Poxa...", description: "Ocorreu um erro ao realizar seu login, verifique seu usuário e senha!");
     }
   }
 }

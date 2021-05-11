@@ -25,7 +25,7 @@ class VehicleController implements IVehicleController {
       int quilometragem,
       double valorLocacao}) async {
     var response = await VehicleRepository().getAvailableVehicles();
-    if (response is partnerVehicle) {
+    if (response is PartnerVehicle) {
       Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
     }
     if (response is BaseResponseAPI) {
@@ -48,7 +48,6 @@ class VehicleController implements IVehicleController {
       String chassis,
       double valorLocacao,
       bool eDeParceiro}) async {
-    var cor2 = cor;
     var response = await VehicleRepository().postVehicles(
         id,
         marca,
@@ -64,7 +63,7 @@ class VehicleController implements IVehicleController {
         chassis,
         valorLocacao,
         eDeParceiro);
-    if (response is partnerVehicle) {
+    if (response is PartnerVehicle) {
       Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
     }
     if (response is BaseResponseAPI) {
@@ -79,7 +78,6 @@ class VehicleController implements IVehicleController {
       int ano,
       int quilometragem,
       double valorLocacao}) {
-    // TODO: implement vehiculePartner
     throw UnimplementedError();
   }
 }
