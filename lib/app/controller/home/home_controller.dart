@@ -24,7 +24,7 @@ class HomeController extends VehicleRepository implements IHomeController {
   }
 
   @override
-  FutureOr<Auth> getUser() async {
+  Future<Auth> getUser() async {
     if (authUser != null) {
       return authUser;
     }
