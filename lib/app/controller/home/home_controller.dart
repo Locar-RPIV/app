@@ -16,7 +16,7 @@ class HomeController extends VehicleRepository implements IHomeController {
 
   @override
   Future<List<VehicleSummary>> getVehiclesSummary() async {
-    var response = await getAvailableVehicles();
+    final response = await getAvailableVehicles();
     if (response is List<VehicleSummary>) {
       return response;
     }
@@ -28,8 +28,8 @@ class HomeController extends VehicleRepository implements IHomeController {
     if (authUser != null) {
       return authUser;
     }
-    String authString = await FlutterSecureStorage().read(key: "logged");
-    authUser = Auth.fromJson(jsonDecode(authString));
-    return authUser;
+    final String authString = await const FlutterSecureStorage().read(key: "logged");
+    authUser = Auth.fromJson(jsonDecode(authString) as Map<String, dynamic>);
+    return Auth.fromJson(jsonDecode(authString) as Map<String, dynamic>);
   }
 }
