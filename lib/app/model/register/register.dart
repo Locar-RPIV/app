@@ -1,6 +1,6 @@
 class Register {
   int id;
-  int cpf;
+  String cpf;
   String nome;
   String telefone;
   String dataNascimento;
@@ -8,7 +8,7 @@ class Register {
   String password;
   bool admin;
   int pontosFidelidade;
-  int cnh;
+  String cnh;
   bool partner;
 
   Register(
@@ -33,9 +33,8 @@ class Register {
     email = json['email'];
     password = json['password'];
     admin = json['admin'];
-    pontosFidelidade = json['pontosFidelidade'];
     cnh = json['cnh'];
-    partner = json['partner'];
+    partner = json['isPartner'];
   }
 
   Map<String, dynamic> toJson() {

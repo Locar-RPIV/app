@@ -14,7 +14,7 @@ abstract class IVehicleController {
 
 class VehicleController implements IVehicleController {
   @override
-  String errorText;
+  String errorText; 
 
   Future<void> getVehiculeDetails(BuildContext context,
       {String marca,

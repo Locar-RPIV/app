@@ -125,8 +125,8 @@ class _RegisterPageState extends State<RegisterPage> {
                       registerData: Register(
                         admin: false,
                         partner: false,
-                        cnh: int.parse(cnhTextController.text.trim()),
-                        cpf: int.parse(cpfTextController.text.trim()),
+                        cnh: cnhTextController.text.trim(),
+                        cpf: cpfTextController.text.trim(),
                         dataNascimento: dataNascimentoTextController.text,
                         email: emailTextController.text,
                         password: passwordTextController.text,
