@@ -6,8 +6,8 @@ class BaseResponseAPI {
   BaseResponseAPI({this.statusCode = 0, this.statusMessage, this.response});
 
   BaseResponseAPI.fromJson(Map<String, dynamic> json) {
-    statusMessage = json['statusMessage'];
-    statusCode = json['statusCode'];
+    statusMessage = json['statusMessage'].toString();
+    statusCode = json['statusCode'] as int;
     response = json['response'];
   }
 
