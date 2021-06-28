@@ -14,7 +14,6 @@ class DefaultTopSheetWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
       children: <Widget>[
         Container(
           width: MediaQuery.of(context).size.width,
@@ -23,22 +22,22 @@ class DefaultTopSheetWidget extends StatelessWidget {
             child: ListView(
               shrinkWrap: true,
               children: <Widget>[
-                SizedBox(
+                const SizedBox(
                   height: 46,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Padding(
-                      padding: EdgeInsets.only(left: 33),
+                      padding: const EdgeInsets.only(left: 33),
                       child: InkWell(
-                        child: AppIcons.back.icon(color: primaryColor),
                         onTap: () {
                           Navigator.pop(context);
                         },
+                        child: AppIcons.back.icon(color: primaryColor),
                       ),
                     ),
-                    Padding(
+                    const Padding(
                       padding: EdgeInsets.only(right: 43),
                       child: Text(
                         "LOCAR",
@@ -47,7 +46,7 @@ class DefaultTopSheetWidget extends StatelessWidget {
                     )
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 94,
                 ),
                 ItemTopSheet(
@@ -96,7 +95,7 @@ class DefaultTopSheetWidget extends StatelessWidget {
                     await LoginController().logout(context: context);
                   },
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 64,
                 ),
               ],
@@ -133,12 +132,12 @@ class ItemTopSheet extends StatelessWidget {
               color: primaryColor,
               height: 19,
             ),
-            SizedBox(
+            const SizedBox(
               width: 24,
             ),
             Text(
               title,
-              style: TextStyle(
+              style: const TextStyle(
                 color: primaryColor,
                 fontSize: 18,
               ),
@@ -155,7 +154,7 @@ class DefaultTopSheet {
     return showGeneralDialog(
       context: context,
       barrierDismissible: true,
-      transitionDuration: Duration(milliseconds: 500),
+      transitionDuration: const Duration(milliseconds: 500),
       barrierLabel: MaterialLocalizations.of(context).dialogLabel,
       barrierColor: Colors.transparent,
       pageBuilder: (context, _, __) {
@@ -169,7 +168,7 @@ class DefaultTopSheet {
             parent: animation,
             curve: Curves.easeOut,
           ).drive(Tween<Offset>(
-            begin: Offset(0, -1.0),
+            begin: const Offset(0, -1.0),
             end: Offset.zero,
           )),
           child: child,
