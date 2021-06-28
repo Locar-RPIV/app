@@ -11,16 +11,16 @@ class Reservation {
   Reservation({this.id, this.user, this.vehicle, this.dataRetirada});
 
   Reservation.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    user = json['user'] != null ? new Auth.fromJson(json['user']) : null;
+    id = json['id'] as int;
+    user = json['user'] != null ? Auth.fromJson(json['user'] as Map<String, dynamic>) : null;
     vehicle = json['veiculo'] != null
-        ? new VehicleSummary.fromJson(json['veiculo'])
+        ? VehicleSummary.fromJson(json['veiculo'] as Map<String, dynamic>)
         : null;
-    dataRetirada = DateParser.getDateTime(json['dataRetirada']);
+    dataRetirada = DateParser.getDateTime(json['dataRetirada'].toString());
   }
 
   static List<Reservation> fromArray(List<dynamic> list) =>
-      list.map((json) => Reservation.fromJson(json)).toList();
+      list.map((json) => Reservation.fromJson(json as Map<String, dynamic>)).toList();
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
