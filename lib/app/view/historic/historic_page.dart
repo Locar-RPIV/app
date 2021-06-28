@@ -20,18 +20,18 @@ class _HistoricPageState extends State<HistoricPage> {
         iconBack: true,
       ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.symmetric(horizontal: 30),
+        padding: const EdgeInsets.symmetric(horizontal: 30),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
+            const Text(
               "Suas reservas",
               style: TextStyle(
                   color: primaryColor,
                   fontSize: 25,
                   fontWeight: FontWeight.w500),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             FutureBuilder<Auth>(
@@ -47,11 +47,11 @@ class _HistoricPageState extends State<HistoricPage> {
                               children: List.generate(
                             snapshot.data.length,
                             (index) => Card(
-                              child: Container(
+                              child: SizedBox(
                                 height: 100,
                                 child: Row(
                                   children: [
-                                    SizedBox(
+                                    const SizedBox(
                                       width: 5,
                                     ),
                                     Image.network(
@@ -66,7 +66,7 @@ class _HistoricPageState extends State<HistoricPage> {
                                       width: 50,
                                       fit: BoxFit.contain,
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       width: 15,
                                     ),
                                     Column(
@@ -77,21 +77,21 @@ class _HistoricPageState extends State<HistoricPage> {
                                       children: [
                                         Text(
                                           snapshot.data[index].vehicle.marca,
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                               color: primaryColor,
                                               fontSize: 22,
                                               fontWeight: FontWeight.w500),
                                         ),
                                         Text(
                                           snapshot.data[index].vehicle.modelo,
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                               color: primaryColor,
                                               fontSize: 18,
                                               fontWeight: FontWeight.w300),
                                         ),
                                       ],
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       width: 15,
                                     ),
                                     Column(
@@ -100,7 +100,7 @@ class _HistoricPageState extends State<HistoricPage> {
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
-                                        Text(
+                                        const Text(
                                           "Data da retirada",
                                           style: TextStyle(
                                               color: primaryColor,
@@ -110,7 +110,7 @@ class _HistoricPageState extends State<HistoricPage> {
                                         Text(
                                           DateParser.getDateString(snapshot
                                               .data[index].dataRetirada),
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                               color: primaryColor,
                                               fontSize: 14,
                                               fontWeight: FontWeight.w300),
@@ -123,14 +123,14 @@ class _HistoricPageState extends State<HistoricPage> {
                             ),
                           ));
                         } else {
-                          return Center(
+                          return const Center(
                             child: CircularProgressIndicator(),
                           );
                         }
                       },
                     );
                   } else {
-                    return Center(
+                    return const Center(
                       child: CircularProgressIndicator(),
                     );
                   }
