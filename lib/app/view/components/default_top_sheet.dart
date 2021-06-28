@@ -111,7 +111,7 @@ class DefaultTopSheetWidget extends StatelessWidget {
 class ItemTopSheet extends StatelessWidget {
   final String icon;
   final String title;
-  final Function onTap;
+  final void Function() onTap;
   final bool isBlue;
 
   const ItemTopSheet({Key key, this.icon, this.title, this.isBlue, this.onTap})
