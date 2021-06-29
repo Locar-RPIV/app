@@ -14,18 +14,18 @@ class VehicleRepository implements IVehicleRepository {
   @override
   Future<dynamic> getAvailableVehicles() async {
     try {
-      BaseResponseAPI response = await coreAPI.get(
+      final BaseResponseAPI response = await coreAPI.get(
         baseUrl: Endpoints.baseURL,
         endpoint: Endpoints.automobile,
       );
       if (response.statusCode == 200) {
-        return VehicleSummary.fromArray(response.response);
+        return VehicleSummary.fromArray(response.response as List<dynamic>);
       }
 
       return response;
     } catch (e) {
       return BaseResponseAPI(
-          response: null, statusCode: 500, statusMessage: "error");
+          statusCode: 500, statusMessage: "error");
     }
   }
 
@@ -43,9 +43,9 @@ class VehicleRepository implements IVehicleRepository {
       int renavan,
       String chassis,
       double valorLocacao,
-      bool eDeParceiro) async {
+      {bool eDeParceiro}) async {
     try {
-      var body = {
+      final body = {
         id,
         marca,
         modelo,
@@ -61,17 +61,17 @@ class VehicleRepository implements IVehicleRepository {
         valorLocacao,
         eDeParceiro
       };
-      BaseResponseAPI response = await coreAPI.post(
+      final BaseResponseAPI response = await coreAPI.post(
           body: body,
           baseUrl: Endpoints.baseURL,
           endpoint: Endpoints.getAutomobile);
       if (response.statusCode == 200) {
-        return PartnerVehicle.fromJson(response.response);
+        return PartnerVehicle.fromJson(response.response as Map<String, dynamic>);
       }
       return response;
     } catch (e) {
       return BaseResponseAPI(
-          response: null, statusCode: 500, statusMessage: "error");
+          statusCode: 500, statusMessage: "error");
     }
   }
 }

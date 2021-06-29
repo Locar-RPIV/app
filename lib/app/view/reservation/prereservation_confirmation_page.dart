@@ -28,24 +28,26 @@ class _PreReservationConfirmationPageState
     extends State<PreReservationConfirmationPage> {
   DateTime selectedDate = DateTime.now();
 
-  Future<Null> _selectDate(BuildContext context) async {
+  Future<void> _selectDate(BuildContext context) async {
     final DateTime picked = await showDatePicker(
         context: context,
         initialDate: selectedDate,
         firstDate: DateTime.now(),
         lastDate: DateTime(2101));
-    if (picked != null && picked != selectedDate)
+    if (picked != null && picked != selectedDate) {
       setState(() {
         selectedDate = picked;
         dateIsSelected = true;
       });
+    }
   }
 
   bool dateIsSelected = false;
-  String _selectedLocation = '';
+  final String _selectedLocation = '';
   int _selectedBranch = 0;
   Branch _selectedBranchData;
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
@@ -55,13 +57,13 @@ class _PreReservationConfirmationPageState
       body: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
-            Container(
+            SizedBox(
               child: Center(
                 child: RichText(
-                  text: TextSpan(
+                  text: const TextSpan(
                     text: "Quando ",
                     style: TextStyle(
                         fontSize: 20,
@@ -86,52 +88,51 @@ class _PreReservationConfirmationPageState
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 50,
             ),
             Container(),
             Padding(
-              padding: EdgeInsets.only(left: 40, right: 40),
+              padding: const EdgeInsets.only(left: 40, right: 40),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Container(
+                  SizedBox(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        AppIcon(
+                        const AppIcon(
                           icon: AppIcons.calendar,
                           color: primaryColor,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 20.0,
                         ),
                         GestureDetector(
-                          child: dateIsSelected
-                              ? Text(
-                                  "${DateParser.getDateString(selectedDate)}",
-                                  style: TextStyle(
-                                      fontSize: 20, color: Colors.black87))
-                              : Text('Escolha a data',
-                                  style: TextStyle(
-                                      fontSize: 20, color: Colors.black87)),
                           onTap: () {
                             _selectDate(context);
                           },
+                          child: dateIsSelected
+                              ? Text(
+                                  DateParser.getDateString(selectedDate),
+                                  style: TextStyle(
+                                      fontSize: 20, color: Colors.black87))
+                              : const Text('Escolha a data',
+                                  style: TextStyle(
+                                      fontSize: 20, color: Colors.black87)),
                         ),
                         Container(),
                         Container()
                       ],
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 100,
                   ),
-                  !widget.vehicleSummary.carroParceiro
-                      ? Container(
+                  if (!widget.vehicleSummary.carroParceiro) SizedBox(
                           child: Center(
                             child: RichText(
-                              text: TextSpan(
+                              text: const TextSpan(
                                 text: "Onde ",
                                 style: TextStyle(
                                     fontSize: 20,
@@ -155,21 +156,20 @@ class _PreReservationConfirmationPageState
                               ),
                             ),
                           ),
-                        )
-                      : Text(
+                        ) else const Text(
                           "Este caro está disponível apenas na seguinte filial:",
                           style: TextStyle(
                               fontSize: 20,
                               color: primaryColor,
                               fontWeight: FontWeight.w500)),
-                  SizedBox(
+                  const SizedBox(
                     height: 50,
                   ),
-                  Container(
+                  SizedBox(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        AppIcon(
+                        const AppIcon(
                           icon: AppIcons.mappin,
                           color: primaryColor,
                         ),
@@ -177,21 +177,19 @@ class _PreReservationConfirmationPageState
                           future: BranchController().getBranchs(context),
                           builder: (context, snapshot) {
                             if (snapshot.hasData && !snapshot.hasError) {
-                              if (_selectedBranchData == null) {
-                                _selectedBranchData = snapshot.data.first;
-                              }
+                              _selectedBranchData ??= snapshot.data.first;
                               return Container(
-                                margin: EdgeInsets.symmetric(horizontal: 29),
-                                padding: EdgeInsets.symmetric(horizontal: 10),
+                                margin: const EdgeInsets.symmetric(horizontal: 29),
+                                padding: const EdgeInsets.symmetric(horizontal: 10),
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(10),
                                     border:
                                         Border.all(color: grey600, width: 1)),
                                 child: DropdownButton(
                                   underline: Container(),
-                                  hint: Text("Escolha a filial"),
+                                  hint: const Text("Escolha a filial"),
                                   value: _selectedBranch,
-                                  onChanged: (value) {
+                                  onChanged: (int value) {
                                     setState(() {
                                       _selectedBranch = value;
                                       _selectedBranchData =
@@ -204,11 +202,11 @@ class _PreReservationConfirmationPageState
                                       return DropdownMenuItem(
                                         value: index,
                                         child: Text(
-                                            "${snapshot.data[index].nome}"),
+                                            snapshot.data[index].nome),
                                       );
                                     } else {
                                       String nome = '';
-                                      for (var item in snapshot.data) {
+                                      for (final item in snapshot.data) {
                                         if (item.id ==
                                             widget.vehicleSummary.filial) {
                                           nome = item.nome;
@@ -223,7 +221,7 @@ class _PreReservationConfirmationPageState
                                 ),
                               );
                             } else {
-                              return CircularProgressIndicator(
+                              return const CircularProgressIndicator(
                                 backgroundColor: primaryColor,
                               );
                             }
@@ -233,14 +231,14 @@ class _PreReservationConfirmationPageState
                       ],
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 100,
                   ),
                   Center(
                     child: DefaultButton(
                       title: "RESERVAR",
                       onTap: () async {
-                        Auth auth = await HomeController().getUser();
+                        final Auth auth = await HomeController().getUser();
                         await ReservationController().createReservation(context,
                             reservation: Reservation(
                               dataRetirada: selectedDate,

@@ -10,11 +10,11 @@ class CoreAPI {
   Future<BaseResponseAPI> get(
       {@required dynamic baseUrl,
       String endpoint,
-      Map<String, dynamic> headers}) async {
+      Map<String, String> headers}) async {
     final response = await client.get(
         endpoint != null ? baseUrl + endpoint : baseUrl,
         headers: headers ?? {});
-    var json = jsonDecode(utf8.decode(response.bodyBytes));
+    final json = jsonDecode(utf8.decode(response.bodyBytes));
     if (response.statusCode >= 200 && response.statusCode <= 299) {
       return BaseResponseAPI(
           statusCode: response.statusCode,
@@ -32,13 +32,13 @@ class CoreAPI {
       {@required String baseUrl,
       dynamic body,
       String endpoint,
-      Map<String, dynamic> headers}) async {
-    var jsonBody = jsonEncode(body);
+      Map<String, String> headers}) async {
+    final jsonBody = jsonEncode(body);
     final response = await client.post(
         endpoint != null ? baseUrl + endpoint : baseUrl,
         body: jsonBody,
         headers: headers ?? {"Content-Type": "application/json"});
-    var json;
+    dynamic json;
     if (response.body != null && response.body.isNotEmpty) {
       json = jsonDecode(utf8.decode(response.bodyBytes));
     }
@@ -60,13 +60,13 @@ class CoreAPI {
       {@required String baseUrl,
       String endpoint,
       dynamic body,
-      Map<String, dynamic> headers}) async {
-    var jsonBody = jsonEncode(body);
+      Map<String, String> headers}) async {
+    final jsonBody = jsonEncode(body);
     final response = await client.put(
         endpoint != null ? baseUrl + endpoint : baseUrl,
         body: jsonBody,
         headers: headers ?? {});
-    var json = jsonDecode(utf8.decode(response.bodyBytes));
+    final json = jsonDecode(utf8.decode(response.bodyBytes));
 
     if (response.statusCode >= 200 && response.statusCode <= 299) {
       return BaseResponseAPI(
