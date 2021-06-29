@@ -6,7 +6,7 @@ class ButtonBarComponent extends StatefulWidget {
   final bool isSelected;
   final String icon;
   final String title;
-  final Function onPressed;
+  final void Function() onPressed;
 
   const ButtonBarComponent(
       {Key key, this.icon, this.title, this.onPressed, this.isSelected = false})
@@ -19,28 +19,6 @@ class _ButtonBarComponentState extends State<ButtonBarComponent> {
   @override
   Widget build(BuildContext context) {
     return TextButton(
-      child: Container(
-        height: 35,
-        padding: EdgeInsets.only(left: 18, right: 25),
-        child: Row(
-          children: [
-            AppIcon(
-              icon: widget.icon,
-              color: widget.isSelected ? Colors.white : primaryColor,
-            ),
-            SizedBox(
-              width: 14,
-            ),
-            Text(
-              widget.title,
-              style: TextStyle(
-                color: widget.isSelected ? Colors.white : primaryColor,
-                fontSize: 18,
-              ),
-            ),
-          ],
-        ),
-      ),
       style: ButtonStyle(
           backgroundColor: MaterialStateColor.resolveWith((states) {
             if (states.contains(MaterialState.disabled)) {
@@ -53,6 +31,28 @@ class _ButtonBarComponentState extends State<ButtonBarComponent> {
                 borderRadius: BorderRadius.circular(50.0)),
           )),
       onPressed: widget.onPressed,
+      child: Container(
+        height: 35,
+        padding: const EdgeInsets.only(left: 18, right: 25),
+        child: Row(
+          children: [
+            AppIcon(
+              icon: widget.icon,
+              color: widget.isSelected ? Colors.white : primaryColor,
+            ),
+            const SizedBox(
+              width: 14,
+            ),
+            Text(
+              widget.title,
+              style: TextStyle(
+                color: widget.isSelected ? Colors.white : primaryColor,
+                fontSize: 18,
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
