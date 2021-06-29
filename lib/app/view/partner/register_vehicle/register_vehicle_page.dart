@@ -21,13 +21,13 @@ class RegisterVehiclePage extends StatefulWidget {
 }
 
 class _RegisterVehiclePageState extends State<RegisterVehiclePage> {
-  var brandTextController = TextEditingController();
-  var modelTextController = TextEditingController();
-  var yearTextController = TextEditingController();
-  var kmTextController = TextEditingController();
-  var valueTextController = TextEditingController();
-  var placaTextController = TextEditingController();
-  var corTextController = TextEditingController();
+  TextEditingController brandTextController = TextEditingController();
+  TextEditingController modelTextController = TextEditingController();
+  TextEditingController yearTextController = TextEditingController();
+  TextEditingController kmTextController = TextEditingController();
+  TextEditingController valueTextController = TextEditingController();
+  TextEditingController placaTextController = TextEditingController();
+  TextEditingController corTextController = TextEditingController();
   int _selectedBranch = 0;
   int _selectedBranchID = 0;
 
@@ -40,14 +40,14 @@ class _RegisterVehiclePageState extends State<RegisterVehiclePage> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            VehicleWithBackgroundComponent(
+            const VehicleWithBackgroundComponent(
               url: "https://img.icons8.com/plasticine/2x/car--v2.png",
             ),
-            SizedBox(
+            const SizedBox(
               height: 36,
             ),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 29),
+              padding: const EdgeInsets.symmetric(horizontal: 29),
               child: Row(
                 children: [
                   Expanded(
@@ -57,7 +57,7 @@ class _RegisterVehiclePageState extends State<RegisterVehiclePage> {
                       onChanged: (value) => setState(() {}),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 36,
                   ),
                   Expanded(
@@ -70,11 +70,11 @@ class _RegisterVehiclePageState extends State<RegisterVehiclePage> {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 22,
             ),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 29),
+              padding: const EdgeInsets.symmetric(horizontal: 29),
               child: Row(
                 children: [
                   Expanded(
@@ -85,7 +85,7 @@ class _RegisterVehiclePageState extends State<RegisterVehiclePage> {
                       onChanged: (value) => setState(() {}),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 36,
                   ),
                   Expanded(
@@ -99,55 +99,53 @@ class _RegisterVehiclePageState extends State<RegisterVehiclePage> {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 22,
             ),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 29),
+              padding: const EdgeInsets.symmetric(horizontal: 29),
               child: Row(
                 children: [
                   Expanded(
                     child: DefaultTextFormField(
                       controller: placaTextController,
                       labelText: "PLACA",
-                      type: TextInputType.text,
                       onChanged: (value) => setState(() {}),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 36,
                   ),
                   Expanded(
                     child: DefaultTextFormField(
                       controller: corTextController,
                       labelText: "COR",
-                      type: TextInputType.text,
                       onChanged: (value) => setState(() {}),
                     ),
                   ),
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 45,
             ),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 29),
+              padding: const EdgeInsets.symmetric(horizontal: 29),
               child: Row(
                 children: [
                   AppIcons.cash.icon(color: primaryColor, height: 18),
-                  SizedBox(
+                  const SizedBox(
                     width: 18,
                   ),
-                  Text(
+                  const Text(
                     "Valor",
-                    style: TextStyle(color: primaryColor, fontSize: 20),
+                    style: const TextStyle(color: primaryColor, fontSize: 20),
                   )
                 ],
               ),
             ),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 29, vertical: 33),
+              padding: const EdgeInsets.symmetric(horizontal: 29, vertical: 33),
               child: DefaultTextFormField(
                 controller: valueTextController,
                 labelText: "VALOR DA DIÁRIA",
@@ -156,21 +154,21 @@ class _RegisterVehiclePageState extends State<RegisterVehiclePage> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 29),
+              padding: const EdgeInsets.symmetric(horizontal: 29),
               child: Row(
                 children: [
                   AppIcons.cash.icon(color: primaryColor, height: 18),
-                  SizedBox(
+                  const SizedBox(
                     width: 18,
                   ),
-                  Text(
+                  const Text(
                     "Filial",
                     style: TextStyle(color: primaryColor, fontSize: 20),
                   )
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 29,
             ),
             FutureBuilder<List<Branch>>(
@@ -178,16 +176,16 @@ class _RegisterVehiclePageState extends State<RegisterVehiclePage> {
               builder: (context, snapshot) {
                 if (snapshot.hasData && !snapshot.hasError) {
                   return Container(
-                    margin: EdgeInsets.symmetric(horizontal: 29),
-                    padding: EdgeInsets.symmetric(horizontal: 10),
+                    margin: const EdgeInsets.symmetric(horizontal: 29),
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         border: Border.all(color: grey600, width: 1)),
                     child: DropdownButton(
                       underline: Container(),
-                      hint: Text("Escolha a filial"),
+                      hint: const Text("Escolha a filial"),
                       value: _selectedBranch,
-                      onChanged: (value) {
+                      onChanged: (int value) {
                         setState(() {
                           _selectedBranch = value;
                           _selectedBranchID = snapshot.data[value].id;
@@ -198,24 +196,24 @@ class _RegisterVehiclePageState extends State<RegisterVehiclePage> {
                           snapshot.data.length,
                           (index) => DropdownMenuItem(
                                 value: index,
-                                child: Text("${snapshot.data[index].nome}"),
+                                child: Text(snapshot.data[index].nome),
                               )),
                     ),
                   );
                 } else {
-                  return CircularProgressIndicator(
+                  return const CircularProgressIndicator(
                     backgroundColor: primaryColor,
                   );
                 }
               },
             ),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 29, vertical: 33),
+              padding: const EdgeInsets.symmetric(horizontal: 29, vertical: 33),
               child: DefaultButton(
                 title: "CADASTRAR",
                 onTap: isFormValid()
                     ? () async {
-                        Auth user = await HomeController().getUser();
+                        final Auth user = await HomeController().getUser();
                         RegisterVehicleController().registerVehicle(context,
                             vehicle: VehicleSummary(
                                 ano: int.parse(yearTextController.text),
