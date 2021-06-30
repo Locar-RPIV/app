@@ -51,7 +51,7 @@ class _PreReservationConfirmationPageState
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: DefaultAppBar(
+      appBar: const DefaultAppBar(
         iconBack: true,
       ),
       body: SingleChildScrollView(
@@ -113,9 +113,8 @@ class _PreReservationConfirmationPageState
                             _selectDate(context);
                           },
                           child: dateIsSelected
-                              ? Text(
-                                  DateParser.getDateString(selectedDate),
-                                  style: TextStyle(
+                              ? Text(DateParser.getDateString(selectedDate),
+                                  style: const TextStyle(
                                       fontSize: 20, color: Colors.black87))
                               : const Text('Escolha a data',
                                   style: TextStyle(
@@ -129,39 +128,42 @@ class _PreReservationConfirmationPageState
                   const SizedBox(
                     height: 100,
                   ),
-                  if (!widget.vehicleSummary.carroParceiro) SizedBox(
-                          child: Center(
-                            child: RichText(
-                              text: const TextSpan(
-                                text: "Onde ",
-                                style: TextStyle(
-                                    fontSize: 20,
-                                    color: primaryColor,
-                                    fontWeight: FontWeight.w500),
-                                children: <TextSpan>[
-                                  TextSpan(
-                                      text: 'deseja',
-                                      style: TextStyle(
-                                          fontSize: 20,
-                                          color: primaryColor,
-                                          fontWeight: FontWeight.w300)),
-                                  TextSpan(text: ' retirar'),
-                                  TextSpan(
-                                      text: ' o véiculo ?',
-                                      style: TextStyle(
-                                          fontSize: 20,
-                                          color: primaryColor,
-                                          fontWeight: FontWeight.w300)),
-                                ],
-                              ),
-                            ),
+                  if (!widget.vehicleSummary.carroParceiro)
+                    SizedBox(
+                      child: Center(
+                        child: RichText(
+                          text: const TextSpan(
+                            text: "Onde ",
+                            style: TextStyle(
+                                fontSize: 20,
+                                color: primaryColor,
+                                fontWeight: FontWeight.w500),
+                            children: <TextSpan>[
+                              TextSpan(
+                                  text: 'deseja',
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      color: primaryColor,
+                                      fontWeight: FontWeight.w300)),
+                              TextSpan(text: ' retirar'),
+                              TextSpan(
+                                  text: ' o véiculo ?',
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      color: primaryColor,
+                                      fontWeight: FontWeight.w300)),
+                            ],
                           ),
-                        ) else const Text(
-                          "Este caro está disponível apenas na seguinte filial:",
-                          style: TextStyle(
-                              fontSize: 20,
-                              color: primaryColor,
-                              fontWeight: FontWeight.w500)),
+                        ),
+                      ),
+                    )
+                  else
+                    const Text(
+                        "Este caro está disponível apenas na seguinte filial:",
+                        style: TextStyle(
+                            fontSize: 20,
+                            color: primaryColor,
+                            fontWeight: FontWeight.w500)),
                   const SizedBox(
                     height: 50,
                   ),
@@ -179,12 +181,13 @@ class _PreReservationConfirmationPageState
                             if (snapshot.hasData && !snapshot.hasError) {
                               _selectedBranchData ??= snapshot.data.first;
                               return Container(
-                                margin: const EdgeInsets.symmetric(horizontal: 29),
-                                padding: const EdgeInsets.symmetric(horizontal: 10),
+                                margin:
+                                    const EdgeInsets.symmetric(horizontal: 29),
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 10),
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(10),
-                                    border:
-                                        Border.all(color: grey600, width: 1)),
+                                    border: Border.all(color: grey600)),
                                 child: DropdownButton(
                                   underline: Container(),
                                   hint: const Text("Escolha a filial"),
@@ -201,8 +204,7 @@ class _PreReservationConfirmationPageState
                                     if (!widget.vehicleSummary.carroParceiro) {
                                       return DropdownMenuItem(
                                         value: index,
-                                        child: Text(
-                                            snapshot.data[index].nome),
+                                        child: Text(snapshot.data[index].nome),
                                       );
                                     } else {
                                       String nome = '';

@@ -23,7 +23,7 @@ class _RegisterVehiclesDetailsPageState
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: DefaultAppBar(
+      appBar: const DefaultAppBar(
         iconBack: true,
       ),
       body: SingleChildScrollView(
@@ -69,10 +69,9 @@ class _RegisterVehiclesDetailsPageState
               decoration: BoxDecoration(
                   color: grey900, borderRadius: BorderRadius.circular(10)),
               child: Column(
-                children: [
-                  const VehicleWithBackgroundComponent(
+                children: const [
+                  VehicleWithBackgroundComponent(
                     heightBackground: 152,
-                    paddingVertical: 25,
                     url: "https://img.icons8.com/plasticine/2x/car--v2.png",
                   ),
                 ],
@@ -88,16 +87,16 @@ class _RegisterVehiclesDetailsPageState
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Row(
-                    children: [
-                      const Icon(
+                    children: const [
+                      Icon(
                         Icons.info_outline,
                         size: 25,
                         color: primaryColor,
                       ),
-                      const SizedBox(
+                      SizedBox(
                         width: 7,
                       ),
-                      const Text('Detalhes',
+                      Text('Detalhes',
                           style: TextStyle(fontSize: 20, color: primaryColor)),
                     ],
                   ),

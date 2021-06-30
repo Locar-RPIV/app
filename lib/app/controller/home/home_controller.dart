@@ -28,7 +28,8 @@ class HomeController extends VehicleRepository implements IHomeController {
     if (authUser != null) {
       return authUser;
     }
-    final String authString = await const FlutterSecureStorage().read(key: "logged");
+    final String authString =
+        await const FlutterSecureStorage().read(key: "logged");
     authUser = Auth.fromJson(jsonDecode(authString) as Map<String, dynamic>);
     return Auth.fromJson(jsonDecode(authString) as Map<String, dynamic>);
   }

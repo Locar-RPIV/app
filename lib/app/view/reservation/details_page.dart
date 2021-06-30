@@ -15,9 +15,10 @@ class DetailsPage extends StatefulWidget {
 }
 
 class _DetailsPageState extends State<DetailsPage> {
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: DefaultAppBar(
+      appBar: const DefaultAppBar(
         iconBack: true,
       ),
       body: SingleChildScrollView(
@@ -32,12 +33,12 @@ class _DetailsPageState extends State<DetailsPage> {
                   : "https://img.icons8.com/plasticine/2x/car--v2.png",
             ),
             Padding(
-              padding: EdgeInsets.only(left: 30, right: 30, top: 10),
+              padding: const EdgeInsets.only(left: 30, right: 30, top: 10),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Row(
-                    children: [
+                    children: const [
                       Icon(
                         Icons.info_outline,
                         size: 25,
@@ -50,64 +51,64 @@ class _DetailsPageState extends State<DetailsPage> {
                           style: TextStyle(fontSize: 20, color: primaryColor)),
                     ],
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   Text.rich(TextSpan(
                       text: 'Marca: ',
-                      style: TextStyle(fontSize: 20),
+                      style: const TextStyle(fontSize: 20),
                       children: [
                         TextSpan(
-                          text: "${widget.vehicleSummary.marca}",
-                          style: TextStyle(
+                          text: widget.vehicleSummary.marca,
+                          style: const TextStyle(
                               fontWeight: FontWeight.w100, fontSize: 20),
                         )
                       ])),
                   Container(height: 10),
                   Text.rich(TextSpan(
                       text: 'Modelo: ',
-                      style: TextStyle(fontSize: 20),
+                      style: const TextStyle(fontSize: 20),
                       children: [
                         TextSpan(
-                          text: "${widget.vehicleSummary.modelo}",
-                          style: TextStyle(
+                          text: widget.vehicleSummary.modelo,
+                          style: const TextStyle(
                               fontWeight: FontWeight.w100, fontSize: 20),
                         )
                       ])),
                   Container(height: 10),
                   Text.rich(TextSpan(
                       text: 'Potência: ',
-                      style: TextStyle(fontSize: 20),
+                      style: const TextStyle(fontSize: 20),
                       children: [
                         TextSpan(
-                          text: "${widget.vehicleSummary.potencia}",
-                          style: TextStyle(
+                          text: widget.vehicleSummary.potencia,
+                          style: const TextStyle(
                               fontWeight: FontWeight.w100, fontSize: 20),
                         )
                       ])),
                   Container(height: 10),
                   Text.rich(TextSpan(
                       text: 'Ano: ',
-                      style: TextStyle(fontSize: 20),
+                      style: const TextStyle(fontSize: 20),
                       children: [
                         TextSpan(
                           text: "${widget.vehicleSummary.ano}",
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontWeight: FontWeight.w100, fontSize: 20),
                         )
                       ])),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   Text.rich(TextSpan(
                       text: 'KM rodados: ',
-                      style: TextStyle(fontSize: 20),
+                      style: const TextStyle(fontSize: 20),
                       children: [
                         TextSpan(
                           text: "${widget.vehicleSummary.quilometragem}",
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontWeight: FontWeight.w100, fontSize: 20),
                         )
                       ])),
                   Container(height: 20),
                   Row(
-                    children: [
+                    children: const [
                       Icon(
                         Icons.attach_money_rounded,
                         size: 25,
@@ -120,12 +121,12 @@ class _DetailsPageState extends State<DetailsPage> {
                           style: TextStyle(fontSize: 20, color: primaryColor)),
                     ],
                   ),
-                  SizedBox(height: 15),
+                  const SizedBox(height: 15),
                   Text(
                     'R\$ ${widget.vehicleSummary.valorLocacao}',
-                    style: TextStyle(fontSize: 20),
+                    style: const TextStyle(fontSize: 20),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 30,
                   ),
                   Center(
@@ -141,7 +142,7 @@ class _DetailsPageState extends State<DetailsPage> {
                           );
                         }),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 25,
                   ),
                 ],

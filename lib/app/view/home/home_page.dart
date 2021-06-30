@@ -34,7 +34,7 @@ class _HomePageState extends State<HomePage> {
         user: controller.authUser,
       ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.only(left: 30.0, bottom: 30),
+        padding: const EdgeInsets.only(left: 30.0, bottom: 30),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -62,105 +62,107 @@ class _HomePageState extends State<HomePage> {
                 }
               },
             ),
-            SizedBox(
+            const SizedBox(
               height: 46,
             ),
-            Text(
+            const Text(
               "Frota da locadora",
               style: TextStyle(fontSize: 20, color: primaryColor),
             ),
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
-            isLoading
-                ? SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      children: List.generate(
-                          3,
-                          (index) => Container(
-                              padding: EdgeInsets.only(right: 25),
-                              child: VehicleButtonShimmer())),
-                    ),
-                  )
-                : listVehicles
-                        .where((element) =>
-                            element.type == VehicleType.rental &&
-                            element.tipoCombustivel == vehicleType)
-                        .isNotEmpty
-                    ? SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
-                          children: List.generate(
-                              listVehicles.length,
-                              (index) => listVehicles[index].type ==
-                                          VehicleType.rental &&
-                                      listVehicles[index].tipoCombustivel ==
-                                          vehicleType
-                                  ? Container(
-                                      padding: EdgeInsets.only(right: 25),
-                                      child: VehicleButtonComponent(
-                                        vehicle: listVehicles[index],
-                                      ),
-                                    )
-                                  : Container()),
-                        ),
-                      )
-                    : Text(
-                        "Infelizmente não temos carros frota da locadora disponíveis!"),
-            SizedBox(
+            if (isLoading)
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: List.generate(
+                      3,
+                      (index) => Container(
+                          padding: const EdgeInsets.only(right: 25),
+                          child: VehicleButtonShimmer())),
+                ),
+              )
+            else
+              listVehicles
+                      .where((element) =>
+                          element.type == VehicleType.rental &&
+                          element.tipoCombustivel == vehicleType)
+                      .isNotEmpty
+                  ? SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: List.generate(
+                            listVehicles.length,
+                            (index) => listVehicles[index].type ==
+                                        VehicleType.rental &&
+                                    listVehicles[index].tipoCombustivel ==
+                                        vehicleType
+                                ? Container(
+                                    padding: const EdgeInsets.only(right: 25),
+                                    child: VehicleButtonComponent(
+                                      vehicle: listVehicles[index],
+                                    ),
+                                  )
+                                : Container()),
+                      ),
+                    )
+                  : const Text(
+                      "Infelizmente não temos carros frota da locadora disponíveis!"),
+            const SizedBox(
               height: 48,
             ),
-            Text(
+            const Text(
               "Veículos particulares",
               style: TextStyle(fontSize: 20, color: primaryColor),
             ),
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
-            isLoading
-                ? SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      children: List.generate(
-                          3,
-                          (index) => Container(
-                              padding: EdgeInsets.only(right: 25),
-                              child: VehicleButtonShimmer())),
-                    ),
-                  )
-                : listVehicles
-                        .where((element) =>
-                            element.type == VehicleType.particular &&
-                            element.tipoCombustivel == vehicleType)
-                        .isNotEmpty
-                    ? SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
-                          children: List.generate(
-                              listVehicles.length,
-                              (index) => listVehicles[index].type ==
-                                          VehicleType.particular &&
-                                      listVehicles[index].tipoCombustivel ==
-                                          vehicleType
-                                  ? Container(
-                                      padding: EdgeInsets.only(right: 25),
-                                      child: VehicleButtonComponent(
-                                        vehicle: listVehicles[index],
-                                      ),
-                                    )
-                                  : Container()),
-                        ),
-                      )
-                    : Text(
-                        "Infelizmente não temos carros do tipo particulares disponíveis!"),
+            if (isLoading)
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: List.generate(
+                      3,
+                      (index) => Container(
+                          padding: const EdgeInsets.only(right: 25),
+                          child: VehicleButtonShimmer())),
+                ),
+              )
+            else
+              listVehicles
+                      .where((element) =>
+                          element.type == VehicleType.particular &&
+                          element.tipoCombustivel == vehicleType)
+                      .isNotEmpty
+                  ? SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: List.generate(
+                            listVehicles.length,
+                            (index) => listVehicles[index].type ==
+                                        VehicleType.particular &&
+                                    listVehicles[index].tipoCombustivel ==
+                                        vehicleType
+                                ? Container(
+                                    padding: const EdgeInsets.only(right: 25),
+                                    child: VehicleButtonComponent(
+                                      vehicle: listVehicles[index],
+                                    ),
+                                  )
+                                : Container()),
+                      ),
+                    )
+                  : const Text(
+                      "Infelizmente não temos carros do tipo particulares disponíveis!"),
           ],
         ),
       ),
     );
   }
 
-  getVehicles() async {
+  Future<void> getVehicles() async {
     setState(() {
       isLoading = true;
     });

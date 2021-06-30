@@ -14,7 +14,7 @@ abstract class IVehicleController {
 
 class VehicleController implements IVehicleController {
   @override
-  String errorText; 
+  String errorText;
 
   Future<void> getVehiculeDetails(BuildContext context,
       {String marca,
@@ -23,7 +23,7 @@ class VehicleController implements IVehicleController {
       int ano,
       int quilometragem,
       double valorLocacao}) async {
-    var response = await VehicleRepository().getAvailableVehicles();
+    final response = await VehicleRepository().getAvailableVehicles();
     if (response is PartnerVehicle) {
       Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
     }
@@ -44,7 +44,7 @@ class VehicleController implements IVehicleController {
       String chassis,
       double valorLocacao,
       bool eDeParceiro}) async {
-    var response = await VehicleRepository().postVehicles(
+    final response = await VehicleRepository().postVehicles(
         id,
         marca,
         modelo,
@@ -58,7 +58,7 @@ class VehicleController implements IVehicleController {
         renavan,
         chassis,
         valorLocacao,
-        eDeParceiro);
+        eDeParceiro: eDeParceiro);
     if (response is PartnerVehicle) {
       Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
     }

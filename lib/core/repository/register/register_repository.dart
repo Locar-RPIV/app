@@ -12,7 +12,7 @@ class RegisterRepository implements IRegisterRepository {
 
   @override
   Future<dynamic> registerClient({Register register}) async {
-    var body = {
+    final body = {
       "cpf": register.cpf,
       "nome": register.nome,
       "telefone": register.telefone,
@@ -24,15 +24,13 @@ class RegisterRepository implements IRegisterRepository {
       "isPartner": false,
       "partner": false
     };
-    print(body);
-    BaseResponseAPI response = await coreAPI.post(
+    final BaseResponseAPI response = await coreAPI.post(
         body: body, baseUrl: Endpoints.baseURL, endpoint: Endpoints.client);
 
     if (response.statusCode == 200) {
-      return Register.fromJson(response.response);
+      return Register.fromJson(response.response as Map<String, dynamic>);
     }
 
     return response;
   }
-  
 }

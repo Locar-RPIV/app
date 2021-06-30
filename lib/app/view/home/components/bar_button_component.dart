@@ -41,7 +41,7 @@ class _BarButtonComponentState extends State<BarButtonComponent> {
               widget.onChange(0);
             },
           ),
-          SizedBox(
+          const SizedBox(
             width: 10,
           ),
           ButtonBarComponent(
@@ -58,7 +58,7 @@ class _BarButtonComponentState extends State<BarButtonComponent> {
               widget.onChange(1);
             },
           ),
-          SizedBox(
+          const SizedBox(
             width: 10,
           ),
           ButtonBarComponent(
@@ -75,7 +75,7 @@ class _BarButtonComponentState extends State<BarButtonComponent> {
               widget.onChange(2);
             },
           ),
-          SizedBox(
+          const SizedBox(
             width: 10,
           ),
           ButtonBarComponent(
@@ -92,7 +92,7 @@ class _BarButtonComponentState extends State<BarButtonComponent> {
               widget.onChange(3);
             },
           ),
-          SizedBox(
+          const SizedBox(
             width: 10,
           ),
         ],

@@ -34,10 +34,10 @@ class _DefaultTextFormFieldState extends State<DefaultTextFormField> {
         if (widget.labelText != null)
           Text(
             widget.labelText,
-            style: TextStyle(fontSize: 13, color: grey),
+            style: const TextStyle(fontSize: 13, color: grey),
           ),
         if (widget.labelText != null)
-          SizedBox(
+          const SizedBox(
             height: 12,
           ),
         TextFormField(
@@ -46,16 +46,16 @@ class _DefaultTextFormFieldState extends State<DefaultTextFormField> {
           onChanged: widget.onChanged,
           keyboardType: widget.type,
           decoration: InputDecoration(
-            contentPadding: EdgeInsets.all(17),
+            contentPadding: const EdgeInsets.all(17),
             hintText: widget.hintText,
             errorText: widget.errorText,
-            errorStyle: TextStyle(color: errorColor, fontSize: 12),
+            errorStyle: const TextStyle(color: errorColor, fontSize: 12),
             focusedErrorBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(color: errorColor)),
+                borderSide: const BorderSide(color: errorColor)),
             errorBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(color: errorColor)),
+                borderSide: const BorderSide(color: errorColor)),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
             ),

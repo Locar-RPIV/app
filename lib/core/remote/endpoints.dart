@@ -1,10 +1,9 @@
 class Endpoints {
-  static var baseURL = "https://apirestful-locar.herokuapp.com";
-
-  static var automobile = "/api/automobile";
-  static var login = "/api/auth";
-  static var client = "/api/client";
-  static var reservation = "/api/reservation";
-  static var getAutomobile = "/api/automobile";
-  static var getBranchs = "/api/branch";
+  static String baseURL = "https://apirestful-locar.herokuapp.com";
+  static String automobile = "/api/automobile";
+  static String login = "/api/auth";
+  static String client = "/api/client";
+  static String reservation = "/api/reservation";
+  static String getAutomobile = "/api/automobile";
+  static String getBranchs = "/api/branch";
 }

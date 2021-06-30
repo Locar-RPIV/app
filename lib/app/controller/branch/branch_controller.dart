@@ -11,12 +11,13 @@ abstract class IBranchController {
 }
 
 class BranchController implements IBranchController {
+  @override
   Future<List<Branch>> getBranchs(BuildContext context) async {
     Future.delayed(
-        Duration(),
+        const Duration(),
         () => DefaultAlertDialog.showLoading(
             context: context, title: "Atualizando lista de filiais!"));
-    dynamic response = await BranchRepository().getBranchs();
+    final dynamic response = await BranchRepository().getBranchs();
     Navigator.pop(context);
     if (response is List<Branch>) {
       return response;

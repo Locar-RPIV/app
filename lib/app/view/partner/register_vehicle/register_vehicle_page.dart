@@ -34,7 +34,7 @@ class _RegisterVehiclePageState extends State<RegisterVehiclePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: DefaultAppBar(
+      appBar: const DefaultAppBar(
         iconBack: true,
       ),
       body: SingleChildScrollView(
@@ -139,7 +139,7 @@ class _RegisterVehiclePageState extends State<RegisterVehiclePage> {
                   ),
                   const Text(
                     "Valor",
-                    style: const TextStyle(color: primaryColor, fontSize: 20),
+                    style: TextStyle(color: primaryColor, fontSize: 20),
                   )
                 ],
               ),
@@ -180,7 +180,7 @@ class _RegisterVehiclePageState extends State<RegisterVehiclePage> {
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        border: Border.all(color: grey600, width: 1)),
+                        border: Border.all(color: grey600)),
                     child: DropdownButton(
                       underline: Container(),
                       hint: const Text("Escolha a filial"),

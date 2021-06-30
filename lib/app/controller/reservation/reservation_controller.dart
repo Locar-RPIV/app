@@ -24,7 +24,7 @@ class ReservationController implements IReservationController {
       Branch branch}) async {
     DefaultAlertDialog.showLoading(
         context: context, title: "Estamos cadastrando seu veículo!");
-    dynamic response =
+    final dynamic response =
         await ReservationRepository().createReservation(reservation);
     Navigator.pop(context);
     if (response is Reservation) {

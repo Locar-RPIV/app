@@ -19,6 +19,7 @@ class Branch {
     return data;
   }
 
-  static List<Branch> fromArray(List<dynamic> list) =>
-      list.map((json) => Branch.fromJson(json as Map<String, dynamic>)).toList();
+  static List<Branch> fromArray(List<dynamic> list) => list
+      .map((json) => Branch.fromJson(json as Map<String, dynamic>))
+      .toList();
 }

@@ -11,13 +11,15 @@ abstract class IHistoricController {
 }
 
 class HistoricController implements IHistoricController {
+  @override
   Future<List<Reservation>> getHistoric(
       BuildContext context, String cpf) async {
     Future.delayed(
-        Duration(),
+        const Duration(),
         () => DefaultAlertDialog.showLoading(
             context: context, title: "Buscando suas reservas!"));
-    dynamic response = await ReservationRepository().getReservationsByCPF(cpf);
+    final dynamic response =
+        await ReservationRepository().getReservationsByCPF(cpf);
     Navigator.pop(context);
     if (response is List<Reservation>) {
       return response;

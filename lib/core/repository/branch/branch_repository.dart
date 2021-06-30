@@ -12,12 +12,12 @@ class BranchRepository implements IBranchRepository {
 
   @override
   Future<dynamic> getBranchs() async {
-    BaseResponseAPI response = await coreAPI.get(
+    final BaseResponseAPI response = await coreAPI.get(
       baseUrl: Endpoints.baseURL,
       endpoint: Endpoints.getBranchs,
     );
     if (response.statusCode == 200) {
-      return Branch.fromArray(response.response);
+      return Branch.fromArray(response.response as List);
     }
     return response;
   }

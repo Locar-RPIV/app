@@ -16,7 +16,7 @@ class _HistoricPageState extends State<HistoricPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: DefaultAppBar(
+      appBar: const DefaultAppBar(
         iconBack: true,
       ),
       body: SingleChildScrollView(

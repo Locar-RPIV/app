@@ -13,13 +13,14 @@ final Map<String, WidgetBuilder> routes = {
   "/": (BuildContext context) => HomePage(),
   "splash": (BuildContext context) => SplashPage(),
   "login": (BuildContext context) => LoginPage(),
-  "partner/registerVehicle": (BuildContext context) => RegisterVehiclePage(),
+  "partner/registerVehicle": (BuildContext context) =>
+      const RegisterVehiclePage(),
   "partner/registerVehicleOptions": (BuildContext context) =>
       RegisterVehiclesOptionsPage(),
   "partner/registerVehicleDetails": (BuildContext context) =>
-      RegisterVehiclesDetailsPage(),
-  "reservation/details": (BuildContext context) => DetailsPage(),
+      const RegisterVehiclesDetailsPage(),
+  "reservation/details": (BuildContext context) => const DetailsPage(),
   "reservation/confirmation": (BuildContext context) =>
-      ReservationConfirmationPage(),
+      const ReservationConfirmationPage(),
   "register": (BuildContext context) => RegisterPage(),
 };

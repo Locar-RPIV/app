@@ -18,7 +18,7 @@ class DefaultAlertDialog {
           builder: (context) => Dialog(
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20)),
-                insetPadding: EdgeInsets.all(20),
+                insetPadding: const EdgeInsets.all(20),
                 child: Padding(
                   padding: const EdgeInsets.only(
                       bottom: 28, right: 28, left: 28, top: 28),
@@ -32,19 +32,19 @@ class DefaultAlertDialog {
                         color: primaryColor,
                         icon: icon ?? AppIcons.information,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Text(
                         title,
                         textAlign: TextAlign.center,
                       ),
-                      SizedBox(height: 16),
+                      const SizedBox(height: 16),
                       Text(
                         description,
                         textAlign: TextAlign.center,
                       ),
-                      SizedBox(height: 28),
+                      const SizedBox(height: 28),
                       Row(
                           mainAxisAlignment: listButtons.length > 1
                               ? MainAxisAlignment.spaceBetween
@@ -67,22 +67,22 @@ class DefaultAlertDialog {
           builder: (context) => Dialog(
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20)),
-                insetPadding: EdgeInsets.all(20),
+                insetPadding: const EdgeInsets.all(20),
                 child: Padding(
                     padding: const EdgeInsets.only(
                         bottom: 28, right: 28, left: 28, top: 28),
                     child: Row(
                       children: [
-                        CircularProgressIndicator(
+                        const CircularProgressIndicator(
                           backgroundColor: primaryColor,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 15,
                         ),
                         Flexible(
                           child: Text(
                             title,
-                            style: TextStyle(color: primaryColor),
+                            style: const TextStyle(color: primaryColor),
                           ),
                         )
                       ],

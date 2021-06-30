@@ -47,8 +47,9 @@ class VehicleSummary {
     this.type,
   });
 
-  static List<VehicleSummary> fromArray(List<dynamic> list) =>
-      list.map((json) => VehicleSummary.fromJson(json as Map<String, dynamic>)).toList();
+  static List<VehicleSummary> fromArray(List<dynamic> list) => list
+      .map((json) => VehicleSummary.fromJson(json as Map<String, dynamic>))
+      .toList();
 
   VehicleSummary.fromJson(Map<String, dynamic> json) {
     id = json['id'] as int;
@@ -70,7 +71,9 @@ class VehicleSummary {
     filial = json['filial'] as int;
     imageUrl = json['imageUrl'].toString() ?? '';
 
-    type = json['carroParceiro'] as bool ? VehicleType.particular : VehicleType.rental;
+    type = json['carroParceiro'] as bool
+        ? VehicleType.particular
+        : VehicleType.rental;
   }
 
   Map<String, dynamic> toMap() {

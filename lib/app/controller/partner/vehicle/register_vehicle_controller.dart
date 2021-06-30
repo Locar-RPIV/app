@@ -17,7 +17,7 @@ class RegisterVehicleController implements IRegisterVehicleController {
       {VehicleSummary vehicle}) async {
     DefaultAlertDialog.showLoading(
         context: context, title: "Estamos cadastrando seu veículo!");
-    dynamic response =
+    final dynamic response =
         await RegisterVehicleRepository().registerVehicle(vehicle: vehicle);
     Navigator.pop(context);
     if (response is VehicleSummary) {

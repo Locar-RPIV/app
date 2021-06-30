@@ -35,7 +35,7 @@ class LoginController implements ILoginController {
 
   @override
   Future<void> logout({BuildContext context}) async {
-    await FlutterSecureStorage().delete(key: "logged");
+    await const FlutterSecureStorage().delete(key: "logged");
     Navigator.pushNamedAndRemoveUntil(context, "login", (route) => false);
   }
 
@@ -44,13 +44,13 @@ class LoginController implements ILoginController {
       {String email, String password}) async {
     DefaultAlertDialog.showLoading(
         context: context, title: "Estamos validadando suas credenciais!");
-    var response = await LoginRepository().login(
+    final response = await LoginRepository().login(
         email: email,
         password: await FlutterBcrypt.hashPw(
             password: password, salt: r'$2b$06$C6UzMDN.H6dfI/f/IKxGhu'));
     Navigator.pop(context);
     if (response is Auth) {
-      await FlutterSecureStorage()
+      await const FlutterSecureStorage()
           .write(key: "logged", value: jsonEncode(response));
       Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
     }

@@ -30,7 +30,7 @@ class VehicleButtonComponent extends StatelessWidget {
             color: type == VehicleType.particular ? grey900 : blueLight,
             borderRadius: BorderRadius.circular(10)),
         child: Padding(
-          padding: EdgeInsets.only(left: 20, right: 20),
+          padding: const EdgeInsets.only(left: 20, right: 20),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -43,7 +43,7 @@ class VehicleButtonComponent extends StatelessWidget {
                 width: 185,
                 fit: BoxFit.contain,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 26,
               ),
               Column(
@@ -51,14 +51,14 @@ class VehicleButtonComponent extends StatelessWidget {
                 children: [
                   Text(
                     '${vehicle.modelo} ${vehicle.cor}',
-                    style: TextStyle(color: grey, fontSize: 20),
+                    style: const TextStyle(color: grey, fontSize: 20),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 7,
                   ),
                   Text(
                     Formatter.moneySettings(vehicle.valorLocacao.toString()),
-                    style: TextStyle(color: grey, fontSize: 20),
+                    style: const TextStyle(color: grey, fontSize: 20),
                   )
                 ],
               )

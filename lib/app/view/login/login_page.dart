@@ -12,20 +12,20 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  var controller = LoginController();
-  var emailTextController = TextEditingController();
-  var passwordTextController = TextEditingController();
+  LoginController controller = LoginController();
+  TextEditingController emailTextController = TextEditingController();
+  TextEditingController passwordTextController = TextEditingController();
   List<Auth> listAuth = [];
   bool isLoading = false;
 
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
+    final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.transparent,
-        actions: [
+        actions: const [
           Padding(
             padding: EdgeInsets.only(right: 49.0, top: 20),
             child: Center(
@@ -45,18 +45,17 @@ class _LoginPageState extends State<LoginPage> {
                   .icon(fit: BoxFit.cover, height: size.height / 3),
             ),
             Padding(
-              padding: EdgeInsets.only(top: 50, right: 50, left: 50),
+              padding: const EdgeInsets.only(top: 50, right: 50, left: 50),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Align(
+                  const Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
                       "LOGIN",
                       style: TextStyle(fontSize: 15),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 39,
                   ),
                   DefaultTextFormField(
@@ -74,7 +73,7 @@ class _LoginPageState extends State<LoginPage> {
                       });
                     },
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 26,
                   ),
                   DefaultTextFormField(
@@ -85,14 +84,14 @@ class _LoginPageState extends State<LoginPage> {
                     },
                     isPassword: true,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 53,
                   ),
                   DefaultButton(
                     title: "LOGIN",
                     onTap: controller.isEmailValid(emailTextController.text,
                                 byTextField: false) &&
-                            passwordTextController.text.length > 0
+                            passwordTextController.text.isNotEmpty
                         ? () {
                             controller.auth(context,
                                 email: emailTextController.text,
@@ -100,14 +99,14 @@ class _LoginPageState extends State<LoginPage> {
                           }
                         : null,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 26,
                   ),
                   InkWell(
                     onTap: () {
                       Navigator.pushNamed(context, "register");
                     },
-                    child: Text.rich(
+                    child: const Text.rich(
                       TextSpan(
                           text: "ou ",
                           style: TextStyle(
@@ -130,7 +129,7 @@ class _LoginPageState extends State<LoginPage> {
                           ]),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                 ],

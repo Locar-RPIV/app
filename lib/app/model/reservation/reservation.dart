@@ -12,15 +12,18 @@ class Reservation {
 
   Reservation.fromJson(Map<String, dynamic> json) {
     id = json['id'] as int;
-    user = json['user'] != null ? Auth.fromJson(json['user'] as Map<String, dynamic>) : null;
+    user = json['user'] != null
+        ? Auth.fromJson(json['user'] as Map<String, dynamic>)
+        : null;
     vehicle = json['veiculo'] != null
         ? VehicleSummary.fromJson(json['veiculo'] as Map<String, dynamic>)
         : null;
     dataRetirada = DateParser.getDateTime(json['dataRetirada'].toString());
   }
 
-  static List<Reservation> fromArray(List<dynamic> list) =>
-      list.map((json) => Reservation.fromJson(json as Map<String, dynamic>)).toList();
+  static List<Reservation> fromArray(List<dynamic> list) => list
+      .map((json) => Reservation.fromJson(json as Map<String, dynamic>))
+      .toList();
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};

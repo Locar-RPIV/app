@@ -15,24 +15,24 @@ class PartnerVehicle {
   bool eDeParceiro;
 
   PartnerVehicle(
-    this.id,
-    this.marca,
-    this.modelo,
-    this.potencia,
-    this.placa,
-    this.cor,
-    this.ano,
-    this.tipoCombustivel,
-    this.numeroPortas,
-    this.quilometragem,
-    this.renavan,
-    this.chassis,
-    this.valorLocacao,
-    {this.eDeParceiro}
-  );
+      this.id,
+      this.marca,
+      this.modelo,
+      this.potencia,
+      this.placa,
+      this.cor,
+      this.ano,
+      this.tipoCombustivel,
+      this.numeroPortas,
+      this.quilometragem,
+      this.renavan,
+      this.chassis,
+      this.valorLocacao,
+      {this.eDeParceiro});
 
-  static List<PartnerVehicle> fromArray(List<dynamic> list) =>
-      list.map((json) => PartnerVehicle.fromJson(json as Map<String, dynamic>)).toList();
+  static List<PartnerVehicle> fromArray(List<dynamic> list) => list
+      .map((json) => PartnerVehicle.fromJson(json as Map<String, dynamic>))
+      .toList();
 
   PartnerVehicle.fromJson(Map<String, dynamic> map) {
     id = map['id'] as int;

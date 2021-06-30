@@ -4,7 +4,11 @@ class DateParser {
   static const String dateFormat = 'dd/MM/yyyy';
 
   static DateTime getDateTime(String date) {
-    return date != null ? DateFormat(dateFormat).parse(date) : date;
+    if (date != null) {
+      return DateFormat(dateFormat).parse(date);
+    } else {
+      return null;
+    }
   }
 
   static String getDateString(DateTime date) {

@@ -11,32 +11,33 @@ class RegisterVehiclesOptionsPage extends StatefulWidget {
 
 class _RegisterVehiclesOptionsPageState
     extends State<RegisterVehiclesOptionsPage> {
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: backgroundColor,
-      appBar: DefaultAppBar(
+      appBar: const DefaultAppBar(
         iconBack: true,
       ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.only(left: 30.0, bottom: 30, right: 30),
+        padding: const EdgeInsets.only(left: 30.0, bottom: 30, right: 30),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
-            Text(
+            const Text(
               'Que tipo de veículo deseja cadastrar?',
               style: TextStyle(fontSize: 20, color: primaryColor),
             ),
-            SizedBox(
+            const SizedBox(
               height: 11,
             ),
-            Text(
+            const Text(
               'Aceitamos vários tipos',
               style: TextStyle(fontSize: 20, color: Colors.black),
             ),
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
             Row(
@@ -47,7 +48,7 @@ class _RegisterVehiclesOptionsPageState
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => RegisterVehiclePage(
+                          builder: (context) => const RegisterVehiclePage(
                                 type: 0,
                               )),
                     );
@@ -78,10 +79,10 @@ class _RegisterVehiclesOptionsPageState
                         ),
                       ],
                     ),
-                    child: Container(
+                    child: SizedBox(
                       child: Center(
                         child: RichText(
-                          text: TextSpan(
+                          text: const TextSpan(
                             children: [
                               WidgetSpan(
                                 child: Icon(
@@ -107,13 +108,13 @@ class _RegisterVehiclesOptionsPageState
                     ),
                   ),
                 ),
-                SizedBox(width: 20),
+                const SizedBox(width: 20),
                 TextButton(
                   onPressed: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => RegisterVehiclePage(
+                          builder: (context) => const RegisterVehiclePage(
                                 type: 1,
                               )),
                     );
@@ -144,10 +145,10 @@ class _RegisterVehiclesOptionsPageState
                         ),
                       ],
                     ),
-                    child: Container(
+                    child: SizedBox(
                       child: Center(
                         child: RichText(
-                          text: TextSpan(
+                          text: const TextSpan(
                             children: [
                               TextSpan(
                                 text: " ",
@@ -178,12 +179,12 @@ class _RegisterVehiclesOptionsPageState
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Row(
@@ -194,7 +195,7 @@ class _RegisterVehiclesOptionsPageState
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => RegisterVehiclePage(
+                          builder: (context) => const RegisterVehiclePage(
                                 type: 2,
                               )),
                     );
@@ -225,10 +226,10 @@ class _RegisterVehiclesOptionsPageState
                         ),
                       ],
                     ),
-                    child: Container(
+                    child: SizedBox(
                       child: Center(
                           child: RichText(
-                        text: TextSpan(
+                        text: const TextSpan(
                           children: [
                             TextSpan(
                               text: "  ",
@@ -258,13 +259,13 @@ class _RegisterVehiclesOptionsPageState
                     ),
                   ),
                 ),
-                SizedBox(width: 20),
+                const SizedBox(width: 20),
                 TextButton(
                   onPressed: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => RegisterVehiclePage(
+                          builder: (context) => const RegisterVehiclePage(
                                 type: 3,
                               )),
                     );
@@ -295,10 +296,10 @@ class _RegisterVehiclesOptionsPageState
                         ),
                       ],
                     ),
-                    child: Container(
+                    child: SizedBox(
                       child: Center(
                           child: RichText(
-                        text: TextSpan(
+                        text: const TextSpan(
                           children: [
                             TextSpan(
                               text: "    ",
@@ -328,7 +329,7 @@ class _RegisterVehiclesOptionsPageState
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
               ],

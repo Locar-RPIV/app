@@ -24,8 +24,7 @@ class VehicleRepository implements IVehicleRepository {
 
       return response;
     } catch (e) {
-      return BaseResponseAPI(
-          statusCode: 500, statusMessage: "error");
+      return BaseResponseAPI(statusCode: 500, statusMessage: "error");
     }
   }
 
@@ -66,12 +65,12 @@ class VehicleRepository implements IVehicleRepository {
           baseUrl: Endpoints.baseURL,
           endpoint: Endpoints.getAutomobile);
       if (response.statusCode == 200) {
-        return PartnerVehicle.fromJson(response.response as Map<String, dynamic>);
+        return PartnerVehicle.fromJson(
+            response.response as Map<String, dynamic>);
       }
       return response;
     } catch (e) {
-      return BaseResponseAPI(
-          statusCode: 500, statusMessage: "error");
+      return BaseResponseAPI(statusCode: 500, statusMessage: "error");
     }
   }
 }

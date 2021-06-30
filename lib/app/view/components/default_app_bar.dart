@@ -9,35 +9,36 @@ class DefaultAppBar extends PreferredSize {
   final Auth user;
   final Function onBack;
 
-  DefaultAppBar({this.user, this.size, this.iconBack = false, this.onBack});
+  const DefaultAppBar(
+      {this.user, this.size, this.iconBack = false, this.onBack});
 
   @override
-  Size get preferredSize => size ?? Size.fromHeight(115);
+  Size get preferredSize => Size(size, size) ?? const Size.fromHeight(115);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: double.maxFinite,
       child: Center(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Padding(
-              padding: EdgeInsets.only(left: 33),
+              padding: const EdgeInsets.only(left: 33),
               child: InkWell(
-                child: Icon(
-                  !iconBack ? Icons.menu : Icons.arrow_back,
-                  color: primaryColor,
-                  size: 26,
-                ),
                 onTap: () {
                   !iconBack
                       ? DefaultTopSheet.show(context, user: user)
                       : onBack ?? Navigator.pop(context);
                 },
+                child: Icon(
+                  !iconBack ? Icons.menu : Icons.arrow_back,
+                  color: primaryColor,
+                  size: 26,
+                ),
               ),
             ),
-            Padding(
+            const Padding(
               padding: EdgeInsets.only(right: 43),
               child: Text(
                 "LOCAR",

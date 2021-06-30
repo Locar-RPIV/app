@@ -23,16 +23,14 @@ class AppIcons {
 extension AppIconsExt on String {
   AppIcon icon({
     String icon,
-    Key key,
     BoxFit fit,
     Color color,
     double width,
     double height,
-    Function onTap,
+    void Function() onTap,
   }) {
     return AppIcon(
       icon: this,
-      key: key,
       fit: fit,
       color: color,
       width: width,
@@ -45,22 +43,20 @@ extension AppIconsExt on String {
 class AppIcon extends StatelessWidget {
   const AppIcon({
     this.icon,
-    this.key,
     this.fit,
     this.color,
     this.width,
     this.height,
     this.onTap,
     this.appIconType = AppIconType.svg,
-  }) : super(key: key);
+  });
 
-  final Key key;
   final String icon;
   final BoxFit fit;
   final Color color;
   final double height;
   final double width;
-  final Function onTap;
+  final void Function() onTap;
   final AppIconType appIconType;
 
   @override

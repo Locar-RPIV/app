@@ -12,41 +12,41 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
-  var controller = RegisterController();
-  var cpfTextController = TextEditingController();
-  var nomeTextController = TextEditingController();
-  var telefoneTextController = TextEditingController();
-  var dataNascimentoTextController = TextEditingController();
-  var cnhTextController = TextEditingController();
-  var emailTextController = TextEditingController();
-  var passwordTextController = TextEditingController();
+  RegisterController controller = RegisterController();
+  TextEditingController cpfTextController = TextEditingController();
+  TextEditingController nomeTextController = TextEditingController();
+  TextEditingController telefoneTextController = TextEditingController();
+  TextEditingController dataNascimentoTextController = TextEditingController();
+  TextEditingController cnhTextController = TextEditingController();
+  TextEditingController emailTextController = TextEditingController();
+  TextEditingController passwordTextController = TextEditingController();
   int cpf = 0;
   int cnh = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: DefaultAppBar(
+      appBar: const DefaultAppBar(
         iconBack: true,
       ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.symmetric(horizontal: 49, vertical: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 49, vertical: 20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
+            const Text(
               "DADOS PESSOAIS",
               style: TextStyle(color: primaryColor, fontSize: 15),
             ),
             Padding(
-              padding: EdgeInsets.only(top: 39),
+              padding: const EdgeInsets.only(top: 39),
               child: DefaultTextFormField(
                 hintText: "Nome",
                 controller: nomeTextController,
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(top: 25),
+              padding: const EdgeInsets.only(top: 25),
               child: Row(
                 children: [
                   Expanded(
@@ -57,7 +57,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       onChanged: (value) {},
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 19,
                   ),
                   Expanded(
@@ -70,7 +70,7 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(top: 25),
+              padding: const EdgeInsets.only(top: 25),
               child: Row(
                 children: [
                   Expanded(
@@ -80,7 +80,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       controller: telefoneTextController,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 19,
                   ),
                   Expanded(
@@ -93,7 +93,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 ],
               ),
             ),
-            Padding(
+            const Padding(
               padding: EdgeInsets.only(top: 50),
               child: Text(
                 "DADOS DE ACESSO",
@@ -101,14 +101,14 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(top: 35),
+              padding: const EdgeInsets.only(top: 35),
               child: DefaultTextFormField(
                 hintText: "USUÁRIO",
                 controller: emailTextController,
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(top: 26),
+              padding: const EdgeInsets.only(top: 26),
               child: DefaultTextFormField(
                 hintText: "SENHA",
                 isPassword: true,
@@ -116,7 +116,7 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(top: 30),
+              padding: const EdgeInsets.only(top: 30),
               child: DefaultButton(
                 title: "CADASTRAR",
                 onTap: () {
@@ -137,13 +137,13 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(top: 10),
+              padding: const EdgeInsets.only(top: 10),
               child: Center(
                 child: InkWell(
                   onTap: () {
                     Navigator.pop(context);
                   },
-                  child: Text.rich(
+                  child: const Text.rich(
                     TextSpan(
                         text: "ou ",
                         style: TextStyle(

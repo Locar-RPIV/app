@@ -13,18 +13,18 @@ class RegisterVehicleRepository implements IRegisterVehicleRepository {
   @override
   Future<dynamic> registerVehicle({VehicleSummary vehicle}) async {
     try {
-      BaseResponseAPI response = await coreAPI.post(
+      final BaseResponseAPI response = await coreAPI.post(
           baseUrl: Endpoints.baseURL,
           endpoint: Endpoints.automobile,
           body: vehicle.toMap());
       if (response.statusCode == 200) {
-        return VehicleSummary.fromJson(response.response);
+        return VehicleSummary.fromJson(
+            response.response as Map<String, dynamic>);
       }
 
       return response;
     } catch (e) {
-      return BaseResponseAPI(
-          response: null, statusCode: 500, statusMessage: "error");
+      return BaseResponseAPI(statusCode: 500, statusMessage: "error");
     }
   }
 }
