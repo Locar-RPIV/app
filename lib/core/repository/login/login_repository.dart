@@ -13,18 +13,17 @@ class LoginRepository implements ILoginRepository {
   @override
   Future<dynamic> login({String email, String password}) async {
     try {
-      var body = {"email": email, "password": password};
-      BaseResponseAPI response = await coreAPI.post(
+      final body = {"email": email, "password": password};
+      final BaseResponseAPI response = await coreAPI.post(
           body: body, baseUrl: Endpoints.baseURL, endpoint: Endpoints.login);
 
       if (response.statusCode == 200) {
-        return Auth.fromJson(response.response);
+        return Auth.fromJson(response.response as Map<String, dynamic>);
       }
 
       return response;
     } catch (e) {
-      return BaseResponseAPI(
-          response: null, statusCode: 500, statusMessage: "error");
+      return BaseResponseAPI(statusCode: 500, statusMessage: "error");
     }
   }
 }

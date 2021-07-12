@@ -1,5 +1,7 @@
+import 'package:app/app/controller/branch/branch_controller.dart';
 import 'package:app/app/controller/home/home_controller.dart';
 import 'package:app/app/controller/partner/vehicle/register_vehicle_controller.dart';
+import 'package:app/app/model/branch/branch.dart';
 import 'package:app/app/model/home/vehicle_summary.dart';
 import 'package:app/app/model/login/auth.dart';
 import 'package:app/app/view/components/default_app_bar.dart';
@@ -19,30 +21,33 @@ class RegisterVehiclePage extends StatefulWidget {
 }
 
 class _RegisterVehiclePageState extends State<RegisterVehiclePage> {
-  var brandTextController = TextEditingController();
-  var modelTextController = TextEditingController();
-  var yearTextController = TextEditingController();
-  var kmTextController = TextEditingController();
-  var valueTextController = TextEditingController();
-  var placaTextController = TextEditingController();
-  var corTextController = TextEditingController();
+  TextEditingController brandTextController = TextEditingController();
+  TextEditingController modelTextController = TextEditingController();
+  TextEditingController yearTextController = TextEditingController();
+  TextEditingController kmTextController = TextEditingController();
+  TextEditingController valueTextController = TextEditingController();
+  TextEditingController placaTextController = TextEditingController();
+  TextEditingController corTextController = TextEditingController();
+  int _selectedBranch = 0;
+  int _selectedBranchID = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: DefaultAppBar(
-        iconBack: true,),
+      appBar: const DefaultAppBar(
+        iconBack: true,
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            VehicleWithBackgroundComponent(
+            const VehicleWithBackgroundComponent(
               url: "https://img.icons8.com/plasticine/2x/car--v2.png",
             ),
-            SizedBox(
+            const SizedBox(
               height: 36,
             ),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 29),
+              padding: const EdgeInsets.symmetric(horizontal: 29),
               child: Row(
                 children: [
                   Expanded(
@@ -52,7 +57,7 @@ class _RegisterVehiclePageState extends State<RegisterVehiclePage> {
                       onChanged: (value) => setState(() {}),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 36,
                   ),
                   Expanded(
@@ -65,11 +70,11 @@ class _RegisterVehiclePageState extends State<RegisterVehiclePage> {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 22,
             ),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 29),
+              padding: const EdgeInsets.symmetric(horizontal: 29),
               child: Row(
                 children: [
                   Expanded(
@@ -80,7 +85,7 @@ class _RegisterVehiclePageState extends State<RegisterVehiclePage> {
                       onChanged: (value) => setState(() {}),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 36,
                   ),
                   Expanded(
@@ -88,53 +93,51 @@ class _RegisterVehiclePageState extends State<RegisterVehiclePage> {
                       controller: kmTextController,
                       labelText: "KM RODADOS",
                       type: TextInputType.number,
-                    onChanged: (value) => setState(() {}),
+                      onChanged: (value) => setState(() {}),
                     ),
                   ),
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 22,
             ),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 29),
+              padding: const EdgeInsets.symmetric(horizontal: 29),
               child: Row(
                 children: [
                   Expanded(
                     child: DefaultTextFormField(
                       controller: placaTextController,
                       labelText: "PLACA",
-                      type: TextInputType.text,
                       onChanged: (value) => setState(() {}),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 36,
                   ),
                   Expanded(
                     child: DefaultTextFormField(
                       controller: corTextController,
                       labelText: "COR",
-                      type: TextInputType.text,
-                    onChanged: (value) => setState(() {}),
+                      onChanged: (value) => setState(() {}),
                     ),
                   ),
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 45,
             ),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 29),
+              padding: const EdgeInsets.symmetric(horizontal: 29),
               child: Row(
                 children: [
                   AppIcons.cash.icon(color: primaryColor, height: 18),
-                  SizedBox(
+                  const SizedBox(
                     width: 18,
                   ),
-                  Text(
+                  const Text(
                     "Valor",
                     style: TextStyle(color: primaryColor, fontSize: 20),
                   )
@@ -142,7 +145,7 @@ class _RegisterVehiclePageState extends State<RegisterVehiclePage> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 29, vertical: 33),
+              padding: const EdgeInsets.symmetric(horizontal: 29, vertical: 33),
               child: DefaultTextFormField(
                 controller: valueTextController,
                 labelText: "VALOR DA DIÁRIA",
@@ -151,31 +154,87 @@ class _RegisterVehiclePageState extends State<RegisterVehiclePage> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 29, vertical: 33),
+              padding: const EdgeInsets.symmetric(horizontal: 29),
+              child: Row(
+                children: [
+                  AppIcons.cash.icon(color: primaryColor, height: 18),
+                  const SizedBox(
+                    width: 18,
+                  ),
+                  const Text(
+                    "Filial",
+                    style: TextStyle(color: primaryColor, fontSize: 20),
+                  )
+                ],
+              ),
+            ),
+            const SizedBox(
+              height: 29,
+            ),
+            FutureBuilder<List<Branch>>(
+              future: BranchController().getBranchs(context),
+              builder: (context, snapshot) {
+                if (snapshot.hasData && !snapshot.hasError) {
+                  return Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 29),
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(color: grey600)),
+                    child: DropdownButton(
+                      underline: Container(),
+                      hint: const Text("Escolha a filial"),
+                      value: _selectedBranch,
+                      onChanged: (int value) {
+                        setState(() {
+                          _selectedBranch = value;
+                          _selectedBranchID = snapshot.data[value].id;
+                        });
+                      },
+                      isExpanded: true,
+                      items: List.generate(
+                          snapshot.data.length,
+                          (index) => DropdownMenuItem(
+                                value: index,
+                                child: Text(snapshot.data[index].nome),
+                              )),
+                    ),
+                  );
+                } else {
+                  return const CircularProgressIndicator(
+                    backgroundColor: primaryColor,
+                  );
+                }
+              },
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 29, vertical: 33),
               child: DefaultButton(
                 title: "CADASTRAR",
-                onTap: isFormValid() ? () async {
-                  Auth user = await HomeController().getUser();
-                  RegisterVehicleController().registerVehicle(context,
-                    vehicle: VehicleSummary (
-                      ano: int.parse(yearTextController.text),
-                      carroParceiro: true,
-                      chassi: "N/A",
-                      cor: corTextController.text,
-                      cpfParceiro: user.cpf,
-                      filial: 0,
-                      marca: brandTextController.text,
-                      modelo: modelTextController.text,
-                      numeroPortas: 0,
-                      placa: placaTextController.text,
-                      potencia: 0,
-                      quilometragem: int.parse(kmTextController.text),
-                      renavan: 0,
-                      tipoCombustivel: widget.type,
-                      valorLocacao: double.parse(valueTextController.text)
-                    )
-                  );
-                } : null,
+                onTap: isFormValid()
+                    ? () async {
+                        final Auth user = await HomeController().getUser();
+                        RegisterVehicleController().registerVehicle(context,
+                            vehicle: VehicleSummary(
+                                ano: int.parse(yearTextController.text),
+                                carroParceiro: true,
+                                chassi: "N/A",
+                                cor: corTextController.text,
+                                cpfParceiro: user.cpf,
+                                filial: _selectedBranchID,
+                                marca: brandTextController.text,
+                                modelo: modelTextController.text,
+                                numeroPortas: 0,
+                                status: "Disponível",
+                                placa: placaTextController.text,
+                                potencia: "0",
+                                quilometragem: int.parse(kmTextController.text),
+                                renavan: 0,
+                                tipoCombustivel: widget.type,
+                                valorLocacao:
+                                    double.parse(valueTextController.text)));
+                      }
+                    : null,
               ),
             )
           ],
@@ -184,13 +243,13 @@ class _RegisterVehiclePageState extends State<RegisterVehiclePage> {
     );
   }
 
-  bool isFormValid(){
+  bool isFormValid() {
     return brandTextController.text.isNotEmpty &&
-      modelTextController.text.isNotEmpty &&
+        modelTextController.text.isNotEmpty &&
         yearTextController.text.isNotEmpty &&
-          kmTextController.text.isNotEmpty &&
-            corTextController.text.isNotEmpty &&
-            placaTextController.text.isNotEmpty &&
-            valueTextController.text.isNotEmpty;
+        kmTextController.text.isNotEmpty &&
+        corTextController.text.isNotEmpty &&
+        placaTextController.text.isNotEmpty &&
+        valueTextController.text.isNotEmpty;
   }
 }

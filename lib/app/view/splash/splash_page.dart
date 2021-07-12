@@ -11,10 +11,10 @@ class SplashPage extends StatefulWidget {
 class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
-    Future.delayed(Duration(seconds: 4)).then((_) async {
-      if(await FlutterSecureStorage().read(key: "logged") != null){
+    Future.delayed(const Duration(seconds: 4)).then((_) async {
+      if (await const FlutterSecureStorage().read(key: "logged") != null) {
         Navigator.pushNamedAndRemoveUntil(context, '/', (context) => true);
-      }else{
+      } else {
         Navigator.pushNamedAndRemoveUntil(context, 'login', (context) => true);
       }
     });
@@ -26,15 +26,15 @@ class _SplashPageState extends State<SplashPage> {
     return Scaffold(
       body: Stack(
         children: <Widget>[
-          new Container(
+          Container(
             height: double.maxFinite,
             width: double.maxFinite,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
                 image: DecorationImage(
                     image: AssetImage('assets/images/splashScreen01.png'),
                     fit: BoxFit.fitWidth)),
           ),
-          new Center(
+          const Center(
             child: Text(
               "LOCAR",
               style: TextStyle(

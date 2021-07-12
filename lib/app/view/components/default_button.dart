@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class DefaultButton extends StatefulWidget {
   final String title;
-  final Function onTap;
+  final void Function() onTap;
 
   const DefaultButton({Key key, @required this.title, this.onTap})
       : super(key: key);
@@ -29,7 +29,8 @@ class _DefaultButtonState extends State<DefaultButton> {
                   (states) => RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10.0)),
                 )),
-            child: Container(
+            onPressed: widget.onTap,
+            child: SizedBox(
               width: double.maxFinite,
               height: 40,
               child: Center(
@@ -42,7 +43,6 @@ class _DefaultButtonState extends State<DefaultButton> {
                 ),
               ),
             ),
-            onPressed: widget.onTap,
           ),
         ),
       ],

@@ -5,8 +5,6 @@ class Formatter {
     return toCurrencyString(value,
         leadingSymbol: leadingSymbol,
         useSymbolPadding: true,
-        mantissaLength: 2,
-        thousandSeparator: ThousandSeparator.Period,
-        shorteningPolicy: ShorteningPolicy.NoShortening);
+        thousandSeparator: ThousandSeparator.Period);
   }
 }

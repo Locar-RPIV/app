@@ -31,7 +31,7 @@ class _BarButtonComponentState extends State<BarButtonComponent> {
             title: "Carros",
             icon: AppIcons.car,
             isSelected: car,
-            onPressed: (){
+            onPressed: () {
               setState(() {
                 bus = false;
                 car = true;
@@ -41,14 +41,14 @@ class _BarButtonComponentState extends State<BarButtonComponent> {
               widget.onChange(0);
             },
           ),
-          SizedBox(
+          const SizedBox(
             width: 10,
           ),
           ButtonBarComponent(
             title: "Ônibus",
             icon: AppIcons.bus,
             isSelected: bus,
-            onPressed: (){
+            onPressed: () {
               setState(() {
                 bus = true;
                 car = false;
@@ -58,14 +58,14 @@ class _BarButtonComponentState extends State<BarButtonComponent> {
               widget.onChange(1);
             },
           ),
-          SizedBox(
+          const SizedBox(
             width: 10,
           ),
           ButtonBarComponent(
             title: "Bicicleta",
             icon: AppIcons.bike,
             isSelected: bike,
-            onPressed: (){
+            onPressed: () {
               setState(() {
                 bus = false;
                 car = false;
@@ -75,14 +75,14 @@ class _BarButtonComponentState extends State<BarButtonComponent> {
               widget.onChange(2);
             },
           ),
-          SizedBox(
+          const SizedBox(
             width: 10,
           ),
           ButtonBarComponent(
             title: "Motocicleta",
             icon: AppIcons.motocicle,
             isSelected: moto,
-            onPressed: (){
+            onPressed: () {
               setState(() {
                 bus = false;
                 car = false;
@@ -92,7 +92,7 @@ class _BarButtonComponentState extends State<BarButtonComponent> {
               widget.onChange(3);
             },
           ),
-          SizedBox(
+          const SizedBox(
             width: 10,
           ),
         ],

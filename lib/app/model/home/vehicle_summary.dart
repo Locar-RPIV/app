@@ -8,7 +8,7 @@ class VehicleSummary {
   int id;
   String marca;
   String modelo;
-  int potencia;
+  String potencia;
   String placa;
   String cor;
   int ano;
@@ -19,9 +19,10 @@ class VehicleSummary {
   String chassi;
   double valorLocacao;
   bool carroParceiro;
-  int cpfParceiro;
+  String cpfParceiro;
   int filial;
   String imageUrl;
+  String status;
 
   VehicleType type;
   VehicleSummary({
@@ -33,6 +34,7 @@ class VehicleSummary {
     this.cor,
     this.ano,
     this.tipoCombustivel,
+    this.status,
     this.numeroPortas,
     this.quilometragem,
     this.renavan,
@@ -45,29 +47,33 @@ class VehicleSummary {
     this.type,
   });
 
-  static List<VehicleSummary> fromArray(List<dynamic> list) =>
-      list.map((json) => VehicleSummary.fromJson(json)).toList();
+  static List<VehicleSummary> fromArray(List<dynamic> list) => list
+      .map((json) => VehicleSummary.fromJson(json as Map<String, dynamic>))
+      .toList();
 
   VehicleSummary.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    marca = json['marca'];
-    modelo = json['modelo'];
-    potencia = json['potencia'];
-    placa = json['placa'];
-    cor = json['cor'];
-    ano = json['ano'];
-    tipoCombustivel = json['tipoCombustivel'];
-    numeroPortas = json['numeroPortas'];
-    quilometragem = json['quilometragem'];
-    renavan = json['renavan'];
-    chassi = json['chassi'];
-    valorLocacao = json['valorLocacao'];
-    carroParceiro = json['carroParceiro'];
-    cpfParceiro = json['cpfParceiro'];
-    filial = json['filial'];
-    imageUrl = json['imageUrl'];
+    id = json['id'] as int;
+    marca = json['marca'].toString();
+    modelo = json['modelo'].toString();
+    potencia = json['potencia'].toString();
+    placa = json['placa'].toString();
+    status = json['status'].toString();
+    cor = json['cor'].toString();
+    ano = json['ano'] as int;
+    tipoCombustivel = json['tipoCombustivel'] as int;
+    numeroPortas = json['numeroPortas'] as int;
+    quilometragem = json['quilometragem'] as int;
+    renavan = json['renavan'] as int;
+    chassi = json['chassi'].toString();
+    valorLocacao = double.parse(json['valorLocacao'].toString());
+    carroParceiro = json['carroParceiro'] as bool;
+    cpfParceiro = json['cpfParceiro'].toString();
+    filial = json['filial'] as int;
+    imageUrl = json['imageUrl'].toString() ?? '';
 
-    type = json['carroParceiro'] ? VehicleType.particular : VehicleType.rental;
+    type = json['carroParceiro'] as bool
+        ? VehicleType.particular
+        : VehicleType.rental;
   }
 
   Map<String, dynamic> toMap() {
@@ -77,6 +83,7 @@ class VehicleSummary {
       'modelo': modelo,
       'potencia': potencia,
       'placa': placa,
+      'status': status,
       'cor': cor,
       'ano': ano,
       'tipoCombustivel': tipoCombustivel,

@@ -1,6 +1,6 @@
 class Register {
   int id;
-  int cpf;
+  String cpf;
   String nome;
   String telefone;
   String dataNascimento;
@@ -8,7 +8,7 @@ class Register {
   String password;
   bool admin;
   int pontosFidelidade;
-  int cnh;
+  String cnh;
   bool partner;
 
   Register(
@@ -25,32 +25,31 @@ class Register {
       this.partner});
 
   Register.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    cpf = json['cpf'];
-    nome = json['nome'];
-    telefone = json['telefone'];
-    dataNascimento = json['dataNascimento'];
-    email = json['email'];
-    password = json['password'];
-    admin = json['admin'];
-    pontosFidelidade = json['pontosFidelidade'];
-    cnh = json['cnh'];
-    partner = json['partner'];
+    id = json['id'] as int;
+    cpf = json['cpf'].toString();
+    nome = json['nome'].toString();
+    telefone = json['telefone'].toString();
+    dataNascimento = json['dataNascimento'].toString();
+    email = json['email'].toString();
+    password = json['password'].toString();
+    admin = json['admin'] as bool;
+    cnh = json['cnh'].toString();
+    partner = json['isPartner'] as bool;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['cpf'] = this.cpf;
-    data['nome'] = this.nome;
-    data['telefone'] = this.telefone;
-    data['dataNascimento'] = this.dataNascimento;
-    data['email'] = this.email;
-    data['password'] = this.password;
-    data['admin'] = this.admin;
-    data['pontosFidelidade'] = this.pontosFidelidade;
-    data['cnh'] = this.cnh;
-    data['partner'] = this.partner;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['cpf'] = cpf;
+    data['nome'] = nome;
+    data['telefone'] = telefone;
+    data['dataNascimento'] = dataNascimento;
+    data['email'] = email;
+    data['password'] = password;
+    data['admin'] = admin;
+    data['pontosFidelidade'] = pontosFidelidade;
+    data['cnh'] = cnh;
+    data['partner'] = partner;
     return data;
   }
 }

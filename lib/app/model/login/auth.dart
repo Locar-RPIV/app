@@ -1,6 +1,6 @@
 class Auth {
   int id;
-  int cpf;
+  String cpf;
   String nome;
   String telefone;
   String dataNascimento;
@@ -21,31 +21,31 @@ class Auth {
       this.admin});
 
   static List<Auth> fromArray(List<dynamic> list) =>
-      list.map((json) => Auth.fromJson(json)).toList();
+      list.map((json) => Auth.fromJson(json as Map<String, dynamic>)).toList();
 
   Auth.fromJson(Map<String, dynamic> map) {
-    id = map['id'];
-    cpf = map['cpf'];
-    nome = map['nome'];
-    telefone = map['telefone'];
-    dataNascimento = map['dataNascimento'];
-    email = map['email'];
-    password = map['password'];
-    admin = map['admin'];
-    partner = map['partner'];
+    id = map['id'] as int;
+    cpf = map['cpf'].toString();
+    nome = map['nome'].toString();
+    telefone = map['telefone'].toString();
+    dataNascimento = map['dataNascimento'].toString();
+    email = map['email'].toString();
+    password = map['password'].toString();
+    admin = map['admin'] as bool;
+    partner = map['partner'] as bool;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['cpf'] = this.cpf;
-    data['nome'] = this.nome;
-    data['telefone'] = this.telefone;
-    data['dataNascimento'] = this.dataNascimento;
-    data['email'] = this.email;
-    data['password'] = this.password;
-    data['admin'] = this.admin;
-    data['partner'] = this.partner;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['cpf'] = cpf;
+    data['nome'] = nome;
+    data['telefone'] = telefone;
+    data['dataNascimento'] = dataNascimento;
+    data['email'] = email;
+    data['password'] = password;
+    data['admin'] = admin;
+    data['partner'] = partner;
     return data;
   }
 }

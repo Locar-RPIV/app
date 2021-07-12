@@ -1,3 +1,4 @@
+import 'package:app/app/model/branch/branch.dart';
 import 'package:app/app/model/home/vehicle_summary.dart';
 import 'package:app/app/model/reservation/reservation.dart';
 import 'package:app/app/view/components/default_app_bar.dart';
@@ -11,9 +12,14 @@ class ReservationConfirmationPage extends StatefulWidget {
   final VehicleSummary vehicleSummary;
   final String location;
   final Reservation reservation;
+  final Branch branch;
 
   const ReservationConfirmationPage(
-      {Key key, this.vehicleSummary, this.location, this.reservation})
+      {Key key,
+      this.vehicleSummary,
+      this.branch,
+      this.location,
+      this.reservation})
       : super(key: key);
 
   @override
@@ -23,6 +29,7 @@ class ReservationConfirmationPage extends StatefulWidget {
 
 class _ReservationConfirmationPageState
     extends State<ReservationConfirmationPage> {
+  @override
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () {
@@ -45,13 +52,13 @@ class _ReservationConfirmationPageState
         body: SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
-              Container(
+              SizedBox(
                 child: Center(
                   child: RichText(
-                    text: TextSpan(
+                    text: const TextSpan(
                       text: "Deu tudo ",
                       style: TextStyle(fontSize: 20, color: primaryColor),
                       children: <TextSpan>[
@@ -67,10 +74,10 @@ class _ReservationConfirmationPageState
                   ),
                 ),
               ),
-              Container(
+              SizedBox(
                 child: Center(
                   child: RichText(
-                    text: TextSpan(
+                    text: const TextSpan(
                       text: ' ',
                       style: TextStyle(fontSize: 20, color: primaryColor),
                       children: <TextSpan>[
@@ -89,7 +96,7 @@ class _ReservationConfirmationPageState
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 50,
               ),
               Container(
@@ -99,49 +106,48 @@ class _ReservationConfirmationPageState
                     color: grey900, borderRadius: BorderRadius.circular(10)),
                 child: Column(
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 50,
                     ),
-                    Text("Código da reserva: ",
+                    const Text("Código da reserva: ",
                         style: TextStyle(fontSize: 20, color: Colors.black)),
                     Text("${widget.reservation.id}",
-                        style: TextStyle(fontSize: 20, color: Colors.black)),
+                        style:
+                            const TextStyle(fontSize: 20, color: Colors.black)),
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 50,
               ),
               Container(),
               Padding(
-                padding: EdgeInsets.only(left: 30, right: 30),
+                padding: const EdgeInsets.only(left: 30, right: 30),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Container(
+                    SizedBox(
                       child: RichText(
                         text: TextSpan(
                           children: [
-                            WidgetSpan(
+                            const WidgetSpan(
                               child: Icon(
                                 Icons.directions_car,
                                 size: 30,
                                 color: primaryColor,
                               ),
                             ),
-                            TextSpan(
+                            const TextSpan(
                                 text: ' ',
                                 style: TextStyle(
                                     fontSize: 20, color: primaryColor)),
-                            TextSpan(
+                            const TextSpan(
                                 text: "Modelo: ",
                                 style: TextStyle(
                                     fontSize: 20, color: Colors.black87)),
                             TextSpan(
-                              // text: "${widget.vehicleSummary.modelo}",
-                              text: "${widget.vehicleSummary.modelo}",
-
-                              style: TextStyle(
+                              text: widget.vehicleSummary.modelo,
+                              style: const TextStyle(
                                   fontSize: 20,
                                   color: Colors.black87,
                                   fontWeight: FontWeight.w100),
@@ -150,31 +156,31 @@ class _ReservationConfirmationPageState
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 30,
                     ),
-                    Container(
+                    SizedBox(
                       child: RichText(
                         text: TextSpan(
                           children: [
-                            WidgetSpan(
+                            const WidgetSpan(
                               child: Icon(
                                 Icons.pin_drop,
                                 size: 30,
                                 color: primaryColor,
                               ),
                             ),
-                            TextSpan(
+                            const TextSpan(
                                 text: ' ',
                                 style: TextStyle(
                                     fontSize: 23, color: primaryColor)),
-                            TextSpan(
-                                text: "Retirar na ",
+                            const TextSpan(
+                                text: "Retirar na filial em: ",
                                 style: TextStyle(
                                     fontSize: 20, color: Colors.black87)),
                             TextSpan(
-                              text: '${widget.location}',
-                              style: TextStyle(
+                              text: widget.location,
+                              style: const TextStyle(
                                   fontSize: 20,
                                   color: Colors.black87,
                                   fontWeight: FontWeight.w100),
@@ -183,14 +189,16 @@ class _ReservationConfirmationPageState
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     Padding(
-                      padding: EdgeInsets.only(left: 35, right: 30, bottom: 50),
+                      padding: const EdgeInsets.only(
+                          left: 35, right: 30, bottom: 50),
                       child: Text(
-                        'Travessa maravilha tristeza,número 0, Centenário, Alegrete - BR',
-                        style: TextStyle(fontSize: 14, color: Colors.black),
+                        widget.branch.nome,
+                        style:
+                            const TextStyle(fontSize: 14, color: Colors.black),
                       ),
                     ),
                     Center(

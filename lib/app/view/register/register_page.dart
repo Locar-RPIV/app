@@ -12,53 +12,54 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
-  var controller = RegisterController();
-  var cpfTextController = TextEditingController();
-  var nomeTextController = TextEditingController();
-  var telefoneTextController = TextEditingController();
-  var dataNascimentoTextController = TextEditingController();
-  var cnhTextController = TextEditingController();
-  var emailTextController = TextEditingController();
-  var passwordTextController = TextEditingController();
+  RegisterController controller = RegisterController();
+  TextEditingController cpfTextController = TextEditingController();
+  TextEditingController nomeTextController = TextEditingController();
+  TextEditingController telefoneTextController = TextEditingController();
+  TextEditingController dataNascimentoTextController = TextEditingController();
+  TextEditingController cnhTextController = TextEditingController();
+  TextEditingController emailTextController = TextEditingController();
+  TextEditingController passwordTextController = TextEditingController();
   int cpf = 0;
   int cnh = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: DefaultAppBar(iconBack: true,),
+      appBar: const DefaultAppBar(
+        iconBack: true,
+      ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.symmetric(horizontal: 49, vertical: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 49, vertical: 20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text("DADOS PESSOAIS",
-              style: TextStyle(
-                color: primaryColor,
-                fontSize: 15
-              ),
+            const Text(
+              "DADOS PESSOAIS",
+              style: TextStyle(color: primaryColor, fontSize: 15),
             ),
             Padding(
-              padding: EdgeInsets.only(top: 39),
+              padding: const EdgeInsets.only(top: 39),
               child: DefaultTextFormField(
                 hintText: "Nome",
                 controller: nomeTextController,
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(top: 25),
+              padding: const EdgeInsets.only(top: 25),
               child: Row(
                 children: [
                   Expanded(
                     child: DefaultTextFormField(
                       hintText: "CPF",
                       controller: cpfTextController,
-                      onChanged: (value){
-                        
-                      },
+                      type: TextInputType.number,
+                      onChanged: (value) {},
                     ),
                   ),
-                  SizedBox(width: 19,),
+                  const SizedBox(
+                    width: 19,
+                  ),
                   Expanded(
                     child: DefaultTextFormField(
                       hintText: "Nascimento",
@@ -69,78 +70,80 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(top: 25),
+              padding: const EdgeInsets.only(top: 25),
               child: Row(
                 children: [
                   Expanded(
                     child: DefaultTextFormField(
                       hintText: "Telefone",
+                      type: TextInputType.number,
                       controller: telefoneTextController,
                     ),
                   ),
-                  SizedBox(width: 19,),
+                  const SizedBox(
+                    width: 19,
+                  ),
                   Expanded(
                     child: DefaultTextFormField(
                       hintText: "CNH",
+                      type: TextInputType.number,
                       controller: cnhTextController,
                     ),
                   ),
                 ],
               ),
             ),
-            Padding(
+            const Padding(
               padding: EdgeInsets.only(top: 50),
-              child: Text("DADOS DE ACESSO",
-                style: TextStyle(
-                  color: primaryColor,
-                  fontSize: 15
-                ),
+              child: Text(
+                "DADOS DE ACESSO",
+                style: TextStyle(color: primaryColor, fontSize: 15),
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(top: 35),
+              padding: const EdgeInsets.only(top: 35),
               child: DefaultTextFormField(
                 hintText: "USUÁRIO",
                 controller: emailTextController,
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(top: 26),
+              padding: const EdgeInsets.only(top: 26),
               child: DefaultTextFormField(
                 hintText: "SENHA",
+                isPassword: true,
                 controller: passwordTextController,
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(top: 30),
+              padding: const EdgeInsets.only(top: 30),
               child: DefaultButton(
                 title: "CADASTRAR",
-                onTap: (){
+                onTap: () {
                   controller.registerClient(
-                    context: context,
-                    registerData: Register(
-                      admin: false,
-                      partner: false,
-                      cnh: int.parse(cnhTextController.text.trim()),
-                      cpf: int.parse(cpfTextController.text.trim()),
-                      dataNascimento: dataNascimentoTextController.text,
-                      email: emailTextController.text,
-                      password: passwordTextController.text,
-                      nome: nomeTextController.text,
-                      telefone: telefoneTextController.text,
-                    )
-                  );
+                      context: context,
+                      registerData: Register(
+                        admin: false,
+                        partner: false,
+                        cnh: cnhTextController.text.trim(),
+                        cpf: cpfTextController.text.trim(),
+                        dataNascimento: dataNascimentoTextController.text,
+                        email: emailTextController.text,
+                        password: passwordTextController.text,
+                        nome: nomeTextController.text,
+                        telefone: telefoneTextController.text,
+                      ));
                 },
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(top: 10),
+              padding: const EdgeInsets.only(top: 10),
               child: Center(
                 child: InkWell(
-                  onTap: (){
+                  onTap: () {
                     Navigator.pop(context);
                   },
-                  child: Text.rich(
+                  child: const Text.rich(
                     TextSpan(
                         text: "ou ",
                         style: TextStyle(
