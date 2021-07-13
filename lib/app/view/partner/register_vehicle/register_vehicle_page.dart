@@ -11,6 +11,7 @@ import 'package:app/app/view/components/vehicle_with_background_component.dart';
 import 'package:app/core/theme/app_icons.dart';
 import 'package:app/core/theme/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 class RegisterVehiclePage extends StatefulWidget {
   final int type;
@@ -172,7 +173,7 @@ class _RegisterVehiclePageState extends State<RegisterVehiclePage> {
               height: 29,
             ),
             FutureBuilder<List<Branch>>(
-              future: BranchController().getBranchs(context),
+              future: Modular.get<IBranchController>().getBranchs(),
               builder: (context, snapshot) {
                 if (snapshot.hasData && !snapshot.hasError) {
                   return Container(

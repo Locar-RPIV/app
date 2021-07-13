@@ -5,12 +5,12 @@ import 'package:app/app/model/branch/branch.dart';
 import 'package:app/app/model/home/vehicle_summary.dart';
 import 'package:app/app/model/login/auth.dart';
 import 'package:app/app/model/reservation/reservation.dart';
-import 'package:app/app/view/components/default_alert_dialog.dart';
 import 'package:app/app/view/components/default_app_bar.dart';
 import 'package:app/app/view/components/default_button.dart';
 import 'package:app/core/theme/colors.dart';
 import 'package:app/core/utils/date_parser.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 import '../../../core/theme/app_icons.dart';
 
@@ -177,7 +177,7 @@ class _PreReservationConfirmationPageState
                           color: primaryColor,
                         ),
                         FutureBuilder<List<Branch>>(
-                          future: BranchController().getBranchs(context),
+                          future: Modular.get<IBranchController>().getBranchs(),
                           builder: (context, snapshot) {
                             if (snapshot.hasData && !snapshot.hasError) {
                               _selectedBranchData ??= snapshot.data.first;

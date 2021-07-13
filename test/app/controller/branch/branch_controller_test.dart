@@ -9,7 +9,7 @@ class BranchRepositoryMock extends Mock implements BranchRepository{}
 
 main() {
   final repository = BranchRepositoryMock();
-  final controller = BranchController();
+  final controller = BranchController(repository);
 
   test('test return empty list', () async {
     when(repository.getBranchs()).thenAnswer((_) async => []);
